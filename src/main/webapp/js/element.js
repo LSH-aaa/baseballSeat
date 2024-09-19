@@ -19,14 +19,14 @@ function saveQnAList(qnaList) {
 function addQnA(title, content, author) {
     let qnaList = loadQnAList();
     let newId = qnaList.length > 0 ? qnaList[qnaList.length - 1].id + 1 : 1;
-    let date = new Date().toLocaleString();
+    let writedate = new Date().toLocaleString();
     let qna = {
         id: newId,
         title: title,
         content: content,
         author: maskName(author),
-        date: date,
-        views: 0
+        writedate: writedate,
+        readcount: 0
     };
     qnaList.push(qna);
     saveQnAList(qnaList);
@@ -49,8 +49,8 @@ function displayQnAList() {
             <td>${qna.id}</td>
             <td><a href="qnaView.jsp?id=${qna.id}" onclick="increaseView(${qna.id})">${qna.title}</a></td>
             <td>${qna.author}</td>
-            <td>${qna.date}</td>
-            <td>${qna.views}</td>
+            <td>${qna.writedate}</td>
+            <td>${qna.readcount}</td>
         </tr>`;
         tableBody.innerHTML += row;
     });
@@ -67,7 +67,7 @@ function increaseView(id) {
     let qnaList = loadQnAList();
     let qna = qnaList.find(qna => qna.id === id);
     if (qna) {
-        qna.views += 1;
+        qna.readcount += 1;
         saveQnAList(qnaList);
     }
 }

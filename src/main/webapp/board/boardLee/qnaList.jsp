@@ -26,7 +26,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="#">양도 게시판</a></li>
                     <li><a href="#">분실물 게시판</a></li>
-                    <li><a href="#">QnA 게시판</a></li>
+                    <li><a href="/board/boardLee/qnaList.jsp">QnA 게시판</a></li>
                 </ul>
             </span>
         <a href="#" style="letter-spacing: 3px; font-size: large;">날씨</a>
@@ -46,6 +46,13 @@
             <th>작성자</th>
             <th>작성일</th>
             <th>조회수</th>
+        </tr>
+        <tr>
+            <td>${qna.id}</td>
+            <td>${qna.title}</td>
+            <td>${qna.author}</td>
+            <td>${qna.writedate}</td>
+            <td>${qna.readcount}</td>
         </tr>
         </thead>
         <tbody id="qnaTableBody">

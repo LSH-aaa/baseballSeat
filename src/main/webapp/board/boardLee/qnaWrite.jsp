@@ -36,7 +36,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="#">양도 게시판</a></li>
                     <li><a href="#">분실물 게시판</a></li>
-                    <li><a href="#">QnA 게시판</a></li>
+                    <li><a href="/board/boardLee/qnaList.jsp">QnA 게시판</a></li>
                 </ul>
             </span>
         <a href="#" style="letter-spacing: 3px; font-size: large;">날씨</a>
@@ -57,6 +57,9 @@
         <input type="text" id="author" name="author" required><br><br>
 
         <input type="submit" value="작성하기">
+        <input type="reset" value="초기화하기">
+        <br><br>
+        <a href="qnaList.jsp">목록으로 돌아가기</a>
     </form>
 </section>
 <footer id="footer">

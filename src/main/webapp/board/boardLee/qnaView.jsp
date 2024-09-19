@@ -43,7 +43,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="#">양도 게시판</a></li>
                     <li><a href="#">분실물 게시판</a></li>
-                    <li><a href="#">QnA 게시판</a></li>
+                    <li><a href="/board/boardLee/qnaList.jsp">QnA 게시판</a></li>
                 </ul>
             </span>
         <a href="#" style="letter-spacing: 3px; font-size: large;">날씨</a>
