@@ -9,8 +9,55 @@
 <html>
 <head>
     <title>QnA 게시판</title>
+    <script src="element.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
-<body>
-
+<body onload="displayQnAList()">
+<header id="header">
+    <h2 style="text-align: left; text-decoration-style: wavy">
+        <a href="/baseballGive/main" class="no-hover"
+           style="font-family: Bahnschrift; color: darkblue;">야좌양</a>
+        <span style="font-size: 50px; color: coral">(야구 좌석 양도)</span>
+    </h2>
+    <nav style="text-align: right">
+        <a href="#" style="letter-spacing: 3px; font-size: large;">좌석</a>
+        <span class="nav-item">
+                <a href="#" class="dropdown-link" style="letter-spacing: 3px; font-size: large;">게시판 ⬇</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">양도 게시판</a></li>
+                    <li><a href="#">분실물 게시판</a></li>
+                    <li><a href="#">QnA 게시판</a></li>
+                </ul>
+            </span>
+        <a href="#" style="letter-spacing: 3px; font-size: large;">날씨</a>
+        <a href="#" style="letter-spacing: 3px; font-size: large;">로그인/회원가입</a>
+        <a href="#" style="letter-spacing: 3px; font-size: large;">마이페이지</a>
+    </nav>
+</header>
+<section id="contents">
+    <h1>QnA 게시판</h1>
+    <a href="qnaWrite.jsp">글 작성하기</a>
+    <hr/>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>조회수</th>
+        </tr>
+        </thead>
+        <tbody id="qnaTableBody">
+        <!-- JavaScript로 목록 표시 -->
+        </tbody>
+    </table>
+</section>
+<footer id="footer">
+    <p>배너 광고 문의,</p>
+    <p>오류 제보는 언제든 메일 남겨주세요!</p>
+    <p>(추첨을 통해 기프티콘 제공)</p>
+    <p><b>baseballGive@naver.com</b></p>
+</footer>
 </body>
 </html>
