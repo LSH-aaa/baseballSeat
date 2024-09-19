@@ -16,7 +16,14 @@
         </h2>
         <nav style="text-align: right">
             <a href="#" style="letter-spacing: 3px; font-size: large;">좌석</a>
-            <a href="#" style="letter-spacing: 3px; font-size: large;">게시판</a>
+            <span class="nav-item">
+                <a href="#" class="dropdown-link" style="letter-spacing: 3px; font-size: large;">게시판 ⬇</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">양도 게시판</a></li>
+                    <li><a href="#">분실물 게시판</a></li>
+                    <li><a href="#">QnA 게시판</a></li>
+                </ul>
+            </span>
             <a href="#" style="letter-spacing: 3px; font-size: large;">날씨</a>
             <a href="#" style="letter-spacing: 3px; font-size: large;">로그인/회원가입</a>
             <a href="#" style="letter-spacing: 3px; font-size: large;">마이페이지</a>
@@ -36,7 +43,7 @@
                 <p class="image-description">두산 베어스</p>
             </div>
             <div style="text-align: center">
-                <img src="image/Kia.png" alt="KIA 타이거즈" class="gallery-image">
+                <img src="image/Kia.png" alt="KIA 타이거즈" class="gallery-image" style="cursor:pointer;">
                 <p class="image-description">KIA 타이거즈</p>
             </div>
             <div style="text-align: center">

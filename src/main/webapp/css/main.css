@@ -102,3 +102,52 @@ a.no-hover:hover {
         flex-direction: column;
     }
 }
+
+/* 드롭다운 메뉴 스타일 */
+.nav-item {
+    position: relative; /* 드롭다운 메뉴를 위치시키기 위해 상대 위치 설정 */
+}
+
+.dropdown-link {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none; /* 기본적으로 숨김 */
+    position: absolute; /* 드롭다운 메뉴를 부모 항목 위에 위치시키기 위해 절대 위치 설정 */
+    top: 100%; /* 부모 항목 바로 아래에 위치 */
+    left: 0;
+    background-color: lightgray; /* 드롭다운 배경색 */
+    list-style-type: none; /* 목록 스타일 제거 */
+    padding: 0;
+    margin: 0;
+    border-radius: 4px; /* 모서리 둥글게 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+    z-index: 1; /* 다른 요소 위에 표시되도록 설정 */
+    font-size: 1rem;
+}
+
+.dropdown-menu li {
+    border-bottom: 1px solid #ddd; /* 항목 사이에 구분선 추가 */
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none; /* 마지막 항목에는 구분선 제거 */
+}
+
+.dropdown-menu a {
+    color: #333; /* 링크 색상 */
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease; /* 호버 시 배경색 변화 애니메이션 */
+    font-size: 1rem;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0; /* 호버 시 배경색 */
+}
+
+.nav-item:hover .dropdown-menu {
+    display: block; /* 부모 항목에 커서가 있을 때 드롭다운 메뉴 표시 */
+}
