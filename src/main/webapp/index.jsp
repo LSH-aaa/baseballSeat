@@ -43,7 +43,7 @@
                 <p class="image-description">두산 베어스</p>
             </div>
             <div style="text-align: center">
-                <img src="image/Kia.png" alt="KIA 타이거즈" class="gallery-image" style="cursor:pointer;">
+                <a href="/board/boardLee/seatArray.jsp" class="no-hover"><img src="image/Kia.png" alt="KIA 타이거즈" class="gallery-image"></a>
                 <p class="image-description">KIA 타이거즈</p>
             </div>
             <div style="text-align: center">
