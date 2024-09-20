@@ -110,7 +110,7 @@ public class BoardDAO {
 
     // 게시글 수정
     public void updateBoard(BoardVO board) {
-        String sql = "UPDATE board SET name = ?, pass = ?, email = ?, " +
+        String sql = "UPDATE board SET" +
                 "title = ?, content = ? WHERE num = ?";
 
         Connection conn = null;
@@ -119,9 +119,9 @@ public class BoardDAO {
         try {
             conn = DBManager.getConnection();
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(4, board.getTitle());
-            pstmt.setString(5, board.getContent());
-            pstmt.setInt(6, board.getNum());
+            pstmt.setString(1, board.getTitle());
+            pstmt.setString(2, board.getContent());
+            pstmt.setInt(3, board.getNum());
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

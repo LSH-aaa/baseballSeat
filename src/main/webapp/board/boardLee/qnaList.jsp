@@ -36,7 +36,9 @@
 </header>
 <section id="contents">
     <h1>QnA 게시판</h1>
-    <a href="qnaWrite.jsp">글 작성하기</a>
+    <br>
+    <span><a href="qnaWrite.jsp" class="no-hover">글 작성하기</a></span>
+    <br>
     <hr/>
     <table border="1">
         <thead>
@@ -52,7 +54,7 @@
         <tr>
             <td>${qna.title}</td>
             <td>${qna.content}</td>
-            <td>${qna.author}</td>
+            <td>${qna.name}</td>
             <td>${qna.writedate}</td>
             <td>${qna.readcount}</td>
         </tr>
