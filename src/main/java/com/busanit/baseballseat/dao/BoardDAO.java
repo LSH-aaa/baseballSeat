@@ -45,8 +45,8 @@ public class BoardDAO {
     }
 
     // 게시글 상세 보기
-    public BoardVO selectOneBoard(String num) {
-        String sql = "select * from board where num = ?";
+    public BoardVO selectOneBoard(String num, String id) {
+        String sql = "select * from board where num = ?, id = ?";
 
         BoardVO board = null;
         Connection conn = null;

@@ -37,7 +37,7 @@
             <tr>
             <td>${board.num}</td>
             <td>${board.type}</td>
-            <td>${board.title}</td>
+                <td><a href="/board/view?num=${board.num}">${board.title}</a></td>
             <td>${board.nickname}</td>
             <td><fmt:formatDate pattern="yyyy.MM.dd hh:mm:ss" value="${board.writedate}"/></td>
             <td>${board.readcount}</td>

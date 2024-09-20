@@ -24,7 +24,7 @@ public class BoardViewServlet extends HttpServlet {
         //dao.updateReadCount(num);
 
         // num에 대한 게시글 정보 가져오기
-        BoardVO board = dao.selectOneBoard(num);
+        BoardVO board = dao.selectOneBoard(num, "gguddak123");
 
         request.setAttribute("board", board);
         request.getRequestDispatcher(url).forward(request, response);
