@@ -16,13 +16,8 @@
 <body>
     <table>
         <tr>
-            <td>
-                <a>게시글 등록</a>
-            </td>
-        </tr>
-        <tr>
             <th>번호</th>
-            <th>TYPE</th>
+            <th>카테고리</th>
             <th>제목</th>
             <th>작성자</th>
             <th>작성일</th>
@@ -44,5 +39,7 @@
             </tr>
         </c:forEach>
     </table>
+    <br><br>
+    <input type="button" value="게시글 작성" onclick="location.href='/board/wirte'">
 </body>
 </html>

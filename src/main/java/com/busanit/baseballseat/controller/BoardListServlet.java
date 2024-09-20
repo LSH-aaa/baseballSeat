@@ -17,9 +17,11 @@ public class BoardListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = "/board/boardJung/boardList.jsp";
 
+        String type = request.getParameter("type");
+
         BoardDAO dao = new BoardDAO();
 
-        List<BoardVO> boardList = dao.selectAllBoard();
+        List<BoardVO> boardList = dao.selectAllBoard(type);
 
         request.setAttribute("boardList", boardList);
         request.getRequestDispatcher(url).forward(request, response);

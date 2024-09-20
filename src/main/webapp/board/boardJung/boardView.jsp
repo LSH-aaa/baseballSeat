@@ -41,6 +41,5 @@
     <input type="button" value="게시글 수정" onclick="location.href='/board/update'">
     <input type="button" value="게시글 삭제" onclick="location.href='/board/delete'">
     <input type="button" value="목록" onclick="location.href='/board/list'">
-    <input type="button" value="게시글 작성" onclick="location.href='/board/wirte'">
 </body>
 </html>

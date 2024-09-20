@@ -16,7 +16,7 @@ public class BoardViewServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String num = request.getParameter("num");
 
-        String url = request.getParameter("url");
+        String url = "/board/boardJung/boardView.jsp";
 
         BoardDAO dao = new BoardDAO();
 
