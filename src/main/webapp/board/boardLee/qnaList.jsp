@@ -15,7 +15,7 @@
 <body onload="displayQnAList()">
 <header id="header">
     <h2 style="text-align: left; text-decoration-style: wavy">
-        <a href="/baseballGive/main" class="no-hover"
+        <a href="/index.jsp" class="no-hover"
            style="font-family: Bahnschrift; color: darkblue;">야좌양</a>
         <span style="font-size: 50px; color: coral">(야구 좌석 양도)</span>
     </h2>
@@ -41,22 +41,21 @@
     <table border="1">
         <thead>
         <tr>
-            <th>ID</th>
             <th>제목</th>
+            <th>내용</th>
             <th>작성자</th>
             <th>작성일</th>
             <th>조회수</th>
         </tr>
+        </thead>
+        <tbody id="qnaTableBody">
         <tr>
-            <td>${qna.id}</td>
             <td>${qna.title}</td>
+            <td>${qna.content}</td>
             <td>${qna.author}</td>
             <td>${qna.writedate}</td>
             <td>${qna.readcount}</td>
         </tr>
-        </thead>
-        <tbody id="qnaTableBody">
-        <!-- JavaScript로 목록 표시 -->
         </tbody>
     </table>
 </section>

@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/board/list")
+@WebServlet("/QnAList")
 public class BoardListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "/board/boardList.jsp";
+        String url = "/board/boardLee/qnaList.jsp";
 
         // 검색 정보
         String searchType = request.getParameter("searchType");
@@ -61,5 +61,7 @@ public class BoardListServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         doGet(request, response);
+
+
     }
 }

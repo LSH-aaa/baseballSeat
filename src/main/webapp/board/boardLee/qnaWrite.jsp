@@ -56,7 +56,7 @@
         <label for="author">작성자(이름): </label>
         <input type="text" id="author" name="author" required><br><br>
 
-        <input type="submit" value="작성하기">
+        <input type="submit" value="작성하기" name="write">
         <input type="reset" value="초기화하기">
         <br><br>
         <a href="qnaList.jsp">목록으로 돌아가기</a>
@@ -68,6 +68,5 @@
     <p>(추첨을 통해 기프티콘 제공)</p>
     <p><b>baseballGive@naver.com</b></p>
 </footer>
-
 </body>
 </html>

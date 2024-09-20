@@ -2,12 +2,12 @@ package util;
 
 import java.sql.*;
 
-public class Manager {
+public class DBManager {
     // DB 접속정보 설정
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         Connection conn = null;
 
-        String url = "jdbc:mysql://localhost:3306/baseballseat";
+        String url = "jdbc:mysql://localhost:3306/baseballSeat";
         String user = "root";
         String password = "1234";
 

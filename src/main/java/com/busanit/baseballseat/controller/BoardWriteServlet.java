@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/board/write")
+@WebServlet()
 public class BoardWriteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,18 +23,5 @@ public class BoardWriteServlet extends HttpServlet {
         // 한글 깨짐 방지
         request.setCharacterEncoding("utf-8");
 
-        BoardVO board = new BoardVO();
-        board.setName(request.getParameter("name"));
-        board.setPass(request.getParameter("pass"));
-        board.setEmail(request.getParameter("email"));
-        board.setTitle(request.getParameter("title"));
-        board.setContent(request.getParameter("content"));
-
-        BoardDAO dao = new BoardDAO();
-        dao.insertBoard(board);
-
-        // 게시글 작성완료 후 목록 화면으로 이동
-        response.sendRedirect("/board/list");
     }
-
 }

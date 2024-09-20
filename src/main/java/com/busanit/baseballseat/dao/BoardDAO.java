@@ -1,8 +1,7 @@
 package com.busanit.baseballseat.dao;
 
-import com.busanit.baseballseat.controller.BoardListServlet;
 import com.busanit.baseballseat.dto.BoardVO;
-import util.Manager;
+import util.DBManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,16 +21,13 @@ public class BoardDAO {
         ResultSet rs = null;
 
         try {
-            conn = Manager.getConnection();
+            conn = DBManager.getConnection();
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
 
             while(rs.next()) {
                 BoardVO board = new BoardVO();
                 board.setNum(rs.getInt("num"));
-                board.setName(rs.getString("name"));
-                board.setEmail(rs.getString("email"));
-                board.setPass(rs.getString("pass"));
                 board.setTitle(rs.getString("title"));
                 board.setContent(rs.getString("content"));
                 board.setReadcount(rs.getInt("readcount"));
@@ -42,7 +38,7 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            Manager.close(conn, pstmt, rs);
+            DBManager.close(conn, pstmt, rs);
         }
         return boardList;
     }
@@ -61,7 +57,7 @@ public class BoardDAO {
         ResultSet rs = null;
 
         try {
-            conn = Manager.getConnection();
+            conn = DBManager.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, num);
 
@@ -70,9 +66,6 @@ public class BoardDAO {
             while(rs.next()) {
                 board = new BoardVO();
                 board.setNum(rs.getInt("num"));
-                board.setName(rs.getString("name"));
-                board.setEmail(rs.getString("email"));
-                board.setPass(rs.getString("pass"));
                 board.setTitle(rs.getString("title"));
                 board.setContent(rs.getString("content"));
                 board.setReadcount(rs.getInt("readcount"));
@@ -81,7 +74,7 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            Manager.close(conn, pstmt, rs);
+            DBManager.close(conn, pstmt, rs);
         }
         return board;
     }
@@ -92,25 +85,22 @@ public class BoardDAO {
 
     // 게시글 입력
     public void insertBoard(BoardVO board) {
-        String sql = "INSERT INTO board(name, pass, email, title, content)" +
-                " VALUES(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO board(title, content, name)" +
+                " VALUES(?, ?, ?)";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
 
         try {
-            conn = Manager.getConnection();
+            conn = DBManager.getConnection();
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, board.getName());
-            pstmt.setString(2, board.getPass());
-            pstmt.setString(3, board.getEmail());
-            pstmt.setString(4, board.getTitle());
-            pstmt.setString(5, board.getContent());
+            pstmt.setString(1, board.getTitle());
+            pstmt.setString(2, board.getContent());
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            Manager.close(conn, pstmt);
+            DBManager.close(conn, pstmt);
         }
     }
 
@@ -127,11 +117,8 @@ public class BoardDAO {
         PreparedStatement pstmt = null;
 
         try {
-            conn = Manager.getConnection();
+            conn = DBManager.getConnection();
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, board.getName());
-            pstmt.setString(2, board.getPass());
-            pstmt.setString(3, board.getEmail());
             pstmt.setString(4, board.getTitle());
             pstmt.setString(5, board.getContent());
             pstmt.setInt(6, board.getNum());
@@ -139,9 +126,13 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            Manager.close(conn, pstmt);
+            DBManager.close(conn, pstmt);
         }
     }
+
+
+
+
 
     // 게시글 삭제
     public void deleteBoard(String num) {
@@ -151,14 +142,14 @@ public class BoardDAO {
         PreparedStatement pstmt = null;
 
         try {
-            conn = Manager.getConnection();
+            conn = DBManager.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, num);
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            Manager.close(conn, pstmt);
+            DBManager.close(conn, pstmt);
         }
     }
 
@@ -174,16 +165,20 @@ public class BoardDAO {
         PreparedStatement pstmt = null;
 
         try {
-            conn = Manager.getConnection();
+            conn = DBManager.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, num);
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            Manager.close(conn, pstmt);
+            DBManager.close(conn, pstmt);
         }
     }
+
+
+
+
 
     // 게시글 비밀번호 check
     public String checkPassword(String pass, String num) {
@@ -196,7 +191,7 @@ public class BoardDAO {
         ResultSet rs = null;
 
         try {
-            conn = Manager.getConnection();
+            conn = DBManager.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, num);
             pstmt.setString(2, pass);
@@ -208,7 +203,7 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            Manager.close(conn, pstmt, rs);
+            DBManager.close(conn, pstmt, rs);
         }
         return return_pass;
     }
@@ -227,7 +222,7 @@ public class BoardDAO {
         List<BoardVO> list = new ArrayList<>();
 
         try {
-            conn = Manager.getConnection();
+            conn = DBManager.getConnection();
 
             if (searchType != null && searchText.length() > 0) {
                 // 검색 리스트 조회
@@ -276,9 +271,6 @@ public class BoardDAO {
             while(rs.next()) {
                 BoardVO board = new BoardVO();
                 board.setNum(rs.getInt("num"));
-                board.setName(rs.getString("name"));
-                board.setEmail(rs.getString("email"));
-                board.setPass(rs.getString("pass"));
                 board.setTitle(rs.getString("title"));
                 board.setContent(rs.getString("content"));
                 board.setReadcount(rs.getInt("readcount"));
@@ -289,7 +281,7 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            Manager.close(conn, pstmt, rs);
+            DBManager.close(conn, pstmt, rs);
         }
         return list;
     }
@@ -308,7 +300,7 @@ public class BoardDAO {
         ResultSet rs = null;
 
         try {
-            conn = Manager.getConnection();
+            conn = DBManager.getConnection();
 
             if (searchType != null && searchText.length() > 0) {
                 // 검색 리스트 조회
@@ -357,7 +349,7 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            Manager.close(conn, pstmt, rs);
+            DBManager.close(conn, pstmt, rs);
         }
         return boardCnt;
     }
@@ -377,7 +369,7 @@ public class BoardDAO {
         List<BoardVO> boardList = new ArrayList<>();
 
         try {
-            conn = Manager.getConnection();
+            conn = DBManager.getConnection();
 
             if (searchType != null && searchText.length() > 0) {
                 // 검색 리스트 조회
@@ -440,9 +432,6 @@ public class BoardDAO {
             while(rs.next()) {
                 BoardVO board = new BoardVO();
                 board.setNum(rs.getInt("num"));
-                board.setName(rs.getString("name"));
-                board.setEmail(rs.getString("email"));
-                board.setPass(rs.getString("pass"));
                 board.setTitle(rs.getString("title"));
                 board.setContent(rs.getString("content"));
                 board.setReadcount(rs.getInt("readcount"));
@@ -453,7 +442,7 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            Manager.close(conn, pstmt, rs);
+            DBManager.close(conn, pstmt, rs);
         }
         return boardList;
     }

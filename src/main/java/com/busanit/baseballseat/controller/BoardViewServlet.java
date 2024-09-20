@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/board/view")
+@WebServlet("/QnAView")
 public class BoardViewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String num = request.getParameter("num");
-        String url = "/board/boardView.jsp";
+        String url = "/board/boardLee/qnaView.jsp";
 
         BoardDAO dao = new BoardDAO();
 
