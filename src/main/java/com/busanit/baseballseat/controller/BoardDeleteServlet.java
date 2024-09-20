@@ -13,13 +13,7 @@ import java.io.IOException;
 public class BoardDeleteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String num = request.getParameter("num");
 
-        BoardDAO dao = new BoardDAO();
-        dao.deleteBoard(num);
-
-        // 게시글 삭제완료 후 게시글 목록으로 이동
-        response.sendRedirect("/board/list");
     }
 
     @Override

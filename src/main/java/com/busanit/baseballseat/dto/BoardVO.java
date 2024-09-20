@@ -3,14 +3,14 @@ package com.busanit.baseballseat.dto;
 import java.sql.Timestamp;
 
 public class BoardVO {
-    private int num;
-    private String name;
-    private String email;
-    private String pass;
-    private String title;
-    private String content;
-    private int readcount;
-    private Timestamp writedate;
+    public int num;
+    public String type;
+    public String title;
+    public String content;
+    public int readcount;
+    public Timestamp writedate;
+    public String nickname;
+    public String id;
 
     public int getNum() {
         return num;
@@ -20,28 +20,12 @@ public class BoardVO {
         this.num = num;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getTitle() {
@@ -74,5 +58,21 @@ public class BoardVO {
 
     public void setWritedate(Timestamp writedate) {
         this.writedate = writedate;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

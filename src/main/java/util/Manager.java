@@ -18,7 +18,7 @@ public class Manager {
     }
 
     // select를 수행한 후 리소스 해제를 위한 메서드
-    // executeQuery() - ResultSet
+    // excuteQuery() - ReseltSet
     public static void close(Connection conn, Statement stmt, ResultSet rs) {
         try {
             rs.close();
@@ -30,7 +30,7 @@ public class Manager {
     }
 
     // DML(insert, update, delete)을 수행한 후 리소스 해제를 위한 메서드
-    // executeUpdate() - int
+    // executeUpdate() - int   // 매개변수 갯수가 달라서 오버로딩 성립
     public static void close(Connection conn, Statement stmt) {
         try {
             stmt.close();
