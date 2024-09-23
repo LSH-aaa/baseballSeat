@@ -8,8 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet("/board/signup")
-public class SignupServlet extends HttpServlet {
+@WebServlet("/board/register")
+public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -29,6 +29,6 @@ public class SignupServlet extends HttpServlet {
         MembersDAO mdao = new MembersDAO();
         mdao.joinMembers(members);
 
-        response.sendRedirect("/board/signupSuccess.jsp");
+        response.sendRedirect("/board/boardLogin.jsp");
     }
 }

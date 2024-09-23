@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>회원가입/로그인</title>
+    <link rel="stylesheet" href="/css/register.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         //아이디 중복 검사
@@ -73,24 +74,38 @@
 </head>
 <body>
     <div>
-        <form action="/board/signup" method="post">
+        <form action="/board/register" method="post">
             <h3>회원가입</h3>
-            <p><input type="text" name="name" placeholder="이름"> *필수</p>
-            <p>
-                <input type="text" name="id" id="id" placeholder="아이디"> *필수
+            <h4>이름 <small>*필수</small></h4>
+            <fieldset>
+                <input type="text" name="name" placeholder="이름">
+            </fieldset>
+
+            <h4>아이디 <small>*필수</small></h4>
+            <fieldset>
+                <input type="text" name="id" id="id" placeholder="아이디">
                 <input type="button" value="중복확인" id="check_id" onclick="idCheck()">
                 <span id="check_result"></span>
-            </p>
-            <p><input type="password" id="pwd_1" class="pw" name="pwd" placeholder="비밀번호"> *필수</p>
-            <p>
-                <input type="password" id="pwd_2" class="pw" name="pwd_check" placeholder="비밀번호 확인"> *필수
-                <span id="check_MSG"></span>
-            </p>
+            </fieldset>
 
-            <p><input type="text" name="email" placeholder="이메일"></p>
-            <p><input type="text" name="nickname" placeholder="닉네임"></p>
+            <h4>비밀번호 <small>*필수</small></h4>
+            <fieldset>
+                <input type="password" id="pwd_1" class="pw" name="pwd" placeholder="비밀번호">
+                <input type="password" id="pwd_2" class="pw" name="pwd_check" placeholder="비밀번호 확인">
+                <span id="check_MSG"></span>
+            </fieldset>
+
+            <h4>이메일</h4>
+            <fieldset>
+                <input type="text" name="email" placeholder="이메일">
+            </fieldset>
+
+            <h4>닉네임</h4>
+            <fieldset>
+                <input type="text" name="nickname" placeholder="닉네임">
+            </fieldset>
             <br>
-            <input type="submit" value="제출하기" onclick="signupCheck()">
+            <button type="submit" onclick="registerCheck()">가입하기</button>
         </form>
     </div>
 

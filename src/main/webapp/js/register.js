@@ -12,12 +12,6 @@ function signupCheck() {
         return false;
     }
 
-    if(idTag.value.length <= 0) {
-        alert("id를 입력해주세요.")
-        idTag.focus();
-        return false;
-    }
     return true;
-    
 }
 
