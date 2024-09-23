@@ -1,7 +1,7 @@
 package com.busanit.baseballseat.dao;
 
 import com.busanit.baseballseat.dto.MembersVO;
-import com.busanit.baseballseat.util.DBManager;
+import util.DBManager;
 
 import java.sql.*;
 
@@ -62,5 +62,30 @@ public class MembersDAO {
         }
     }
 
-    //
+    //로그인
+    public String loginMembers(String id, String pass) {
+        String sql = "SELECT * FROM members WHERE id= ? AND pass = ?";
+        String return_rs = "";
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DBManager.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);
+            pstmt.setString(2, pass);
+            rs = pstmt.executeQuery();
+
+            if(rs.next()) {
+                return_rs = rs.getString("pass");
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        } finally {
+            DBManager.close(conn, pstmt, rs);
+        }
+        return return_rs;
+    }
 }
