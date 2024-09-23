@@ -62,7 +62,7 @@
         <p>조회수: <span id="readcount">${board.readcount}</span></p>
         <br>
         <p>내용</p>
-        <p id="content">${board.content}</p>
+        <p id="content"><textarea rows="10" cols="40" readonly>${board.content}</textarea></p>
     </div>
     <hr/>
     <a href="/QnAList" class="no-hover">목록으로 돌아가기</a>
