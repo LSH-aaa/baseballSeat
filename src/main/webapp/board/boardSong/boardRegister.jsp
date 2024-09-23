@@ -10,6 +10,7 @@
 <head>
     <title>회원가입/로그인</title>
     <link rel="stylesheet" href="/css/register.css">
+    <link rel="stylesheet" href="/css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         //아이디 중복 검사
@@ -105,9 +106,9 @@
                 <input type="text" name="nickname" placeholder="닉네임">
             </fieldset>
             <br>
-            <button type="submit" onclick="registerCheck()">가입하기</button>
+            <button value="submit" onclick="return registerCheck()">회원가입</button>
         </form>
     </div>
-
+    <script type="text/javascript" src="../../js/members.js"></script>
 </body>
 </html>
