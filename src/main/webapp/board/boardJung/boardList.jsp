@@ -12,10 +12,30 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="../css/board.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
+    <header id="header">
+        <h2 style="text-align: left; text-decoration-style: wavy">
+            <a href="/baseballGive/main" class="no-hover"
+               style="font-family: Bahnschrift; color: darkblue;">야좌양</a>
+            <span style="font-size: 50px; color: coral">(야구 좌석 양도)</span>
+        </h2>
+        <nav style="text-align: right">
+            <a href="#" style="letter-spacing: 3px; font-size: large;">좌석</a>
+            <span class="nav-item">
+                    <a href="#" class="dropdown-link" style="letter-spacing: 3px; font-size: large;">게시판 ⬇</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/board/list?type=Y">양도 게시판</a></li>
+                        <li><a href="/board/list?type=B">분실물 게시판</a></li>
+                        <li><a href="/board/boardLee/qnaList.jsp">QnA 게시판</a></li>
+                    </ul>
+                </span>
+            <a href="#" style="letter-spacing: 3px; font-size: large;">날씨</a>
+            <a href="#" style="letter-spacing: 3px; font-size: large;">로그인/회원가입</a>
+            <a href="#" style="letter-spacing: 3px; font-size: large;">마이페이지</a>
+        </nav>
+    </header>
     <input type="button" value="게시글 작성" onclick="location.href='/board/write'">
     <table>
         <tr>
@@ -70,5 +90,11 @@
             </ul>
         </nav>
     </div>
+    <footer id="footer">
+        <p>배너 광고 문의,</p>
+        <p>오류 제보는 언제든 메일 남겨주세요!</p>
+        <p>(추첨을 통해 기프티콘 제공)</p>
+        <p><b>baseballGive@naver.com</b></p>
+    </footer>
 </body>
 </html>
