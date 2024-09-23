@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: admin
@@ -9,13 +11,13 @@
 <html>
 <head>
     <title>QnA 게시판</title>
-    <script src="element.js"></script>
+    <script src="/js/element_Lee.js"></script>
     <link rel="stylesheet" href="/css/main.css">
 </head>
-<body onload="displayQnAList()">
+<body>
 <header id="header">
     <h2 style="text-align: left; text-decoration-style: wavy">
-        <a href="/index.jsp" class="no-hover"
+        <a href="/main" class="no-hover"
            style="font-family: Bahnschrift; color: darkblue;">야좌양</a>
         <span style="font-size: 50px; color: coral">(야구 좌석 양도)</span>
     </h2>
@@ -26,7 +28,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="#">양도 게시판</a></li>
                     <li><a href="#">분실물 게시판</a></li>
-                    <li><a href="/board/boardLee/qnaList.jsp">QnA 게시판</a></li>
+                    <li><a href="/QnAList">QnA 게시판</a></li>
                 </ul>
             </span>
         <a href="#" style="letter-spacing: 3px; font-size: large;">날씨</a>
@@ -37,7 +39,7 @@
 <section id="contents">
     <h1>QnA 게시판</h1>
     <br>
-    <span><a href="qnaWrite.jsp" class="no-hover">글 작성하기</a></span>
+    <span><a href="/QnAWrite" class="no-hover">글 작성하기</a></span>
     <br>
     <hr/>
     <table border="1">
@@ -51,13 +53,23 @@
         </tr>
         </thead>
         <tbody id="qnaTableBody">
-        <tr>
-            <td>${qna.title}</td>
-            <td>${qna.content}</td>
-            <td>${qna.name}</td>
-            <td>${qna.writedate}</td>
-            <td>${qna.readcount}</td>
-        </tr>
+        <c:if test="${qna.size() <= 0}">
+            <tr>
+                <td colspan="5" style="text-align: center;">표시될 내용이 없습니다.</td>
+            </tr>
+        </c:if>
+        <c:forEach var="board" items="${qna}">
+            <tr>
+                <td>
+                    <a class="no-hover" href="/QnAView?num=${board.num}"
+                       style="color: darkturquoise;"><b>${board.title}</b></a>
+                </td>
+                <td>${board.content}</td>
+                <td>${board.name}</td>
+                <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${board.writedate}" /></td>
+                <td>${board.readcount}</td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </section>

@@ -13,7 +13,8 @@ public class BoardDAO {
 
     // 전체 게시글 불러오기
     public List<BoardVO> selectAllBoard() {
-        String sql = "SELECT * FROM board ORDER BY num DESC";
+        String sql = "SELECT * FROM board b, members m WHERE b.id = m.id AND" +
+                " type = 'qna' ORDER BY num DESC";
 
         List<BoardVO> boardList = new ArrayList<>();
         Connection conn = null;
@@ -28,10 +29,13 @@ public class BoardDAO {
             while(rs.next()) {
                 BoardVO board = new BoardVO();
                 board.setNum(rs.getInt("num"));
+                board.setName(rs.getString("name"));
+                board.setType(rs.getString("type"));
                 board.setTitle(rs.getString("title"));
                 board.setContent(rs.getString("content"));
                 board.setReadcount(rs.getInt("readcount"));
                 board.setWritedate(rs.getTimestamp("writedate"));
+                board.setId(rs.getString("id"));
 
                 boardList.add(board);
             }
@@ -49,7 +53,8 @@ public class BoardDAO {
 
     // 게시글 상세 내용 보기
     public BoardVO selectOneBoard(String num) {
-        String sql = "SELECT * FROM board WHERE num = ?";
+        String sql = "SELECT * FROM board b, members m " +
+                "WHERE b.id = m.id AND num = ? AND type = 'qna'";
 
         BoardVO board = null;
         Connection conn = null;
@@ -66,10 +71,13 @@ public class BoardDAO {
             while(rs.next()) {
                 board = new BoardVO();
                 board.setNum(rs.getInt("num"));
+                board.setName(rs.getString("name"));
+                board.setType(rs.getString("type"));
                 board.setTitle(rs.getString("title"));
                 board.setContent(rs.getString("content"));
                 board.setReadcount(rs.getInt("readcount"));
                 board.setWritedate(rs.getTimestamp("writedate"));
+                board.setId(rs.getString("id"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -85,8 +93,8 @@ public class BoardDAO {
 
     // 게시글 입력
     public void insertBoard(BoardVO board) {
-        String sql = "INSERT INTO board(title, content, name)" +
-                " VALUES(?, ?, ?)";
+        String sql = "INSERT INTO board(title, content, name, type)" +
+                " VALUES(?, ?, ?, 'qna')";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -96,6 +104,7 @@ public class BoardDAO {
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, board.getTitle());
             pstmt.setString(2, board.getContent());
+            pstmt.setString(3, board.getName());
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -110,8 +119,8 @@ public class BoardDAO {
 
     // 게시글 수정
     public void updateBoard(BoardVO board) {
-        String sql = "UPDATE board SET" +
-                "title = ?, content = ? WHERE num = ?";
+        String sql = "UPDATE board SET " +
+                "title = ?, content = ? WHERE num = ? AND type = 'qna'";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -136,7 +145,7 @@ public class BoardDAO {
 
     // 게시글 삭제
     public void deleteBoard(String num) {
-        String sql = "DELETE FROM board WHERE num = ?";
+        String sql = "DELETE FROM board WHERE num = ? AND type = 'qna'";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -159,7 +168,7 @@ public class BoardDAO {
 
     // 조회수 업데이트
     public void updateReadCount(String num) {
-        String sql = "UPDATE board SET readcount = readcount + 1 WHERE num = ?";
+        String sql = "UPDATE board SET readcount = readcount + 1 WHERE num = ? AND type = 'qna'";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -174,38 +183,6 @@ public class BoardDAO {
         } finally {
             DBManager.close(conn, pstmt);
         }
-    }
-
-
-
-
-
-    // 게시글 비밀번호 check
-    public String checkPassword(String pass, String num) {
-        String sql = "SELECT * FROM board WHERE num = ? AND pass = ?";
-
-        String return_pass = "";
-
-        Connection conn = null;
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-
-        try {
-            conn = DBManager.getConnection();
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, num);
-            pstmt.setString(2, pass);
-            rs = pstmt.executeQuery();
-
-            if (rs.next()) {
-                return_pass = rs.getString("pass");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            DBManager.close(conn, pstmt, rs);
-        }
-        return return_pass;
     }
 
 
@@ -233,7 +210,7 @@ public class BoardDAO {
                 switch (searchType) {
                     case "all":
                         sql = "SELECT * FROM board " +
-                                "WHERE title LIKE ? OR content LIKE ? " +
+                                "WHERE title LIKE ? OR content LIKE ? AND type = 'qna'" +
                                 "ORDER BY num DESC";
                         pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1, "%" + searchText + "%");
@@ -241,21 +218,21 @@ public class BoardDAO {
                         break;
                     case "title":
                         sql = "SELECT * FROM board " +
-                                "WHERE title LIKE ? " +
+                                "WHERE title LIKE ? AND type = 'qna'" +
                                 "ORDER BY num DESC";
                         pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1, "%" + searchText + "%");
                         break;
                     case "name":
                         sql = "SELECT * FROM board " +
-                                "WHERE name LIKE ? " +
+                                "WHERE name LIKE ? AND type = 'qna'" +
                                 "ORDER BY num DESC";
                         pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1, "%" + searchText + "%");
                         break;
                     case "content":
                         sql = "SELECT * FROM board " +
-                                "WHERE content LIKE ? " +
+                                "WHERE content LIKE ? AND type = 'qna'" +
                                 "ORDER BY num DESC";
                         pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1, "%" + searchText + "%");
@@ -263,7 +240,7 @@ public class BoardDAO {
                 }
             } else {
                 // 전체 리스트 조회
-                sql = "SELECT * FROM board ORDER BY num DESC";
+                sql = "SELECT * FROM board b, members m WHERE b.id = m.id AND b.type = 'qna' ORDER BY b.num DESC";
                 pstmt = conn.prepareStatement(sql);
             }
             rs = pstmt.executeQuery();
@@ -271,10 +248,12 @@ public class BoardDAO {
             while(rs.next()) {
                 BoardVO board = new BoardVO();
                 board.setNum(rs.getInt("num"));
+                board.setType(rs.getString("type"));
                 board.setTitle(rs.getString("title"));
                 board.setContent(rs.getString("content"));
                 board.setReadcount(rs.getInt("readcount"));
                 board.setWritedate(rs.getTimestamp("writedate"));
+                board.setId(rs.getString("id"));
 
                 list.add(board);
             }
@@ -310,35 +289,35 @@ public class BoardDAO {
                 //       content = 내용
                 switch (searchType) {
                     case "all":
-                        sql = "SELECT COUNT(*) FROM board " +
-                                "WHERE title LIKE ? OR content LIKE ? ";
+                        sql = "SELECT COUNT(*) FROM board b, members m " +
+                                "WHERE b.id = m.id AND b.title LIKE ? OR b.content LIKE ? AND b.type = 'qna'";
                         pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1, "%" + searchText + "%");
                         pstmt.setString(2, "%" + searchText + "%");
                         break;
                     case "title":
-                        sql = "SELECT COUNT(*) FROM board " +
-                                "WHERE title LIKE ? ";
+                        sql = "SELECT COUNT(*) FROM board b, members m " +
+                                "WHERE b.id = m.id AND b.title LIKE ? ";
                         pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1, "%" + searchText + "%");
 
                         break;
                     case "name":
-                        sql = "SELECT COUNT(*) FROM board " +
-                                "WHERE title LIKE ? ";
+                        sql = "SELECT COUNT(*) FROM board b, members m " +
+                                "WHERE b.id = m.id AND b.title LIKE ? ";
                         pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1, "%" + searchText + "%");
                         break;
                     case "content":
-                        sql = "SELECT COUNT(*) FROM board " +
-                                "WHERE title LIKE ? ";
+                        sql = "SELECT COUNT(*) FROM board b, members m " +
+                                "WHERE b.id = m.id AND b.title LIKE ? ";
                         pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1, "%" + searchText + "%");
                         break;
                 }
             } else {
                 // 전체 리스트 조회
-                sql = "SELECT COUNT(*) FROM board";
+                sql = "SELECT COUNT(*) FROM board b, members m WHERE b.id = m.id";
                 pstmt = conn.prepareStatement(sql);
             }
             rs = pstmt.executeQuery();
@@ -379,9 +358,9 @@ public class BoardDAO {
                 //       content = 내용
                 switch (searchType) {
                     case "all":
-                        sql = "SELECT * FROM board " +
-                                "WHERE title LIKE ? OR content LIKE ? " +
-                                "ORDER BY num DESC " +
+                        sql = "SELECT * FROM board b, members m " +
+                                "WHERE b.id = m.id AND b.title LIKE ? OR b.content LIKE ? " +
+                                "ORDER BY b.num DESC " +
                                 "LIMIT ?, ?";
                         pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1, "%" + searchText + "%");
@@ -390,9 +369,9 @@ public class BoardDAO {
                         pstmt.setInt(4, pageSize);
                         break;
                     case "title":
-                        sql = "SELECT * FROM board " +
-                                "WHERE title LIKE ? " +
-                                "ORDER BY num DESC " +
+                        sql = "SELECT * FROM board b, members m " +
+                                "WHERE b.id = m.id AND b.title LIKE ? " +
+                                "ORDER BY b.num DESC " +
                                 "LIMIT ?, ?";
                         pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1, "%" + searchText + "%");
@@ -400,9 +379,9 @@ public class BoardDAO {
                         pstmt.setInt(3, pageSize);
                         break;
                     case "name":
-                        sql = "SELECT * FROM board " +
-                                "WHERE name LIKE ? " +
-                                "ORDER BY num DESC " +
+                        sql = "SELECT * FROM board b, members m " +
+                                "WHERE b.id = m.id AND m.name LIKE ? " +
+                                "ORDER BY b.num DESC " +
                                 "LIMIT ?, ?";
                         pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1, "%" + searchText + "%");
@@ -410,9 +389,9 @@ public class BoardDAO {
                         pstmt.setInt(3, pageSize);
                         break;
                     case "content":
-                        sql = "SELECT * FROM board " +
-                                "WHERE content LIKE ? " +
-                                "ORDER BY num DESC " +
+                        sql = "SELECT * FROM board b, members m " +
+                                "WHERE b.id = m.id AND b.content LIKE ? " +
+                                "ORDER BY b.num DESC " +
                                 "LIMIT ?, ?";
                         pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1, "%" + searchText + "%");
@@ -422,7 +401,8 @@ public class BoardDAO {
                 }
             } else {
                 // 전체 리스트 조회
-                sql = "SELECT * FROM board ORDER BY num DESC LIMIT ?, ?";
+                sql = "SELECT * FROM board b, members m " +
+                        "WHERE b.id = m.id ORDER BY b.num DESC LIMIT ?, ?";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.setInt(1, offset);
                 pstmt.setInt(2, pageSize);
@@ -432,10 +412,13 @@ public class BoardDAO {
             while(rs.next()) {
                 BoardVO board = new BoardVO();
                 board.setNum(rs.getInt("num"));
+                board.setName(rs.getString("name"));
+                board.setType(rs.getString("type"));
                 board.setTitle(rs.getString("title"));
                 board.setContent(rs.getString("content"));
                 board.setReadcount(rs.getInt("readcount"));
                 board.setWritedate(rs.getTimestamp("writedate"));
+                board.setId(rs.getString("id"));
 
                 boardList.add(board);
             }

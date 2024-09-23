@@ -19,7 +19,7 @@ public class BoardDeleteServlet extends HttpServlet {
         dao.deleteBoard(num);
 
         // 게시글 삭제완료 후 게시글 목록으로 이동
-        response.sendRedirect("/board/boardLee/qnalist.jsp");
+        response.sendRedirect("/QnAList");
     }
 
     @Override

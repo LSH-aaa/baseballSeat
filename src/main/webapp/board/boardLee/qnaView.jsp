@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: admin
@@ -9,7 +10,7 @@
 <html>
 <head>
     <title>QnA 상세화면</title>
-    <script src="element.js"></script>
+    <script src="/js/element_Lee.js"></script>
     <script>
         function displayQnA() {
             let params = new URLSearchParams(window.location.search);
@@ -18,10 +19,10 @@
 
             if (qna) {
                 document.getElementById('title').innerText = qna.title;
-                document.getElementById('author').innerText = qna.author;
+                document.getElementById('name').innerText = qna.name;
                 document.getElementById('content').innerText = qna.content;
-                document.getElementById('date').innerText = qna.date;
-                document.getElementById('views').innerText = qna.views;
+                document.getElementById('writedate').innerText = qna.writedate;
+                document.getElementById('readcount').innerText = qna.readcount;
             } else {
                 document.getElementById('qnaContent').innerHTML = '<p>존재하지 않는 글입니다.</p>';
             }
@@ -32,7 +33,7 @@
 <body onload="displayQnA()">
 <header id="header">
     <h2 style="text-align: left; text-decoration-style: wavy">
-        <a href="/baseballGive/main" class="no-hover"
+        <a href="/main" class="no-hover"
            style="font-family: Bahnschrift; color: darkblue;">야좌양</a>
         <span style="font-size: 50px; color: coral">(야구 좌석 양도)</span>
     </h2>
@@ -43,7 +44,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="#">양도 게시판</a></li>
                     <li><a href="#">분실물 게시판</a></li>
-                    <li><a href="/board/boardLee/qnaList.jsp">QnA 게시판</a></li>
+                    <li><a href="/QnAList">QnA 게시판</a></li>
                 </ul>
             </span>
         <a href="#" style="letter-spacing: 3px; font-size: large;">날씨</a>
@@ -54,14 +55,19 @@
 <section id="contents">
     <h1>QnA 상세보기</h1>
     <div id="qnaContent">
-        <h2 id="title">제목</h2>
-        <p>작성자: <span id="author"></span></p>
-        <p>작성일: <span id="date"></span></p>
-        <p>조회수: <span id="views"></span></p>
-        <p id="content">내용</p>
+        <h4 id="title">${board.title}</h4>
+        <br>
+        <p>작성자: <span id="name">${board.name}</span></p>
+        <p>작성일: <span id="writedate"><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${board.writedate}" /></span></p>
+        <p>조회수: <span id="readcount">${board.readcount}</span></p>
+        <br>
+        <p>내용</p>
+        <p id="content">${board.content}</p>
     </div>
     <hr/>
-    <a href="qnaList.jsp">목록으로 돌아가기</a>
+    <a href="/QnAList" class="no-hover">목록으로 돌아가기</a>
+    <a href="/QnAUpdate?num=${board.num}" class="no-hover">수정하기</a>
+    <a href="/QnADelete?num=${board.num}" class="no-hover">삭제하기</a>
 </section>
 <footer id="footer">
     <p>배너 광고 문의,</p>

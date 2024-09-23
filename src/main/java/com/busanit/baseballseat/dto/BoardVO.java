@@ -10,6 +10,8 @@ public class BoardVO {
     private String content;
     private int readcount;
     private Timestamp writedate;
+    private String id;
+    private String name;
 
     public int getSn() {
         return sn;
@@ -67,5 +69,19 @@ public class BoardVO {
         this.content = content;
     }
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

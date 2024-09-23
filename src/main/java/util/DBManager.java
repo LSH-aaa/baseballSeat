@@ -7,7 +7,7 @@ public class DBManager {
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         Connection conn = null;
 
-        String url = "jdbc:mysql://localhost:3306/baseballSeat";
+        String url = "jdbc:mysql://localhost:3306/baseballseat";
         String user = "root";
         String password = "1234";
 

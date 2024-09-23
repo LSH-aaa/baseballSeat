@@ -9,15 +9,13 @@
 <html>
 <head>
     <title>QnA 글쓰기</title>
-    <script src="element.js"></script>
+    <script src="/js/element_Lee.js"></script>
     <script>
         function submitQnAForm() {
             let title = document.getElementById('title').value;
             let content = document.getElementById('content').value;
-            let author = document.getElementById('author').value;
-            addQnA(title, content, author);
-            alert('글이 작성되었습니다!');
-            window.location.href = 'qnaList.jsp'; // 작성 후 목록으로 이동
+            let name = document.getElementById('name').value;
+            const form = document.querySelector('form').submit();
         }
     </script>
     <link rel="stylesheet" href="/css/main.css">
@@ -25,7 +23,7 @@
 <body>
 <header id="header">
     <h2 style="text-align: left; text-decoration-style: wavy">
-        <a href="/baseballGive/main" class="no-hover"
+        <a href="/main" class="no-hover"
            style="font-family: Bahnschrift; color: darkblue;">야좌양</a>
         <span style="font-size: 50px; color: coral">(야구 좌석 양도)</span>
     </h2>
@@ -36,7 +34,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="#">양도 게시판</a></li>
                     <li><a href="#">분실물 게시판</a></li>
-                    <li><a href="/board/boardLee/qnaList.jsp">QnA 게시판</a></li>
+                    <li><a href="/QnAList">QnA 게시판</a></li>
                 </ul>
             </span>
         <a href="#" style="letter-spacing: 3px; font-size: large;">날씨</a>
@@ -46,20 +44,23 @@
 </header>
 <section id="contents">
     <h1>QnA 글 작성</h1>
-    <form onsubmit="submitQnAForm(); return false;">
+    <br>
+    <hr>
+    <br>
+    <form action="/QnAWrite" method="post">
         <label for="title">제목: </label>
         <input type="text" id="title" name="title" required><br><br>
 
         <label for="content">내용: </label><br>
         <textarea id="content" name="content" rows="10" cols="50" required></textarea><br><br>
 
-        <label for="author">작성자(이름): </label>
-        <input type="text" id="author" name="author" required><br><br>
+        <label for="name">작성자(이름): </label>
+        <input type="text" id="name" name="name" required><br><br>
 
         <input type="submit" value="작성하기" name="write">
         <input type="reset" value="초기화하기">
         <br><br>
-        <a href="qnaList.jsp">목록으로 돌아가기</a>
+        <a href="/QnAList" class="no-hover">목록으로 돌아가기</a>
     </form>
 </section>
 <footer id="footer">

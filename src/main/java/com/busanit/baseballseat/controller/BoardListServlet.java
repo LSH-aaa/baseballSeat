@@ -51,7 +51,7 @@ public class BoardListServlet extends HttpServlet {
                 dao.selectPagingBoard(offset, pageHandler.getPageSize(),
                         searchType, searchText);
 
-        request.setAttribute("boardList", boardList);
+        request.setAttribute("qna", boardList);
         request.setAttribute("searchVO", searchVO);
         request.setAttribute("pageHandler", pageHandler);
         request.getRequestDispatcher(url).forward(request, response);

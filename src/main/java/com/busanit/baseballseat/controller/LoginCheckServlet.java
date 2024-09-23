@@ -6,7 +6,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet()
-public class LoginCheck extends HttpServlet {
+public class LoginCheckServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

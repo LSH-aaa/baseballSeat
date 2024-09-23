@@ -14,7 +14,7 @@
 <body>
     <header id="header">
         <h2 style="text-align: left; text-decoration-style: wavy">
-            <a href="/baseballGive/main" class="no-hover"
+            <a href="/main" class="no-hover"
                style="font-family: Bahnschrift; color: darkblue;">야좌양</a>
             <span style="font-size: 50px; color: coral">(야구 좌석 양도)</span>
         </h2>
@@ -25,7 +25,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="#">양도 게시판</a></li>
                         <li><a href="#">분실물 게시판</a></li>
-                        <li><a href="/board/boardLee/qnaList.jsp">QnA 게시판</a></li>
+                        <li><a href="/QnAList">QnA 게시판</a></li>
                     </ul>
                 </span>
             <a href="#" style="letter-spacing: 3px; font-size: large;">날씨</a>
@@ -34,7 +34,7 @@
         </nav>
     </header>
     <section id="contents">
-        <img src="/image/좌석배치도.png">
+        <img src="/image/좌석배치도.png" alt="기아 구장 좌석 배치도">
     </section>
     <footer id="footer">
         <p>배너 광고 문의,</p>
