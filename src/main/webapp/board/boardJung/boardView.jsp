@@ -11,7 +11,7 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="../css/board.css">
-    <script type="text/javascript" src="../js/element.js"></script>
+    <script type="text/javascript" src="../js/board.js"></script>
 </head>
 <body>
     <table>
