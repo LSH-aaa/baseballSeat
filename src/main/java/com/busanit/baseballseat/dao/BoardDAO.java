@@ -93,8 +93,8 @@ public class BoardDAO {
 
     // 게시글 입력
     public void insertBoard(BoardVO board) {
-        String sql = "INSERT INTO board(title, content, name, type)" +
-                " VALUES(?, ?, ?, 'qna')";
+        String sql = "INSERT INTO board(title, content, type, id) " +
+                " VALUES(?, ?, 'qna', 'dd')";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -104,7 +104,6 @@ public class BoardDAO {
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, board.getTitle());
             pstmt.setString(2, board.getContent());
-            pstmt.setString(3, board.getName());
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

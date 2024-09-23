@@ -28,9 +28,7 @@ public class BoardWriteServlet extends HttpServlet {
 
         board.setTitle(request.getParameter("title"));
         board.setContent(request.getParameter("content"));
-
-
-
+        board.setName(request.getParameter("name"));
 
         BoardDAO dao = new BoardDAO();
         dao.insertBoard(board);
