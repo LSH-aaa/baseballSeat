@@ -72,7 +72,7 @@ public class BoardDAO {
 
 
     // 게시글 상세 보기
-    public BoardVO selectOneBoard(String num, String id) {
+    public BoardVO selectOneBoard(String num) {
         String sql = "select num, type, title, content, readcount, writedate, id, (select nickname from members mm where mm.id = b.id) AS nickname from board b where num = ?";
 
         BoardVO board = null;
@@ -103,6 +103,88 @@ public class BoardDAO {
             Manager.close(conn, pstmt, rs);
         }
         return board;
+    }
+    // 조회수 업데이트
+    public void updateReadCount(String num) {
+        String sql = "UPDATE board SET readcount = readcount + 1 WHERE num = ?";
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            conn = Manager.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, num);
+            pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            Manager.close(conn, pstmt);
+        }
+    }
+    // 게시글 입력
+    public void insertBoard(BoardVO board) {
+        String sql = "INSERT INTO board(id, title, content, type) VALUES(?,?,?,?)";
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            conn = Manager.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, board.getId());
+            pstmt.setString(2, board.getTitle());
+            pstmt.setString(3, board.getContent());
+            pstmt.setString(4, board.getType());
+            pstmt.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            Manager.close(conn, pstmt);
+        }
+    }
+    // 게시글 삭제
+    public void deleteBoard(String num) {
+        String sql = "delete from board where num = ?";
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            conn = Manager.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, num);
+            pstmt.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            Manager.close(conn, pstmt);
+        }
+    }
+    // 게시글 업데이트
+    public void updateBoard(BoardVO board) {
+        String sql = "UPDATE board SET id = ?, title = ? , content = ?, type = ? WHERE num = ?";
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            conn = Manager.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, board.getId());
+            pstmt.setString(2, board.getTitle());
+            pstmt.setString(3, board.getContent());
+            pstmt.setString(4, board.getType());
+            pstmt.setInt(5, board.getNum());
+            pstmt.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            Manager.close(conn, pstmt);
+        }
     }
 
 }

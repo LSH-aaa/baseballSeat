@@ -11,6 +11,7 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="../css/board.css">
+    <script type="text/javascript" src="../js/element.js"></script>
 </head>
 <body>
     <table>
@@ -38,8 +39,8 @@
         </tr>
     </table>
     <br><br>
-    <input type="button" value="게시글 수정" onclick="location.href='/board/update'">
-    <input type="button" value="게시글 삭제" onclick="location.href='/board/delete'">
+    <input type="button" value="게시글 수정" onclick="location.href='/board/update?num=${board.num}'">
+    <input type="button" value="게시글 삭제" onclick="return checkDelete('/board/delete?num=${board.num}')">
     <input type="button" value="목록" onclick="location.href='/board/list'">
 </body>
 </html>

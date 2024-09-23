@@ -12,8 +12,11 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="../css/board.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
+    <input type="button" value="게시글 작성" onclick="location.href='/board/write'">
     <table>
         <tr>
             <th>번호</th>
@@ -40,6 +43,32 @@
         </c:forEach>
     </table>
     <br><br>
-    <input type="button" value="게시글 작성" onclick="location.href='/board/wirte'">
+    <div class="paging">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link ${pageHandler.currPage == 1 ? "disabled" : ""}" href="/board/list?currPage=1">처음으로</a>
+                </li>
+                <c:if test="${pageHandler.showPrev}">
+                    <li class="page-item">
+                        <a class="page-link" href="/board/list?currPage=${pageHandler.beginPage - 1}">이전</a>
+                    </li>
+                </c:if>
+                <c:forEach var="i" begin="${pageHandler.beginPage}" end="${pageHandler.endPage}">
+                    <li class="page-item ${pageHandler.currPage == i ? "active" : ""}">
+                        <a class="page-link" href="/board/list?currPage=${i}">${i}</a>
+                    </li>
+                </c:forEach>
+                <c:if test="${pageHandler.showNext}">
+                    <li class="page-item">
+                        <a class="page-link" href="/board/list?currPage=${pageHandler.endPage + 1}">다음</a>
+                    </li>
+                </c:if>
+                <li class="page-item">
+                    <a class="page-link" href="/board/list?currPage=${pageHandler.totalPage}">마지막으로</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </body>
 </html>
