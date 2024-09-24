@@ -12,7 +12,6 @@ public class MainServlet extends HttpServlet {
         String url = "./index.jsp";
 
         request.getRequestDispatcher(url).forward(request, response);
-        response.sendRedirect(url);
     }
 
     @Override

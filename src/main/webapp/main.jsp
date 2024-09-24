@@ -48,7 +48,7 @@
 	<nav class="fh5co-nav" role="navigation">
 		<div class="container">
 			<div class="fh5co-top-logo">
-				<div id="fh5co-logo"><a href="main.jsp">야구볼래?</a></div>
+				<div id="fh5co-logo"><a href="index.jsp">야구볼래?</a></div>
 			</div>
 			<div class="fh5co-top-menu menu-1 text-center">
 				<ul>
