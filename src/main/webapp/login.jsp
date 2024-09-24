@@ -66,7 +66,7 @@
                         </ul>
                     </li>
                     <!--about=날씨-->
-                    <li><a href="weather.jsp">날씨</a></li>
+                    <li><a href="location.jsp">날씨</a></li>
                     <!--contact = 로그인/회원가입-->
                     <li><a href="lognregister.jsp">로그인/회원가입</a></li>
                     <li><a href="#">마이페이지</a></li>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Shift &mdash; Free Website Template, Free HTML5 Template by FreeHTML5.co</title>
+    <title>야구볼래?</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
     <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -77,7 +77,7 @@
                         </ul>
                     </li>
                     <!--about=위치-->
-                    <li><a href="weather.jsp">위치</a></li>
+                    <li><a href="location.jsp">위치</a></li>
                     <!--contact = 로그인/회원가입-->
                     <li><a href="/board/login">로그인/회원가입</a></li>
                     <li><a href="#">마이페이지</a></li>
@@ -231,7 +231,7 @@
                             <span>Developers</span>
                             <h3>TEAM 모여봐요 과제의 숲</h3>
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                            <p><a href="weather.jsp" class="btn btn-primary btn-outline">Learn More</a></p>
+                            <p><a href="location.jsp" class="btn btn-primary btn-outline">Learn More</a></p>
                             <ul class="fh5co-social-icons">
                                 <li><a href="#"><i class="icon-facebook"></i></a></li>
                                 <li><a href="#"><i class="icon-twitter"></i></a></li>

@@ -48,7 +48,7 @@
 		<nav class="fh5co-nav" role="navigation">
 			<div class="container">
 				<div class="fh5co-top-logo">
-					<div id="fh5co-logo"><a href="main.jsp">Shift</a></div>
+					<div id="fh5co-logo"><a href="/baseballGive">Shift</a></div>
 				</div>
 				<div class="fh5co-top-menu menu-1 text-center">
 					<ul>
@@ -60,11 +60,11 @@
 							<ul class="dropdown">
 								<li><a href="/board/list?type=Y">양도 게시판</a></li>
 								<li><a href="/board/list?type=F">분실물 게시판</a></li>
-								<li><a href="/board/boardLee/qnaList.jsp">Q&A 게시판</a></li>
+								<li><a href="/board/list?type=qna">Q&A 게시판</a></li>
 							</ul>
 						</li>
 						<!--about=날씨-->
-						<li><a href="weather.jsp">날씨</a></li>
+						<li><a href="location.jsp">날씨</a></li>
 						<!--contact = 로그인/회원가입-->
 						<li><a href="/board/login">로그인/회원가입</a></li>
 						<li><a href="#">마이페이지</a></li>

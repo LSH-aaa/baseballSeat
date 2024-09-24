@@ -36,7 +36,7 @@ public class boardLogin extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("id",id);
 
-                response.sendRedirect("/baseballGive/main");
+                response.sendRedirect("/baseballGive");
             } else {
                 response.sendRedirect("/board/login");
 

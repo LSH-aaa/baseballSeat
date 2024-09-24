@@ -14,7 +14,7 @@
 <body>
     <header id="header">
         <h2 style="text-align: left; text-decoration-style: wavy">
-            <a href="/main" class="no-hover"
+            <a href="/baseballGive" class="no-hover"
                style="font-family: Bahnschrift; color: darkblue;">야좌양</a>
             <span style="font-size: 50px; color: coral">(야구 좌석 양도)</span>
         </h2>
