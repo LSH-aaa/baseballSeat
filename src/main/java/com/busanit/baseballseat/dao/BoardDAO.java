@@ -186,5 +186,210 @@ public class BoardDAO {
             Manager.close(conn, pstmt);
         }
     }
+    // 게시글 검색 리스트 조회
+    public List<BoardVO> selectSearchBoard(String SearchType, String SearchText) {
+        String sql = "";
 
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<BoardVO> boardList = new ArrayList<>();
+
+        try {
+            conn = Manager.getConnection();
+            if(SearchType != null && SearchText.length() > 0) {
+                // 검색 리스트 조회
+                // type : all = 제목 + 내용
+                //       title = 제목
+                //       content = 내용
+                //       name = 작성자
+                switch (SearchType) {
+                    case "all" :
+                        sql = "select b.*, m.nickname from members m inner join board b on m.id=b.id where b.title like concat('%', ?, '%') or b.content like concat('%', ?, '%') order by b.num desc";
+                        pstmt = conn.prepareStatement(sql);
+                        pstmt.setString(1, "%" + SearchText + "%");
+                        pstmt.setString(2, "%" + SearchText + "%");
+                        break;
+
+                    case "title" :
+                        sql = "select b.*, m.nickname from members m inner join board b on m.id=b.id where b.title like concat('%', ?, '%') order by b.num desc";
+                        pstmt = conn.prepareStatement(sql);
+                        pstmt.setString(1, "%" + SearchText + "%");
+                        break;
+
+                    case "content" :
+                        sql = "select b.*, m.nickname from members m inner join board b on m.id=b.id where b.content like concat('%', ?, '%') order by b.num desc";
+                        pstmt = conn.prepareStatement(sql);
+                        pstmt.setString(1, "%" + SearchText + "%");
+                        break;
+
+                    case "nickname" :
+                        sql = "select b.*, m.nickname from members m inner join board b on m.id=b.id where m.nickname like concat('%', ?, '%') order by b.num desc";
+                        pstmt = conn.prepareStatement(sql);
+                        pstmt.setString(1, "%" + SearchText + "%");
+                        break;
+                }//switch
+            } else {
+                // 전체 리스트 조회
+                sql = "select b.*, m.nickname from members m inner join board b on m.id=b.id order by b.num desc";
+                pstmt = conn.prepareStatement(sql);
+            }
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                BoardVO board = new BoardVO();
+                board.setNum(rs.getInt("num"));
+                board.setType(rs.getString("type"));
+                board.setTitle(rs.getString("title"));
+                board.setContent(rs.getString("content"));
+                board.setReadcount(rs.getInt("readcount"));
+                board.setWritedate(rs.getTimestamp("writedate"));
+                board.setNickname(rs.getString("nickname"));
+
+                boardList.add(board);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            Manager.close(conn, pstmt, rs);
+        }
+        return boardList;
+    }
+
+    // 전체 게시글 수
+    public int selectAllBoardCount(String searchType, String SearchText) {
+        String sql = "";
+
+        int boardCnt = 0;
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = Manager.getConnection();
+
+            if(searchType != null && SearchText.length() > 0) {
+                // 검색 리스트 조회
+                // type : all = 제목 + 내용
+                //       title = 제목
+                //       content = 내용
+                //       name = 작성자
+                switch (searchType) {
+                    case "all" :
+                        sql = "select count(*) from board where title like concat('%', ?, '%') or content like concat('%', ?, '%') order by num desc";
+                        pstmt = conn.prepareStatement(sql);
+                        pstmt.setString(1, "%" + SearchText + "%");
+                        pstmt.setString(2, "%" + SearchText + "%");
+                        break;
+
+                    case "title" :
+                        sql = "select count(*) from board where title like concat('%', ?, '%') order by num desc";
+                        pstmt = conn.prepareStatement(sql);
+                        pstmt.setString(1, "%" + SearchText + "%");
+                        break;
+
+                    case "content" :
+                        sql = "select count(*) from board where content like concat('%', ?, '%') order by num desc";
+                        pstmt = conn.prepareStatement(sql);
+                        pstmt.setString(1, "%" + SearchText + "%");
+                        break;
+
+                    case "nickname" :
+                        sql = "select count(*) from members m inner join board b on m.id=b.id where m.nickname like concat('%', ?, '%')";
+                        pstmt = conn.prepareStatement(sql);
+                        pstmt.setString(1, "%" + SearchText + "%");
+                        break;
+                } //switch
+            } else {
+                // 전체 리스트 조회
+                sql = "select count(*) from board";
+                pstmt = conn.prepareStatement(sql);
+            }
+            rs = pstmt.executeQuery();
+
+            if(rs.next()) {
+                boardCnt = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            Manager.close(conn, pstmt, rs);
+        }
+        return boardCnt;
+    }
+    // 페이지네이션
+    public List<BoardVO> selectPagingBoard(int offset, int pageSize, String searchType, String SearchText) {
+        String sql = "";
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<BoardVO> boardList = new ArrayList<>();
+
+        try {
+            conn = Manager.getConnection();
+            if(searchType != null && SearchText.length() > 0) {
+                switch (searchType) {
+                    case "all" :
+                        sql = "select b.*, m.nickname from members m inner join board b on m.id=b.id where b.title like ? or b.content like ? order by b.num desc limit ?,?";
+                        pstmt = conn.prepareStatement(sql);
+                        pstmt.setString(1, "%" + SearchText + "%");
+                        pstmt.setString(2, "%" + SearchText + "%");
+                        pstmt.setInt(3, offset);
+                        pstmt.setInt(4, pageSize);
+                        break;
+
+                    case "title" :
+                        sql = "select b.*, m.nickname from members m inner join board b on m.id=b.id where b.title like ? order by b.num desc limit ?,?";
+                        pstmt = conn.prepareStatement(sql);
+                        pstmt.setString(1, "%" + SearchText + "%");
+                        pstmt.setInt(2, offset);
+                        pstmt.setInt(3, pageSize);
+                        break;
+
+                    case "content" :
+                        sql = "select b.*, m.nickname from members m inner join board b on m.id=b.id where b.content like ? order by b.num desc limit ?,?";
+                        pstmt = conn.prepareStatement(sql);
+                        pstmt.setString(1, "%" + SearchText + "%");
+                        pstmt.setInt(2, offset);
+                        pstmt.setInt(3, pageSize);
+                        break;
+
+                    case "nickname" :
+                        sql = "select b.*, m.nickname from members m inner join board b on m.id=b.id where m.nickname like ? order by b.num limit ?,?";
+                        pstmt = conn.prepareStatement(sql);
+                        pstmt.setString(1, "%" + SearchText + "%");
+                        pstmt.setInt(2, offset);
+                        pstmt.setInt(3, pageSize);
+                        break;
+                }//switch
+            } else {
+                // 전체 리스트 조회
+                sql = "select b.*, m.nickname from members m inner join board b on m.id=b.id order by b.num desc limit ?,?";
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setInt(1, offset);
+                pstmt.setInt(2, pageSize);
+            }
+            rs = pstmt.executeQuery();
+
+            while(rs.next()) {
+                BoardVO board = new BoardVO();
+                board.setNum(rs.getInt("num"));
+                board.setType(rs.getString("type"));
+                board.setTitle(rs.getString("title"));
+                board.setContent(rs.getString("content"));
+                board.setReadcount(rs.getInt("readcount"));
+                board.setWritedate(rs.getTimestamp("writedate"));
+                board.setNickname(rs.getString("nickname"));
+
+                boardList.add(board);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            Manager.close(conn, pstmt, rs);
+        }
+        return boardList;
+    }
 }
