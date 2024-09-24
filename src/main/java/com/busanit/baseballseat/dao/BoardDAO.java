@@ -1,7 +1,7 @@
 package com.busanit.baseballseat.dao;
 
 import com.busanit.baseballseat.dto.BoardVO;
-import util.DBManager;
+import util.Manager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -42,7 +42,7 @@ public class BoardDAO {
         ResultSet rs = null;
 
         try {
-            conn = DBManager.getConnection();
+            conn = Manager.getConnection();
             pstmt = conn.prepareStatement(sql);
 
             // type이 null이 아니고 빈 값이 아닐 때만 파라미터를 설정
@@ -67,7 +67,7 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(conn, pstmt, rs);
+            Manager.close(conn, pstmt, rs);
         }
         return boardList;
     }
@@ -84,7 +84,7 @@ public class BoardDAO {
         ResultSet rs = null;
 
         try {
-            conn = DBManager.getConnection();
+            conn = Manager.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, num);
             rs = pstmt.executeQuery();
@@ -103,7 +103,7 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(conn, pstmt, rs);
+            Manager.close(conn, pstmt, rs);
         }
         return board;
     }
@@ -118,14 +118,14 @@ public class BoardDAO {
         PreparedStatement pstmt = null;
 
         try {
-            conn = DBManager.getConnection();
+            conn = Manager.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, num);
             pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(conn, pstmt);
+            Manager.close(conn, pstmt);
         }
     }
 
@@ -139,7 +139,7 @@ public class BoardDAO {
         PreparedStatement pstmt = null;
 
         try {
-            conn = DBManager.getConnection();
+            conn = Manager.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, board.getId());
             pstmt.setString(2, board.getTitle());
@@ -150,7 +150,7 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(conn, pstmt);
+            Manager.close(conn, pstmt);
         }
     }
 
@@ -164,7 +164,7 @@ public class BoardDAO {
         PreparedStatement pstmt = null;
 
         try {
-            conn = DBManager.getConnection();
+            conn = Manager.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, num);
             pstmt.executeUpdate();
@@ -172,7 +172,7 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(conn, pstmt);
+            Manager.close(conn, pstmt);
         }
     }
 
@@ -186,7 +186,7 @@ public class BoardDAO {
         PreparedStatement pstmt = null;
 
         try {
-            conn = DBManager.getConnection();
+            conn = Manager.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, board.getId());
             pstmt.setString(2, board.getTitle());
@@ -198,7 +198,7 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(conn, pstmt);
+            Manager.close(conn, pstmt);
         }
     }
 
@@ -211,7 +211,7 @@ public class BoardDAO {
         ResultSet rs = null;
 
         try {
-            conn = DBManager.getConnection();
+            conn = Manager.getConnection();
 
             if (searchType != null && searchText.length() > 0) {
                 // 검색 리스트 조회
@@ -260,7 +260,7 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(conn, pstmt, rs);
+            Manager.close(conn, pstmt, rs);
         }
         return boardCnt;
     }
@@ -277,7 +277,7 @@ public class BoardDAO {
         List<BoardVO> boardList = new ArrayList<>();
 
         try {
-            conn = DBManager.getConnection();
+            conn = Manager.getConnection();
 
             if (searchType != null && searchText.length() > 0) {
                 // 검색 리스트 조회
@@ -354,7 +354,7 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(conn, pstmt, rs);
+            Manager.close(conn, pstmt, rs);
         }
         return boardList;
     }
@@ -372,7 +372,7 @@ public class BoardDAO {
         ResultSet rs = null;
 
         try {
-            conn = DBManager.getConnection();
+            conn = Manager.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, num);
             pstmt.setString(2, pass);
@@ -384,7 +384,7 @@ public class BoardDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(conn, pstmt, rs);
+            Manager.close(conn, pstmt, rs);
         }
         return return_pass;
     }
