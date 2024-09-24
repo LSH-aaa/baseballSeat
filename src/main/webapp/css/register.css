@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /* font-family */
+}
+
+form {
+    width : 30%;
+    height : auto;
+    align-items: center;
+    padding : 30px;
+    border : 0.5px solid blue;
+}
+
+fieldset {
+    border : none;
+    display: flex;
+    flex-direction : column;
+    justify-content: center;
+    margin : 0;
+    padding : 0;
+}
+
+input {
+    border : none;
+    background-color : transparent;
+    color : rgba(10, 10, 10, 0.9);
+    border-radius: 50px;
+    width : 15rem;
+    display: flex;
+    flex-direction : column;
+    justify-content: center;
+    margin : 10px;
+    padding : 10px 12px;
+}
+
+input::placeholder{
+    color : rgba(10, 10, 10, 0.47);
+}
+
+input:focus {
+    outline: none;
+}
+
+input:hover {
+    background-color : aliceblue;
+}
+
+#check_id {
+    color : rgba(255, 255, 255, 0.9);
+    display: flex;
+    float : left;
+    width : 8rem;
+    background: rgba(132, 214, 227, 0.55);
+}
+
+button {
+    border : 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    font-weight : bold;
+    color : rgba(255, 255, 255, 0.9);
+    width : 15rem;
+    height : 3rem;
+    background: rgba(132, 214, 227, 0.55);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter : blur(0px);
+    -webkit-backdrop-filter: blur(0px) ;
+}
+
+button:hover {
+    background: linear-gradient(124.47deg,
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.5),);
+
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+

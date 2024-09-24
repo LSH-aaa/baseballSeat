@@ -5,11 +5,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet("/main")
+@WebServlet("/baseballGive")
 public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "/index.jsp";
+        String url = "./index.jsp";
 
         request.getRequestDispatcher(url).forward(request, response);
         response.sendRedirect(url);

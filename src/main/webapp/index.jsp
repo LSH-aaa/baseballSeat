@@ -10,18 +10,18 @@
 <body>
     <header id="header">
         <h2 style="text-align: left; text-decoration-style: wavy">
-            <a href="/main" class="no-hover"
+            <a href="/baseballGive" class="no-hover"
                style="font-family: Bahnschrift; color: darkblue;">야좌양</a>
                 <span style="font-size: 50px; color: coral">(야구 좌석 양도)</span>
         </h2>
         <nav style="text-align: right">
             <a href="#" style="letter-spacing: 3px; font-size: large;">좌석</a>
             <span class="nav-item">
-                <a href="" class="dropdown-link" style="letter-spacing: 3px; font-size: large;">게시판 ⬇</a>
-                <ul class="dropdown-menu" type="none">
+                <a href="#" class="dropdown-link" style="letter-spacing: 3px; font-size: large;">게시판 ⬇</a>
+                <ul class="dropdown-menu">
                     <li><a href="#">양도 게시판</a></li>
                     <li><a href="#">분실물 게시판</a></li>
-                    <li><a href="/QnAList">QnA 게시판</a></li>
+                    <li><a href="/board/boardLee/qnaList.jsp">QnA 게시판</a></li>
                 </ul>
             </span>
             <a href="#" style="letter-spacing: 3px; font-size: large;">날씨</a>
@@ -43,7 +43,7 @@
                 <p class="image-description">두산 베어스</p>
             </div>
             <div style="text-align: center">
-                <a href="/board/boardLee/seatArray.jsp" class="no-hover"><img src="./image/Kia.png" alt="KIA 타이거즈" class="gallery-image"></a>
+                <img src="image/Kia.png" alt="KIA 타이거즈" class="gallery-image" style="cursor:pointer;">
                 <p class="image-description">KIA 타이거즈</p>
             </div>
             <div style="text-align: center">

@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/QnAList")
+@WebServlet("/board/list")
 public class BoardListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "/board/boardLee/qnaList.jsp";
+        String url = "/board/boardList.jsp";
 
         // 검색 정보
         String searchType = request.getParameter("searchType");
@@ -51,7 +51,7 @@ public class BoardListServlet extends HttpServlet {
                 dao.selectPagingBoard(offset, pageHandler.getPageSize(),
                         searchType, searchText);
 
-        request.setAttribute("qna", boardList);
+        request.setAttribute("boardList", boardList);
         request.setAttribute("searchVO", searchVO);
         request.setAttribute("pageHandler", pageHandler);
         request.getRequestDispatcher(url).forward(request, response);
@@ -61,7 +61,5 @@ public class BoardListServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         doGet(request, response);
-
-
     }
 }

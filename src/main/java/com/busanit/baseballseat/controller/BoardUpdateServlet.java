@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/QnAUpdate")
+@WebServlet("/board/update")
 public class BoardUpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String num = request.getParameter("num");
-        String url = "/board/boardLee/qnaUpdate.jsp";
+        String url = "/board/boardUpdate.jsp";
 
         BoardDAO dao = new BoardDAO();
         BoardVO board = dao.selectOneBoard(num);
@@ -32,6 +32,8 @@ public class BoardUpdateServlet extends HttpServlet {
         BoardVO board = new BoardVO();
         board.setNum(Integer.parseInt(request.getParameter("num")));
         board.setName(request.getParameter("name"));
+        board.setPass(request.getParameter("pass"));
+        board.setEmail(request.getParameter("email"));
         board.setTitle(request.getParameter("title"));
         board.setContent(request.getParameter("content"));
 
@@ -39,6 +41,6 @@ public class BoardUpdateServlet extends HttpServlet {
         dao.updateBoard(board);
 
         // 게시글 수정완료 후 게시글 상세보기(view) 화면으로 이동
-        response.sendRedirect("/QnAView?num=" + board.getNum());
+        response.sendRedirect("/board/view?num=" + board.getNum());
     }
 }

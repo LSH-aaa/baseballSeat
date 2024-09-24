@@ -3,23 +3,14 @@ package com.busanit.baseballseat.dto;
 import java.sql.Timestamp;
 
 public class BoardVO {
-    private int sn;
     private int num;
-    private String type;
+    private String name;
+    private String email;
+    private String pass;
     private String title;
     private String content;
     private int readcount;
     private Timestamp writedate;
-    private String id;
-    private String name;
-
-    public int getSn() {
-        return sn;
-    }
-
-    public void setSn(int sn) {
-        this.sn = sn;
-    }
 
     public int getNum() {
         return num;
@@ -29,12 +20,28 @@ public class BoardVO {
         this.num = num;
     }
 
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     public String getTitle() {
@@ -43,6 +50,14 @@ public class BoardVO {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public int getReadcount() {
@@ -61,27 +76,28 @@ public class BoardVO {
         this.writedate = writedate;
     }
 
-    public String getContent() {
-        return content;
+    public String getType() {
+        return getType();
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setType(String type) {
+        this.setType(type);
+    }
+
+    public String getNickname() {
+        return getNickname();
+    }
+
+    public void setNickname(String nickname) {
+        this.setNickname(nickname);
     }
 
     public String getId() {
-        return id;
+        return getId();
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.setId(id);
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
 }

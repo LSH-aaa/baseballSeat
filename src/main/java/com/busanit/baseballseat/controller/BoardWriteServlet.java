@@ -2,7 +2,6 @@ package com.busanit.baseballseat.controller;
 
 import com.busanit.baseballseat.dao.BoardDAO;
 import com.busanit.baseballseat.dto.BoardVO;
-import com.busanit.baseballseat.dto.MembersVO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/QnAWrite")
+@WebServlet("/board/write")
 public class BoardWriteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/board/boardLee/qnaWrite.jsp")
+        request.getRequestDispatcher("/board/boardWrite.jsp")
                 .forward(request, response);
     }
 
@@ -25,15 +24,17 @@ public class BoardWriteServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
 
         BoardVO board = new BoardVO();
-
+        board.setName(request.getParameter("name"));
+        board.setPass(request.getParameter("pass"));
+        board.setEmail(request.getParameter("email"));
         board.setTitle(request.getParameter("title"));
         board.setContent(request.getParameter("content"));
-        board.setName(request.getParameter("name"));
 
         BoardDAO dao = new BoardDAO();
         dao.insertBoard(board);
 
         // 게시글 작성완료 후 목록 화면으로 이동
-        response.sendRedirect("/QnAList");
+        response.sendRedirect("/board/list");
     }
+
 }
