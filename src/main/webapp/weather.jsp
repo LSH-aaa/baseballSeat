@@ -103,9 +103,9 @@
                             <!-- 스크립트 추가 -->
                             <script>
                                 function initMap() {
-                                    var location = { lat: -34.397, lng: 150.644 }; // 원하는 위치 좌표
+                                    var location = { lat: 35.1940, lng: 129.0615 }; // 원하는 위치 좌표
                                     const map = new google.maps.Map(document.getElementById("map"), {
-                                        zoom: 8,
+                                        zoom: 15,
                                         center: location
                                     });
                                 }
