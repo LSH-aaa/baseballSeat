@@ -108,7 +108,7 @@
                         <div class="col-md-12">
                             <h3 class="title animate-box">QnA 게시판</h3>
                         </div>
-                        <span><a href="/board/boardLee/qnaWrite.jsp" class="no-hover">글 작성하기</a></span>
+                        <span><a href="/QnAWrite" class="no-hover">글 작성하기</a></span>
                         <br>
                         <hr/>
                         <table border="1">

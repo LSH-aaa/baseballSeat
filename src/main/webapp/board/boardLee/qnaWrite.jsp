@@ -80,7 +80,7 @@
                         <ul class="dropdown">
                             <li><a href="/board/list?type=Y">양도 게시판</a></li>
                             <li><a href="/board/list?type=B">분실물 게시판</a></li>
-                            <li><a href="/board/boardLee/qnaList.jsp">Q&A 게시판</a></li>
+                            <li><a href="/board/list?typeqna">Q&A 게시판</a></li>
                         </ul>
                     </li>
                     <!--about=위치-->
@@ -121,7 +121,7 @@
                             <input type="submit" value="작성하기" name="write">
                             <input type="reset" value="초기화하기">
                             <br><br>
-                            <a href="/board/boardLee/qnaList.jsp" class="no-hover">목록으로 돌아가기</a>
+                            <a href="/QnAList" class="no-hover">목록으로 돌아가기</a>
                         </form>
                     </div>
                 </div>
