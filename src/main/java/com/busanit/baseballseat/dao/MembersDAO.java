@@ -1,7 +1,7 @@
 package com.busanit.baseballseat.dao;
 
 import com.busanit.baseballseat.dto.MembersVO;
-import util.DBManager;
+import util.Manager;
 
 import java.sql.*;
 
@@ -17,7 +17,7 @@ public class MembersDAO {
         ResultSet rs = null;
 
         try{
-            conn = DBManager.getConnection();
+            conn = Manager.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, check_id);
             rs = pstmt.executeQuery();
@@ -32,7 +32,7 @@ public class MembersDAO {
         } catch(Exception e){
             e.printStackTrace();
         } finally {
-            DBManager.close(conn, pstmt, rs);
+            Manager.close(conn, pstmt, rs);
         }
 
         return return_id;
@@ -46,7 +46,7 @@ public class MembersDAO {
         PreparedStatement pstmt = null;
 
         try{
-            conn = DBManager.getConnection();
+            conn = Manager.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, members.getId());
             pstmt.setString(2, members.getName());
@@ -58,7 +58,7 @@ public class MembersDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(conn,pstmt);
+            Manager.close(conn,pstmt);
         }
     }
 
@@ -72,7 +72,7 @@ public class MembersDAO {
         ResultSet rs = null;
 
         try {
-            conn = DBManager.getConnection();
+            conn = Manager.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, id);
             pstmt.setString(2, pass);
@@ -84,8 +84,11 @@ public class MembersDAO {
         } catch(Exception e) {
             e.printStackTrace();
         } finally {
-            DBManager.close(conn, pstmt, rs);
+            Manager.close(conn, pstmt, rs);
         }
         return return_rs;
     }
+
+    //로그아웃
+
 }

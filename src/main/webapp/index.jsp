@@ -1,107 +1,299 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>야구 좌석 양도 홈페이지</title>
-    <link rel="stylesheet" href="./css/main.css">
+    <title>인덱스</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"> -->
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="/css/icomoon.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Modernizr JS -->
+    <script src="/js/modernizr-2.6.2.min.js"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-    <header id="header">
-        <h2 style="text-align: left; text-decoration-style: wavy">
-            <a href="/baseballGive" class="no-hover"
-               style="font-family: Bahnschrift; color: darkblue;">야좌양</a>
-                <span style="font-size: 50px; color: coral">(야구 좌석 양도)</span>
-        </h2>
-        <nav style="text-align: right">
-            <a href="#" style="letter-spacing: 3px; font-size: large;">좌석</a>
-            <span class="nav-item">
-                <a href="#" class="dropdown-link" style="letter-spacing: 3px; font-size: large;">게시판 ⬇</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">양도 게시판</a></li>
-                    <li><a href="#">분실물 게시판</a></li>
-                    <li><a href="/board/boardLee/qnaList.jsp">QnA 게시판</a></li>
+
+<div class="fh5co-loader"></div>
+
+<div id="page">
+    <!--내비게이션 -->
+    <nav class="fh5co-nav" role="navigation">
+        <div class="container">
+            <div class="fh5co-top-logo">
+                <div id="fh5co-logo"><a href="/baseballGive">야구볼래?</a></div>
+            </div>
+            <div class="fh5co-top-menu menu-1 text-center">
+                <ul>
+                    <!--좌석 -->
+                    <li class="has-dropdown">
+                        <a href="/seat.jsp">좌석</a>
+                        <ul class="dropdown">
+                            <li><a href="/seat_detail_Lotte.jsp">롯데 자이언츠</a></li>
+                            <li><a href="#">삼성 라이온즈</a></li>
+                            <li><a href="#">기아 타이거즈</a></li>
+                            <li><a href="#">한화 이글스</a></li>
+                            <li><a href="#">NC 다이노스</a></li>
+                            <li><a href="#">KT 위즈</a></li>
+                            <li><a href="#">SSG 랜더스</a></li>
+                            <li><a href="#">LG 트윈스/두산 베어스</a></li>
+                            <li><a href="#">키움 히어로즈</a></li>
+                        </ul>
+                    </li>
+                    <!--게시판 드랍다운 -->
+                    <li class="has-dropdown">
+                        <a href="#">게시판</a>
+                        <ul class="dropdown">
+                            <li><a href="/board/list?type=Y">양도 게시판</a></li>
+                            <li><a href="/board/list?type=B">분실물 게시판</a></li>
+                            <li><a href="/board/boardLee/qnaList.jsp">Q&A 게시판</a></li>
+                        </ul>
+                    </li>
+                    <!--about=날씨-->
+                    <li><a href="/weather.jsp">날씨</a></li>
+                    <!--contact = 로그인/회원가입-->
+                    <c:choose>
+                        <c:when test="${sessionScope.id != null}">
+                            <li><a href="/board/logout">로그아웃</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="has-dropdown">
+                                <a href="#">로그인/회원가입</a>
+                                <ul class="dropdown">
+                                    <li><a href="/board/login">로그인</a></li>
+                                    <li><a href="/board/register">회원가입</a></li>
+                                </ul>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                    <li><a href="#" onclick="alert('⚠️공사중⚠️')">마이페이지</a></li>
                 </ul>
-            </span>
-            <a href="#" style="letter-spacing: 3px; font-size: large;">날씨</a>
-            <a href="#" style="letter-spacing: 3px; font-size: large;">로그인/회원가입</a>
-            <a href="#" style="letter-spacing: 3px; font-size: large;">마이페이지</a>
-        </nav>
-    </header>
-    <section id="contents">
-        <div>
-            <p style="font-size: xx-large; margin-left: 50px;"><b>
-                프로야구</b>
-                <span style="font-size: 14pt;">(시야 사진 999,999장)</span>
-            </p>
-            <br><br>
-        </div>
-        <div class="image-gallery">
-            <div style="text-align: center">
-                <img src="image/Dusan.png" alt="두산 베어스" class="gallery-image">
-                <p class="image-description">두산 베어스</p>
             </div>
-            <div style="text-align: center">
-                <img src="image/Kia.png" alt="KIA 타이거즈" class="gallery-image" style="cursor:pointer;">
-                <p class="image-description">KIA 타이거즈</p>
-            </div>
-            <div style="text-align: center">
-                <img src="image/Hanhwa.png" alt="한화 이글스" class="gallery-image">
-                <p class="image-description">한화 이글스</p>
-            </div>
-            <div style="text-align: center">
-                <img src="image/Kium.png" alt="키움 히어로즈" class="gallery-image">
-                <p class="image-description">키움 히어로즈</p>
-            </div>
-            <div style="text-align: center">
-                <img src="image/KT.png" alt="KT 위즈" class="gallery-image">
-                <p class="image-description">KT 위즈</p>
-            </div>
-            <div style="text-align: center">
-                <img src="image/LG.png" alt="LG 트윈스" class="gallery-image">
-                <p class="image-description">LG 트윈스</p>
-            </div>
-            <div style="text-align: center">
-                <img src="image/Lotte.png" alt="롯데 자이언츠" class="gallery-image">
-                <p class="image-description">롯데 자이언츠</p>
-            </div>
-            <div style="text-align: center">
-                <img src="image/NC.png" alt="NC 다이노스" class="gallery-image">
-                <p class="image-description">NC 다이노스</p>
-            </div>
-            <div style="text-align: center">
-                <img src="image/Samsung.png" alt="삼성 라이온즈" class="gallery-image">
-                <p class="image-description">삼성 라이온즈</p>
-            </div>
-            <div style="text-align: center">
-                <img src="image/SSG.png" alt="SSG 랜더스" class="gallery-image">
-                <p class="image-description">SSG 랜더스</p>
+            <div class="fh5co-top-social menu-1 text-right">
+                <ul class="fh5co-social">
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    <li><a href="#"><i class="icon-github"></i></a></li>
+                </ul>
             </div>
         </div>
-        <br><br>
-        <div>
-            <p style="text-align: center">
-                ——————————————————————————————————————————————————————————————————
-            </p>
-            <p style="text-align: center; line-height: 1.8;">
-                <b>야좌양은 아래 기관과 함께합니다. 감사합니다.</b><br>
-                불닭볶음면 먹고 싶당
-            </p>
+    </nav>
+
+    <div id="fh5co-work">
+        <div class="container">
+            <div class="row top-line animate-box">
+                <div class="col-md-7 col-md-push-5 text-left intro">
+                    <p><h4> 스포츠도 명당에서</h4></p>
+                    <h2>야구장의 모든 것, 야구볼래?</h2>
+                </div>
+                <div>
+                    <h3> &#128071; 좌석 보러 가기</h3>
+                </div>
+            </div>
+
+            <!--구단별 좌석 선택 -->
+            <div class="row">
+                <div class="col-md-4 text-center animate-box">
+                    <a class="work" href="seat_detail_Lotte.jsp">
+                        <div class="work-grid" style="background-image:url('image/Lotte.png');">
+                            <div class="inner">
+                                <div class="desc">
+                                    <h3>롯데 자이언츠</h3>
+                                    <span class="cat">사직야구장</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 text-center animate-box">
+                    <a class="work" href="#">
+                        <div class="work-grid" style="background-image:url('image/Samsung.png');">
+                            <div class="inner">
+                                <div class="desc">
+                                    <h3>삼성 라이온즈</h3>
+                                    <span class="cat">대구삼성 라이온즈파크</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 text-center animate-box">
+                    <a class="work" href="#">
+                        <div class="work-grid" style="background-image:url('image/Kia.png');">
+                            <div class="inner">
+                                <div class="desc">
+                                    <h3>KIA 타이거즈</h3>
+                                    <span class="cat">광주기아 챔피언스필드</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 text-center animate-box">
+                    <a class="work" href="#">
+                        <div class="work-grid" style="background-image:url('image/Hanhwa.png');">
+                            <div class="inner">
+                                <div class="desc">
+                                    <h3>한화 이글스</h3>
+                                    <span class="cat">대전한화생명 이글스파크</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 text-center animate-box">
+                    <a class="work" href="#">
+                        <div class="work-grid" style="background-image:url('image/NC.png');">
+                            <div class="inner">
+                                <div class="desc">
+                                    <h3>NC 다이노스</h3>
+                                    <span class="cat">창원 NC파크</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 text-center animate-box">
+                    <a class="work" href="#">
+                        <div class="work-grid" style="background-image:url('image/Kium.png');">
+                            <div class="inner">
+                                <div class="desc">
+                                    <h3>키움 히어로즈</h3>
+                                    <span class="cat">고척 스카이돔</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 text-center animate-box">
+                    <a class="work" href="#">
+                        <div class="work-grid" style="background-image:url('image/SSG.png');">
+                            <div class="inner">
+                                <div class="desc">
+                                    <h3>SSG 랜더스</h3>
+                                    <span class="cat">인천SSG 랜더스필드</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 text-center animate-box">
+                    <a class="work" href="#">
+                        <div class="work-grid" style="background-image:url('image/KT.png');">
+                            <div class="inner">
+                                <div class="desc">
+                                    <h3>KT 위즈</h3>
+                                    <span class="cat">수원 케이티위즈파크</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 text-center animate-box">
+                    <a class="work" href="#">
+                        <div class="work-grid" style="background-image:url('image/Dusan.png');">
+                            <div class="inner">
+                                <div class="desc">
+                                    <h3>두산 베어스 / LG 트윈스</h3>
+                                    <span class="cat">서울종합운동장 야구장</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
-        <br>
-        <div class="image-gallery">
-            <img src="image/고용24.png" alt="고용24">
-            <img src="image/고용노동부.png" alt="고용노동부">
-            <img src="image/부산인재개발원.png" alt="부산인재개발원">
-            <img src="image/불닭볶음면.png" alt="불닭볶음면">
+    </div>
+    <!-- 기업광고 부분 -->
+    <div id="fh5co-author" class="fh5co-bg-section">
+        <div class="container">
+            <div class="row animate-box">
+                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                    <h2>야구볼래와 함께 하는 기업들</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="author">
+                        <div class="author-inner animate-box" style="background-image: url('image/불닭볶음면.png');">
+                        </div>
+                        <div class="desc animate-box">
+                            <span>Developers</span>
+                            <h3>TEAM 모여봐요 과제의 숲</h3>
+                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                            <p><a href="weather.jsp" class="btn btn-primary btn-outline">Learn More</a></p>
+                            <ul class="fh5co-social-icons">
+                                <li><a href="#"><i class="icon-facebook"></i></a></li>
+                                <li><a href="#"><i class="icon-twitter"></i></a></li>
+                                <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                                <li><a href="#"><i class="icon-github"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
-    <footer id="footer">
-        <p>배너 광고 문의,</p>
-        <p>오류 제보는 언제든 메일 남겨주세요!</p>
-        <p>(추첨을 통해 기프티콘 제공)</p>
-        <p><b>baseballGive@naver.com</b></p>
+    </div>
+
+    <div id="fh5co-started">
+        <div class="container">
+            <div class="row animate-box">
+                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                    <h2>Join our crew!</h2>
+                    <p>We are waiting for our new crew members! DON'T HESITATE just GO!</p>
+                    <p><a href="#" class="btn btn-primary">Let's work together</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="fh5co-footer" role="contentinfo">
+        <div class="container">
+            <div class="row copyright">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
+                        <small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a> &amp; <a href="http://blog.gessato.com/" target="_blank">Gessato</a></small>
+                    </p>
+
+                    <ul class="fh5co-social-icons">
+                        <li><a href="#"><i class="icon-twitter"></i></a></li>
+                        <li><a href="#"><i class="icon-facebook"></i></a></li>
+                        <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                        <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
     </footer>
+</div>
+
+<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+</div>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="/js/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="/js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="/js/jquery.waypoints.min.js"></script>
+<!-- Main -->
+<script src="/js/main.js"></script>
+
 </body>
 </html>

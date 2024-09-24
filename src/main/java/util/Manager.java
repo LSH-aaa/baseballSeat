@@ -2,7 +2,7 @@ package util;
 
 import java.sql.*;
 
-public class DBManager {
+public class Manager {
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         Connection conn = null;
 
@@ -10,6 +10,7 @@ public class DBManager {
         String user = "root";
         String password = "1234";
 
+        Class.forName("com.mysql.cj.jdbc.Driver");
         conn = DriverManager.getConnection(url, user, password);
 
         return conn;
