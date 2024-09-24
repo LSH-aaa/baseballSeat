@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/board/list")
-public class BoardListServlet extends HttpServlet {
+@WebServlet("/QnAList")
+public class QnAListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "/board/boardList.jsp";
+        String url = "/board/boardLee/qnaList.jsp";
 
         // 검색 정보
         String searchType = request.getParameter("searchType");
@@ -27,12 +27,12 @@ public class BoardListServlet extends HttpServlet {
         searchVO.setSearchText(searchText);
 
         // 페이지 정보
-        int currPage = 1;
+        int currentPage = 1;
         String req_page = request.getParameter("currPage");
         if (req_page == null) {
-            currPage = 1;
+            currentPage = 1;
         } else {
-            currPage = Integer.parseInt(req_page);
+            currentPage = Integer.parseInt(req_page);
         }
         BoardDAO dao = new BoardDAO();
 
@@ -40,10 +40,10 @@ public class BoardListServlet extends HttpServlet {
         int totalCnt = dao.selectAllBoardCount(searchType, searchText);
 
         // 페이징 관련값 계산(생성자 호출)
-        PageHandler pageHandler = new PageHandler(totalCnt, currPage);
+        PageHandler pageHandler = new PageHandler(totalCnt, currentPage);
 
         // 페이지 시작값 계산
-        int offset = (currPage - 1) * pageHandler.getPageSize();
+        int offset = (currentPage - 1) * pageHandler.getPageSize();
 
         // list<BoardVO> boardList = dao.selectAllBoard();
         // List<BoardVO> boardList = dao.selectSearchBoard(searchType, searchText);
@@ -51,7 +51,7 @@ public class BoardListServlet extends HttpServlet {
                 dao.selectPagingBoard(offset, pageHandler.getPageSize(),
                         searchType, searchText);
 
-        request.setAttribute("boardList", boardList);
+        request.setAttribute("qna", boardList);
         request.setAttribute("searchVO", searchVO);
         request.setAttribute("pageHandler", pageHandler);
         request.getRequestDispatcher(url).forward(request, response);
@@ -61,5 +61,7 @@ public class BoardListServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         doGet(request, response);
+
+
     }
 }
