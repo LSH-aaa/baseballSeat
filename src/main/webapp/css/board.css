@@ -75,9 +75,10 @@ a:hover {
 }
 
 .header {
-    display: flex; /* Flexbox 사용 */
-    align-items: center; /* 세로 중앙 정렬 */
-    margin: 20px 0; /* 여백 추가 */
+    display: flex;
+    justify-content: space-between; /* 양쪽 끝에 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
+    padding: 10px; /* 패딩 추가 */
 }
 
 .header input[type="button"] {
@@ -88,6 +89,7 @@ a:hover {
     color: #fff; /* 글자색 */
     cursor: pointer; /* 커서 모양 변경 */
     height: 40px; /* 버튼 높이 설정 */
+    margin-right: auto; /* 버튼을 왼쪽 정렬 */
 }
 
 .search {
@@ -130,5 +132,3 @@ a:hover {
 .search button:hover {
     background-color: #b8ab9c; /* 호버 시 배경색 */
 }
-
-

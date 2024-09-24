@@ -14,7 +14,7 @@ import java.io.IOException;
 public class BoardWriteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/board/boardJung/boardWrite.jsp").forward(request, response);
+        request.getRequestDispatcher("/board/boardJung/boardWrite2.jsp").forward(request, response);
     }
 
     @Override
