@@ -1,6 +1,7 @@
 package com.busanit.baseballseat.controller;
 
 import com.busanit.baseballseat.dao.BoardDAO;
+import com.busanit.baseballseat.dao.MembersDAO;
 import com.busanit.baseballseat.dto.BoardVO;
 
 import javax.servlet.ServletException;
@@ -31,9 +32,6 @@ public class BoardUpdateServlet extends HttpServlet {
 
         BoardVO board = new BoardVO();
         board.setNum(Integer.parseInt(request.getParameter("num")));
-        board.setName(request.getParameter("name"));
-        board.setPass(request.getParameter("pass"));
-        board.setEmail(request.getParameter("email"));
         board.setTitle(request.getParameter("title"));
         board.setContent(request.getParameter("content"));
 

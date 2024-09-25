@@ -1,6 +1,7 @@
 package com.busanit.baseballseat.dao;
 
 import com.busanit.baseballseat.dto.BoardVO;
+import com.busanit.baseballseat.dto.QnAVO;
 import util.Manager;
 
 import java.sql.Connection;
@@ -9,9 +10,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoardDAO {
+public class QnADAO {
     // 전체 게시글 불러오기(List)
-    public List<BoardVO> selectAllBoard(String type) {
+    public List<QnAVO> selectAllBoard(String type) {
         String baseSql = "select num,\n" +
                 "       (CASE \n" +
                 "            WHEN type = 'Y' THEN '양도'\n" +
@@ -36,7 +37,7 @@ public class BoardDAO {
             sql = baseSql + "where type = ? order by num desc";  // type 조건이 있을 때
         }
 
-        List<BoardVO> boardList = new ArrayList<>();
+        List<QnAVO> boardList = new ArrayList<>();
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -53,8 +54,9 @@ public class BoardDAO {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                BoardVO board = new BoardVO();
+                QnAVO board = new QnAVO();
                 board.setNum(rs.getInt("num"));
+                board.setType(rs.getString("type"));
                 board.setTitle(rs.getString("title"));
                 board.setContent(rs.getString("content"));
                 board.setReadcount(rs.getInt("readcount"));
@@ -74,10 +76,10 @@ public class BoardDAO {
 
 
     // 게시글 상세 보기
-    public BoardVO selectOneBoard(String num) {
+    public QnAVO selectOneBoard(String num) {
         String sql = "select num, type, title, content, readcount, writedate, id, (select nickname from members mm where mm.id = b.id) AS nickname from board b where num = ?";
 
-        BoardVO board = null;
+        QnAVO board = null;
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -89,8 +91,9 @@ public class BoardDAO {
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                board = new BoardVO();
+                board = new QnAVO();
                 board.setNum(rs.getInt("num"));
+                board.setType(rs.getString("type"));
                 board.setTitle(rs.getString("title"));
                 board.setContent(rs.getString("content"));
                 board.setReadcount(rs.getInt("readcount"));
@@ -130,8 +133,8 @@ public class BoardDAO {
 
 
     // 게시글 입력
-    public void insertBoard(BoardVO board) {
-        String sql = "INSERT INTO board(id, title, content, type) VALUES(?,?,?,?)";
+    public void insertBoard(QnAVO board) {
+        String sql = "INSERT INTO board(id, title, content, type) VALUES(?,?,?,'qna')";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -176,7 +179,7 @@ public class BoardDAO {
 
 
     // 게시글 업데이트
-    public void updateBoard(BoardVO board) {
+    public void updateBoard(QnAVO board) {
         String sql = "UPDATE board SET id = ?, title = ? , content = ?, type = ? WHERE num = ?";
 
         Connection conn = null;
@@ -188,6 +191,7 @@ public class BoardDAO {
             pstmt.setString(1, board.getId());
             pstmt.setString(2, board.getTitle());
             pstmt.setString(3, board.getContent());
+            pstmt.setString(4, board.getType());
             pstmt.setInt(5, board.getNum());
             pstmt.executeUpdate();
 
@@ -218,7 +222,7 @@ public class BoardDAO {
                 switch (searchType) {
                     case "all":
                         sql = "SELECT COUNT(*) FROM board b, members m " +
-                                "WHERE b.id = m.id AND b.title LIKE ? OR b.content LIKE ?";
+                                "WHERE b.id = m.id AND b.title LIKE ? OR b.content LIKE ? AND type = 'qna'";
                         pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1, "%" + searchText + "%");
                         pstmt.setString(2, "%" + searchText + "%");
@@ -264,13 +268,13 @@ public class BoardDAO {
 
 
     // 페이징
-    public List<BoardVO> selectPagingBoard(int offset, int pageSize, String searchType, String searchText) {
+    public List<QnAVO> selectPagingBoard(int offset, int pageSize, String searchType, String searchText) {
         String sql = "";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        List<BoardVO> boardList = new ArrayList<>();
+        List<QnAVO> boardList = new ArrayList<>();
 
         try {
             conn = Manager.getConnection();
@@ -335,8 +339,10 @@ public class BoardDAO {
             rs = pstmt.executeQuery();
 
             while(rs.next()) {
-                BoardVO board = new BoardVO();
+                QnAVO board = new QnAVO();
                 board.setNum(rs.getInt("num"));
+                board.setName(rs.getString("name"));
+                board.setType(rs.getString("type"));
                 board.setTitle(rs.getString("title"));
                 board.setContent(rs.getString("content"));
                 board.setReadcount(rs.getInt("readcount"));

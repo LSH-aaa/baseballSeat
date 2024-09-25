@@ -24,9 +24,6 @@ public class BoardWriteServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
 
         BoardVO board = new BoardVO();
-        board.setName(request.getParameter("name"));
-        board.setPass(request.getParameter("pass"));
-        board.setEmail(request.getParameter("email"));
         board.setTitle(request.getParameter("title"));
         board.setContent(request.getParameter("content"));
 
