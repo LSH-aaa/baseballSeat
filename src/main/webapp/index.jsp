@@ -1,43 +1,26 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <meta charset="utf-8">
+    <title>인덱스</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>야구볼래?</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
-    <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-    <meta name="author" content="FreeHTML5.co" />
-
-    <!-- Facebook and Twitter integration -->
-    <meta property="og:title" content=""/>
-    <meta property="og:image" content=""/>
-    <meta property="og:url" content=""/>
-    <meta property="og:site_name" content=""/>
-    <meta property="og:description" content=""/>
-    <meta name="twitter:title" content="" />
-    <meta name="twitter:image" content="" />
-    <meta name="twitter:url" content="" />
-    <meta name="twitter:card" content="" />
-
     <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"> -->
-
     <!-- Animate.css -->
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="/css/animate.css">
     <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="/css/icomoon.css">
     <!-- Bootstrap  -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
     <!-- Theme style  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <!-- Modernizr JS -->
-    <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="/js/modernizr-2.6.2.min.js"></script>
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
-    <script src="js/respond.min.js"></script>
+    <script src="/js/respond.min.js"></script>
     <![endif]-->
-
 </head>
 <body>
 
@@ -54,9 +37,9 @@
                 <ul>
                     <!--좌석 -->
                     <li class="has-dropdown">
-                        <a href="seat.jsp">좌석</a>
+                        <a href="/seat.jsp">좌석</a>
                         <ul class="dropdown">
-                            <li><a href="seat_detail_Lotte.jsp">롯데 자이언츠</a></li>
+                            <li><a href="/seat_detail_Lotte.jsp">롯데 자이언츠</a></li>
                             <li><a href="#">삼성 라이온즈</a></li>
                             <li><a href="#">기아 타이거즈</a></li>
                             <li><a href="#">한화 이글스</a></li>
@@ -76,11 +59,24 @@
                             <li><a href="/board/boardLee/qnaList.jsp">Q&A 게시판</a></li>
                         </ul>
                     </li>
-                    <!--about=위치-->
-                    <li><a href="location.jsp">위치</a></li>
+                    <!--about=날씨-->
+                    <li><a href="/weather.jsp">날씨</a></li>
                     <!--contact = 로그인/회원가입-->
-                    <li><a href="/board/login">로그인/회원가입</a></li>
-                    <li><a href="#">마이페이지</a></li>
+                    <c:choose>
+                        <c:when test="${sessionScope.id != null}">
+                            <li><a href="/board/logout">로그아웃</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="has-dropdown">
+                                <a href="#">로그인/회원가입</a>
+                                <ul class="dropdown">
+                                    <li><a href="/board/login">로그인</a></li>
+                                    <li><a href="/board/register">회원가입</a></li>
+                                </ul>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                    <li><a href="#" onclick="alert('⚠️공사중⚠️')">마이페이지</a></li>
                 </ul>
             </div>
             <div class="fh5co-top-social menu-1 text-right">
@@ -97,10 +93,14 @@
         <div class="container">
             <div class="row top-line animate-box">
                 <div class="col-md-7 col-md-push-5 text-left intro">
-                    <h2>야구장의 모든 것, 야구볼래? <span class="fh5co-highlight">Made with <i class="icon-heart2"></i> by <a href="http://freehtml5.co">FreeHTML5.co</a> </span></h2>
-                    <!-- <h2>Shift is a Collection of a Beautiful &amp; Premium Themes.</h2> -->
+                    <p><h4> 스포츠도 명당에서</h4></p>
+                    <h2>야구장의 모든 것, 야구볼래?</h2>
+                </div>
+                <div>
+                    <h3> &#128071; 좌석 보러 가기</h3>
                 </div>
             </div>
+
             <!--구단별 좌석 선택 -->
             <div class="row">
                 <div class="col-md-4 text-center animate-box">
@@ -214,7 +214,7 @@
             </div>
         </div>
     </div>
-    <!-- 기업광고 부분 : 높이 조금 줄이기-->
+    <!-- 기업광고 부분 -->
     <div id="fh5co-author" class="fh5co-bg-section">
         <div class="container">
             <div class="row animate-box">
@@ -231,7 +231,7 @@
                             <span>Developers</span>
                             <h3>TEAM 모여봐요 과제의 숲</h3>
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                            <p><a href="location.jsp" class="btn btn-primary btn-outline">Learn More</a></p>
+                            <p><a href="weather.jsp" class="btn btn-primary btn-outline">Learn More</a></p>
                             <ul class="fh5co-social-icons">
                                 <li><a href="#"><i class="icon-facebook"></i></a></li>
                                 <li><a href="#"><i class="icon-twitter"></i></a></li>
@@ -285,16 +285,15 @@
 </div>
 
 <!-- jQuery -->
-<script src="js/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 <!-- jQuery Easing -->
-<script src="js/jquery.easing.1.3.js"></script>
+<script src="/js/jquery.easing.1.3.js"></script>
 <!-- Bootstrap -->
-<script src="js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <!-- Waypoints -->
-<script src="js/jquery.waypoints.min.js"></script>
+<script src="/js/jquery.waypoints.min.js"></script>
 <!-- Main -->
-<script src="js/main.js"></script>
+<script src="/js/main.js"></script>
 
 </body>
 </html>
-

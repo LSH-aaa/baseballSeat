@@ -12,7 +12,8 @@ import java.io.IOException;
 public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+        String url = "/register.jsp";
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     @Override
@@ -28,7 +29,5 @@ public class RegisterServlet extends HttpServlet {
 
         MembersDAO mdao = new MembersDAO();
         mdao.joinMembers(members);
-
-        response.sendRedirect("/board/login");
     }
 }

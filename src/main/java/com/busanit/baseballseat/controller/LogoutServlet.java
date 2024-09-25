@@ -5,17 +5,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet("/baseballGive")
-public class MainServlet extends HttpServlet {
+@WebServlet("/board/logout")
+public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "./index.jsp";
-
-        request.getRequestDispatcher(url).forward(request, response);
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate(); // 세션 무효화
+        }
+        response.sendRedirect("/baseballGive"); // 로그아웃 후 리디렉션
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getSession().invalidate();
 
+        response.sendRedirect("/board/login");
     }
 }
