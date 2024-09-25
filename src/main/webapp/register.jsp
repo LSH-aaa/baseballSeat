@@ -122,11 +122,11 @@
                         <ul class="dropdown">
                             <li><a href="/board/list?type=Y">양도 게시판</a></li>
                             <li><a href="/board/list?type=B">분실물 게시판</a></li>
-                            <li><a href="/board/boardLee/qnaList.jsp">Q&A 게시판</a></li>
+                            <li><a href="/QnAList">Q&A 게시판</a></li>
                         </ul>
                     </li>
-                    <!--about=날씨-->
-                    <li><a href="/weather.jsp">날씨</a></li>
+                    <!--about=위치-->
+                    <li><a href="/location.jsp">위치</a></li>
                     <!--contact = 로그인/회원가입-->
                     <c:choose>
                         <c:when test="${sessionScope.id != null}">
