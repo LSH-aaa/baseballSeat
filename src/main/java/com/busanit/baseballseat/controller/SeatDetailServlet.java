@@ -13,23 +13,23 @@ public class SeatDetailServlet extends HttpServlet {
 
         if(team != null){
             switch (team) {
-                case "Lotte" : response.sendRedirect("/seat_detail_Lotte.jsp");
+                case "Lotte" : response.sendRedirect("/Seat/seat_detail_Lotte.jsp");
                 break;
-                case "Samsung" : response.sendRedirect("/seat_detail_Samsung.jsp");
+                case "Samsung" : response.sendRedirect("/Seat/seat_detail_Samsung.jsp");
                 break;
-                case "KIA" : response.sendRedirect("/seat_detail_Kia.jsp");
+                case "KIA" : response.sendRedirect("/Seat/seat_detail_Kia.jsp");
                 break;
-                case "Hanhwa" : response.sendRedirect("/seat_detail_Hanhwa.jsp");
+                case "Hanhwa" : response.sendRedirect("/Seat/seat_detail_Hanhwa.jsp");
                 break;
-                case "NC" : response.sendRedirect("/seat_detail_NC.jsp");
+                case "NC" : response.sendRedirect("/Seat/seat_detail_NC.jsp");
                 break;
-                case "Kium" : response.sendRedirect("/seat_detail_Kium.jsp");
+                case "Kium" : response.sendRedirect("/Seat/seat_detail_Kium.jsp");
                 break;
-                case "SSG" : response.sendRedirect("/seat_detail_SSG.jsp");
+                case "SSG" : response.sendRedirect("/Seat/seat_detail_SSG.jsp");
                 break;
-                case "KT" : response.sendRedirect("/seat_detail_KT.jsp");
+                case "KT" : response.sendRedirect("/Seat/seat_detail_KT.jsp");
                 break;
-                case "LD" : response.sendRedirect("/seat_detail_LD.jsp");
+                case "LD" : response.sendRedirect("/Seat/seat_detail_LD.jsp");
                 break;
             }
         }

@@ -93,16 +93,16 @@
 				</div>
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
-						<p class="animate-box"><img src="image/lotte_seat_detail.png" class="img-responsive" alt="Free HTML5 Template by FreeHTML5.co"></p>
+						<p class="animate-box"><img src="/image/lotte_seat_detail.png" class="img-responsive" alt="Free HTML5 Template by FreeHTML5.co"></p>
 						<div class="row row-pt-md portfolio-navigation">
 							<div class="col-xs-4 text-left">
-								<a href="#" onclick="alert('⚠️공사중⚠️')" class="btn btn-primary btn-outline"><i class="icon-chevron-left"></i> Prev </a>
+								<button class="btn btn-primary btn-outline" disabled><i class="icon-chevron-left"></i> Prev </button>
 							</div>
 							<div class="col-xs-4 text-center">
-								<a href="/seat.jsp" class="btn btn-primary btn-outline"><i class="icon-grid2"></i> View All</a>
+								<a href="/seat" class="btn btn-primary btn-outline"><i class="icon-grid2"></i> View All</a>
 							</div>
 							<div class="col-xs-4 text-right">
-								<a href="#" onclick="alert('⚠️공사중⚠️')" class="btn btn-primary btn-outline">Next <i class="icon-chevron-right"></i></a>
+								<a href="/seatDetail?team=Samsung" class="btn btn-primary btn-outline">Next <i class="icon-chevron-right"></i></a>
 							</div>
 						</div>
 					</div>

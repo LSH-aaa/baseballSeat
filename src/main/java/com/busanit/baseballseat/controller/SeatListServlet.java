@@ -9,7 +9,7 @@ import java.io.IOException;
 public class SeatListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "/seat.jsp";
+        String url = "/Seat/seat.jsp";
 
         request.getRequestDispatcher(url).forward(request, response);
     }

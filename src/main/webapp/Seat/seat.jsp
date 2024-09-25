@@ -94,7 +94,7 @@
 					<div class="row">
 						<div class="col-md-4 text-center animate-box">
 							<a class="work" id="image-box" href="/seatDetail?team=Lotte">
-								<div class="work-grid" style="background-image:url('image/Lotte.png');">
+								<div class="work-grid" style="background-image:url('/image/Lotte.png');">
 									<div class="inner">
 										<div class="desc">
 											<h3>롯데 자이언츠</h3>
