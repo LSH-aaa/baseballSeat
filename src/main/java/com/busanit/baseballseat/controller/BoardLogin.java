@@ -42,10 +42,10 @@ public class BoardLogin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-            if(login_pass != null || login_pass.equals(pass)) {
+            if (login_pass != null && login_pass.equals(pass)) {
                 out.print("true");
                 HttpSession session = request.getSession();
-                session.setAttribute("id",id);
+                session.setAttribute("id", id);
 
                 response.sendRedirect("/baseballGive");
             } else {

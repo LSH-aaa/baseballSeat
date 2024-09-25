@@ -29,5 +29,7 @@ public class RegisterServlet extends HttpServlet {
 
         MembersDAO mdao = new MembersDAO();
         mdao.joinMembers(members);
+
+        response.sendRedirect("/baseballGive");
     }
 }

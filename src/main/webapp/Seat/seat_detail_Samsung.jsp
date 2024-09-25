@@ -26,7 +26,7 @@
 		<nav class="fh5co-nav" role="navigation">
 			<div class="container">
 				<div class="fh5co-top-logo">
-					<div id="fh5co-logo"><a href="/baseballGive">야구볼래?</a></div>
+					<div id="fh5co-logo"><a href="/baseballGive">⚾야구볼래?</a></div>
 				</div>
 				<div class="fh5co-top-menu menu-1 text-center">
 					<ul>
@@ -34,15 +34,15 @@
 						<li class="has-dropdown">
 							<a href="/seat">좌석</a>
 							<ul class="dropdown">
-								<li><a href="/lotte">롯데 자이언츠</a></li>
-								<li><a href="#">삼성 라이온즈</a></li>
-								<li><a href="#">기아 타이거즈</a></li>
-								<li><a href="#">한화 이글스</a></li>
-								<li><a href="#">NC 다이노스</a></li>
-								<li><a href="#">KT 위즈</a></li>
-								<li><a href="#">SSG 랜더스</a></li>
-								<li><a href="#">LG 트윈스/두산 베어스</a></li>
-								<li><a href="#">키움 히어로즈</a></li>
+								<li><a href="/seatDetail?team=Lotte">롯데 자이언츠</a></li>
+								<li><a href="/seatDetail?team=Samsung">삼성 라이온즈</a></li>
+								<li><a href="/seatDetail?team=KIA">기아 타이거즈</a></li>
+								<li><a href="/seatDetail?team=Hanhwa">한화 이글스</a></li>
+								<li><a href="/seatDetail?team=NC">NC 다이노스</a></li>
+								<li><a href="/seatDetail?team=KT">KT 위즈</a></li>
+								<li><a href="/seatDetail?team=SSG">SSG 랜더스</a></li>
+								<li><a href="/seatDetail?team=LD">LG 트윈스/두산 베어스</a></li>
+								<li><a href="/seatDetail?team=Kium">키움 히어로즈</a></li>
 							</ul>
 						</li>
 						<!--게시판 드랍다운 -->
@@ -88,21 +88,21 @@
 			<div class="container">
 				<div class="row top-line animate-box">
 					<div class="col-md-6 col-md-offset-3 col-md-push-2 text-left fh5co-heading">
-						<h2 class="addfont">롯데 자이언츠</h2>
+						<h2 class="addfont">삼성 라이온즈</h2>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
-						<p class="animate-box"><img src="image/lotte_seat_detail.png" class="img-responsive" alt="Free HTML5 Template by FreeHTML5.co"></p>
+						<p class="animate-box"><img src="image/Samsung_seat_detail.png" class="img-responsive" alt="Free HTML5 Template by FreeHTML5.co"></p>
 						<div class="row row-pt-md portfolio-navigation">
 							<div class="col-xs-4 text-left">
-								<a href="#" onclick="alert('⚠️공사중⚠️')" class="btn btn-primary btn-outline"><i class="icon-chevron-left"></i> Prev </a>
+								<a href="/seatDetail?team=Lotte" class="btn btn-primary btn-outline"><i class="icon-chevron-left"></i> Prev </a>
 							</div>
 							<div class="col-xs-4 text-center">
 								<a href="/seat.jsp" class="btn btn-primary btn-outline"><i class="icon-grid2"></i> View All</a>
 							</div>
 							<div class="col-xs-4 text-right">
-								<a href="#" onclick="alert('⚠️공사중⚠️')" class="btn btn-primary btn-outline">Next <i class="icon-chevron-right"></i></a>
+								<a href="/seatDetail?team=KIA" class="btn btn-primary btn-outline">Next <i class="icon-chevron-right"></i></a>
 							</div>
 						</div>
 					</div>

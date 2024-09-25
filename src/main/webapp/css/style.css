@@ -640,6 +640,11 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 
+#kium {
+  align-content: center;
+  margin-left : 186.5px;
+}
+
 .author {
   width: 100%;
   float: left;
@@ -1252,18 +1257,31 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 #check_id {
-  width : 8em;
-  height : 40px;
+  font-family: Giants-Bold;
+  font-weight: lighter;
   margin-top : 5px;
-  padding :0 ;
-  background: rgba(184, 186, 181, 0.32);
-  color : black;
+
+}
+
+.formM{
+  font-family: Giants-Bold;
+}
+
+
+.formM h3{
+  font-family: Giants-Bold;
 }
 
 #join {
   color : black;
+  font-family: Giants-Bold;
   background-image:url("/image/grass.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; /* 반복되지 않도록 설정 */
+  background-position: center; /* 중앙에 위치하게 설정 */
 }
+
+
 
 #join-add {
   height : 100%;

@@ -97,7 +97,7 @@
         <nav class="fh5co-nav" role="navigation">
             <div class="container">
                 <div class="fh5co-top-logo">
-                    <div id="fh5co-logo"><a href="/baseballGive">야구볼래?</a></div>
+                    <div id="fh5co-logo"><a href="/baseballGive">⚾야구볼래?</a></div>
                 </div>
                 <div class="fh5co-top-menu menu-1 text-center">
                     <ul>
@@ -105,15 +105,15 @@
                         <li class="has-dropdown">
                             <a href="/seat">좌석</a>
                             <ul class="dropdown">
-                                <li><a href="/lotte">롯데 자이언츠</a></li>
-                                <li><a href="#">삼성 라이온즈</a></li>
-                                <li><a href="#">기아 타이거즈</a></li>
-                                <li><a href="#">한화 이글스</a></li>
-                                <li><a href="#">NC 다이노스</a></li>
-                                <li><a href="#">KT 위즈</a></li>
-                                <li><a href="#">SSG 랜더스</a></li>
-                                <li><a href="#">LG 트윈스/두산 베어스</a></li>
-                                <li><a href="#">키움 히어로즈</a></li>
+                                <li><a href="/seatDetail?team=Lotte">롯데 자이언츠</a></li>
+                                <li><a href="/seatDetail?team=Samsung">삼성 라이온즈</a></li>
+                                <li><a href="/seatDetail?team=KIA">기아 타이거즈</a></li>
+                                <li><a href="/seatDetail?team=Hanhwa">한화 이글스</a></li>
+                                <li><a href="/seatDetail?team=NC">NC 다이노스</a></li>
+                                <li><a href="/seatDetail?team=KT">KT 위즈</a></li>
+                                <li><a href="/seatDetail?team=SSG">SSG 랜더스</a></li>
+                                <li><a href="/seatDetail?team=LD">LG 트윈스/두산 베어스</a></li>
+                                <li><a href="/seatDetail?team=Kium">키움 히어로즈</a></li>
                             </ul>
                         </li>
                         <!--게시판 드랍다운 -->
@@ -155,9 +155,8 @@
             </div>
         </nav>
         <!-- 회원가입 폼 -->
-        <div id="fh5co-contact">
+        <div id="fh5co-contact" class="formM">
             <div class="container">
-
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="col-md-7 animate-box">
@@ -166,15 +165,15 @@
                                 <div class="row form-group">
                                     <div class="col-md-12">
                                         <label for="name">이름</label>
-                                        <input type="text" id="name" name="name" placeholder="이름" class="form-control">
+                                        <input type="text" id="name" name="name" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col-md-12">
                                         <label for="id">아이디 <small>*필수</small></label>
-                                        <input type="text" id="id" placeholder="아이디" class="form-control">
-                                        <input type="button" value="중복확인" id="check_id" class="form-control" onclick="idCheck()">
+                                        <input type="text" name="id" id="id" class="form-control">
+                                        <input type="button" value="중복확인" id="check_id" class="btn btn-primary" onclick="idCheck()">
                                         <span id="check_result"></span>
                                     </div>
                                 </div>
@@ -182,11 +181,11 @@
                                 <div class="row form-group">
                                     <div class="col-md-12">
                                         <label for="pwd_1">비밀번호</label>
-                                        <input type="password" id="pwd_1" name="pwd" placeholder="비밀번호" class="form-control">
+                                        <input type="password" id="pwd_1" name="pwd" class="form-control">
                                     </div>
                                     <div class="col-md-12">
                                         <label for="pwd_2">비밀번호 확인</label>
-                                        <input type="password" id="pwd_2" name="pwd_check" class="form-control" placeholder="비밀번호 확인">
+                                        <input type="password" id="pwd_2" name="pwd_check" class="form-control" >
                                         <span id="check_MSG"></span>
                                     </div>
                                 </div>
@@ -194,14 +193,14 @@
                                 <div class="row form-group">
                                     <div class="col-md-12">
                                         <label for="email">이메일</label>
-                                        <input type="text" id="email" name="email" class="form-control" placeholder="이메일">
+                                        <input type="text" id="email" name="email" class="form-control" >
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col-md-12">
                                         <label for="nickname">닉네임</label>
-                                        <input type="text" id="nickname" name="nickname" class="form-control" placeholder="닉네임">
+                                        <input type="text" id="nickname" name="nickname" class="form-control" >
                                     </div>
                                 </div>
                                 <br>

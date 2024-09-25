@@ -37,15 +37,15 @@
                     <li class="has-dropdown">
                         <a href="/seat">좌석</a>
                         <ul class="dropdown">
-                            <li><a href="/lotte">롯데 자이언츠</a></li>
-                            <li><a href="#">삼성 라이온즈</a></li>
-                            <li><a href="#">기아 타이거즈</a></li>
-                            <li><a href="#">한화 이글스</a></li>
-                            <li><a href="#">NC 다이노스</a></li>
-                            <li><a href="#">KT 위즈</a></li>
-                            <li><a href="#">SSG 랜더스</a></li>
-                            <li><a href="#">LG 트윈스/두산 베어스</a></li>
-                            <li><a href="#">키움 히어로즈</a></li>
+                            <li><a href="/seatDetail?team=Lotte">롯데 자이언츠</a></li>
+                            <li><a href="/seatDetail?team=Samsung">삼성 라이온즈</a></li>
+                            <li><a href="/seatDetail?team=KIA">기아 타이거즈</a></li>
+                            <li><a href="/seatDetail?team=Hanhwa">한화 이글스</a></li>
+                            <li><a href="/seatDetail?team=NC">NC 다이노스</a></li>
+                            <li><a href="/seatDetail?team=KT">KT 위즈</a></li>
+                            <li><a href="/seatDetail?team=SSG">SSG 랜더스</a></li>
+                            <li><a href="/seatDetail?team=LD">LG 트윈스/두산 베어스</a></li>
+                            <li><a href="/seatDetail?team=Kium">키움 히어로즈</a></li>
                         </ul>
                     </li>
                     <!--게시판 드랍다운 -->
@@ -58,7 +58,7 @@
                         </ul>
                     </li>
                     <!--about=날씨-->
-                    <li><a href="/weather.jsp">날씨</a></li>
+                    <li><a href="/weather.jsp">위치</a></li>
                     <!--contact = 로그인/회원가입-->
                     <c:choose>
                         <c:when test="${sessionScope.id != null}">
@@ -100,7 +100,7 @@
             <!--구단별 좌석 선택 -->
             <div class="row">
                 <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="seat_detail_Lotte.jsp">
+                    <a class="work" href="/seatDetail?team=Lotte">
                         <div class="work-grid" style="background-image:url('image/Lotte.png');">
                             <div class="inner">
                                 <div class="desc">
@@ -112,7 +112,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="#">
+                    <a class="work" href="/seatDetail?team=Samsung">
                         <div class="work-grid" style="background-image:url('image/Samsung.png');">
                             <div class="inner">
                                 <div class="desc">
@@ -124,7 +124,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="#">
+                    <a class="work" href="/seatDetail?team=KIA">
                         <div class="work-grid" style="background-image:url('image/Kia.png');">
                             <div class="inner">
                                 <div class="desc">
@@ -136,7 +136,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="#">
+                    <a class="work" href="/seatDetail?team=Hanhwa">
                         <div class="work-grid" style="background-image:url('image/Hanhwa.png');">
                             <div class="inner">
                                 <div class="desc">
@@ -148,7 +148,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="#">
+                    <a class="work" href="/seatDetail?team=NC">
                         <div class="work-grid" style="background-image:url('image/NC.png');">
                             <div class="inner">
                                 <div class="desc">
@@ -160,7 +160,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="#">
+                    <a class="work" href="/seatDetail?team=Kium">
                         <div class="work-grid" style="background-image:url('image/Kium.png');">
                             <div class="inner">
                                 <div class="desc">
@@ -172,7 +172,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="#">
+                    <a class="work" href="/seatDetail?team=SSG">
                         <div class="work-grid" style="background-image:url('image/SSG.png');">
                             <div class="inner">
                                 <div class="desc">
@@ -184,7 +184,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="#">
+                    <a class="work" href="/seatDetail?team=KT">
                         <div class="work-grid" style="background-image:url('image/KT.png');">
                             <div class="inner">
                                 <div class="desc">
@@ -196,7 +196,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="#">
+                    <a class="work" href="/seatDetail?team=LD">
                         <div class="work-grid" style="background-image:url('image/Dusan.png');">
                             <div class="inner">
                                 <div class="desc">
