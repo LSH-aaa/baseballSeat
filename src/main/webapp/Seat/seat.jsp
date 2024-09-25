@@ -106,7 +106,7 @@
 						</div>
 						<div class="col-md-4 text-center animate-box">
 							<a class="work" href="/seatDetail?team=Samsung">
-								<div class="work-grid" style="background-image:url('image/Samsung.png');">
+								<div class="work-grid" style="background-image:url('/image/Samsung.png');">
 									<div class="inner">
 										<div class="desc">
 											<h3>삼성 라이온즈</h3>
@@ -118,7 +118,7 @@
 						</div>
 						<div class="col-md-4 text-center animate-box">
 							<a class="work" href="/seatDetail?team=KIA">
-								<div class="work-grid" style="background-image:url('image/Kia.png');">
+								<div class="work-grid" style="background-image:url('/image/Kia.png');">
 									<div class="inner">
 										<div class="desc">
 											<h3>KIA 타이거즈</h3>
@@ -130,7 +130,7 @@
 						</div>
 						<div class="col-md-4 text-center animate-box">
 							<a class="work" href="/seatDetail?team=Hanhwa">
-								<div class="work-grid" style="background-image:url('image/Hanhwa.png');">
+								<div class="work-grid" style="background-image:url('/image/Hanhwa.png');">
 									<div class="inner">
 										<div class="desc">
 											<h3>한화 이글스</h3>
@@ -142,7 +142,7 @@
 						</div>
 						<div class="col-md-4 text-center animate-box">
 							<a class="work" href="/seatDetail?team=NC">
-								<div class="work-grid" style="background-image:url('image/NC.png');">
+								<div class="work-grid" style="background-image:url('/image/NC.png');">
 									<div class="inner">
 										<div class="desc">
 											<h3>NC 다이노스</h3>
@@ -154,7 +154,7 @@
 						</div>
 						<div class="col-md-4 text-center animate-box">
 							<a class="work" href="/seatDetail?team=Kium">
-								<div class="work-grid" style="background-image:url('image/Kium.png');">
+								<div class="work-grid" style="background-image:url('/image/Kium.png');">
 									<div class="inner">
 										<div class="desc">
 											<h3>키움 히어로즈</h3>
@@ -166,7 +166,7 @@
 						</div>
 						<div class="col-md-4 text-center animate-box">
 							<a class="work" href="/seatDetail?team=SSG">
-								<div class="work-grid" style="background-image:url('image/SSG.png');">
+								<div class="work-grid" style="background-image:url('/image/SSG.png');">
 									<div class="inner">
 										<div class="desc">
 											<h3>SSG 랜더스</h3>
@@ -178,7 +178,7 @@
 						</div>
 						<div class="col-md-4 text-center animate-box">
 							<a class="work" href="/seatDetail?team=KT">
-								<div class="work-grid" style="background-image:url('image/KT.png');">
+								<div class="work-grid" style="background-image:url('/image/KT.png');">
 									<div class="inner">
 										<div class="desc">
 											<h3>KT 위즈</h3>
@@ -190,7 +190,7 @@
 						</div>
 						<div class="col-md-4 text-center animate-box">
 							<a class="work" href="/seatDetail?team=LD">
-								<div class="work-grid" style="background-image:url('image/Dusan.png');">
+								<div class="work-grid" style="background-image:url('/image/Dusan.png');">
 									<div class="inner">
 										<div class="desc">
 											<h3>두산 베어스 / LG 트윈스</h3>
