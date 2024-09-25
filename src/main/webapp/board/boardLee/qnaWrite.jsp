@@ -108,7 +108,7 @@
                         <div class="col-md-12">
                             <h3 class="title animate-box">QnA 작성</h3>
                         </div>
-                        <form action="/board/boardLee/qnaWrite.jsp" method="post">
+                        <form action="/QnAWrite" method="post">
                             <label for="title">제목: </label>
                             <input type="text" id="title" name="title" required><br><br>
 
@@ -118,7 +118,7 @@
                             <label for="name">작성자(이름): </label>
                             <input type="text" id="name" name="name" required><br><br>
 
-                            <input type="submit" value="작성하기" name="write">
+                            <input type="submit" value="작성하기">
                             <input type="reset" value="초기화하기">
                             <br><br>
                             <a href="/QnAList" class="no-hover">목록으로 돌아가기</a>

@@ -1,12 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: admin
-  Date: 2024-09-19
-  Time: 오후 2:15
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -80,7 +73,7 @@
                         <ul class="dropdown">
                             <li><a href="/board/list?type=Y">양도 게시판</a></li>
                             <li><a href="/board/list?type=B">분실물 게시판</a></li>
-                            <li><a href="/board/list?type=qna">Q&A 게시판</a></li>
+                            <li><a href="/QnAList">Q&A 게시판</a></li>
                         </ul>
                     </li>
                     <!--about=위치-->

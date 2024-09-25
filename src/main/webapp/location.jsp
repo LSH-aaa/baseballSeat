@@ -68,7 +68,7 @@
                             <ul class="dropdown">
                                 <li><a href="/board/list?type=Y">양도 게시판</a></li>
                                 <li><a href="/board/list?type=F">분실물 게시판</a></li>
-                                <li><a href="/board/list?type=qna">Q&A 게시판</a></li>
+                                <li><a href="/QnAList">Q&A 게시판</a></li>
                             </ul>
                         </li>
                         <!--about=위치-->

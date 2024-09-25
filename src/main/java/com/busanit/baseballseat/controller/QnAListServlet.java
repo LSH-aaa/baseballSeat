@@ -1,7 +1,9 @@
 package com.busanit.baseballseat.controller;
 
 import com.busanit.baseballseat.dao.BoardDAO;
+import com.busanit.baseballseat.dao.QnADAO;
 import com.busanit.baseballseat.dto.BoardVO;
+import com.busanit.baseballseat.dto.QnAVO;
 import com.busanit.baseballseat.dto.SearchVO;
 import util.PageHandler;
 
@@ -34,7 +36,7 @@ public class QnAListServlet extends HttpServlet {
         } else {
             currentPage = Integer.parseInt(req_page);
         }
-        BoardDAO dao = new BoardDAO();
+        QnADAO dao = new QnADAO();
 
         // 전체 게시글 수
         int totalCnt = dao.selectAllBoardCount(searchType, searchText);
@@ -45,9 +47,9 @@ public class QnAListServlet extends HttpServlet {
         // 페이지 시작값 계산
         int offset = (currentPage - 1) * pageHandler.getPageSize();
 
-        // list<BoardVO> boardList = dao.selectAllBoard();
-        // List<BoardVO> boardList = dao.selectSearchBoard(searchType, searchText);
-        List<BoardVO> boardList =
+        // list<QnAVO> boardList = dao.selectAllBoard();
+        // List<QnAVO> boardList = dao.selectSearchBoard(searchType, searchText);
+        List<QnAVO> boardList =
                 dao.selectPagingBoard(offset, pageHandler.getPageSize(),
                         searchType, searchText);
 
