@@ -67,7 +67,7 @@
                             <a href="#">게시판</a>
                             <ul class="dropdown">
                                 <li><a href="/board/list?type=Y">양도 게시판</a></li>
-                                <li><a href="/board/list?type=F">분실물 게시판</a></li>
+                                <li><a href="/board/list?type=B">분실물 게시판</a></li>
                                 <li><a href="/QnAList">Q&A 게시판</a></li>
                             </ul>
                         </li>

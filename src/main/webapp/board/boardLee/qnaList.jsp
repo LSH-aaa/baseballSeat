@@ -39,6 +39,38 @@
     <!--[if lt IE 9]>
     <script src="/js/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+        /* 기본 테이블 스타일 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        /* 테이블 헤더 스타일 */
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        /* 짝수 행 스타일 */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* 홀수 행 스타일 */
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        /* 마우스 오버 시 행 스타일 */
+        tr:hover {
+            background-color: #d1e7fd;
+        }
+
+    </style>
+
 </head>
 <body>
 <div class="fh5co-loader"></div>
