@@ -15,7 +15,8 @@ public class BoardUpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String num = request.getParameter("num");
-        String url = "/board/boardUpdate.jsp";
+
+        String url = "/board/boardJung/boardUpdate.jsp";
 
         BoardDAO dao = new BoardDAO();
         BoardVO board = dao.selectOneBoard(num);
@@ -31,16 +32,15 @@ public class BoardUpdateServlet extends HttpServlet {
 
         BoardVO board = new BoardVO();
         board.setNum(Integer.parseInt(request.getParameter("num")));
-        board.setName(request.getParameter("name"));
-        board.setPass(request.getParameter("pass"));
-        board.setEmail(request.getParameter("email"));
+        board.setId(request.getParameter("id"));
         board.setTitle(request.getParameter("title"));
         board.setContent(request.getParameter("content"));
+        board.setType(request.getParameter("type"));
 
         BoardDAO dao = new BoardDAO();
         dao.updateBoard(board);
 
-        // 게시글 수정완료 후 게시글 상세보기(view) 화면으로 이동
         response.sendRedirect("/board/view?num=" + board.getNum());
+
     }
 }

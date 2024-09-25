@@ -10,7 +10,6 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Animate.css -->
     <link rel="stylesheet" href="/css/animate.css">
     <!-- Icomoon Icon Fonts-->
@@ -92,7 +91,6 @@
 </head>
 <body>
     <div class="fh5co-loader"></div>
-
     <div id="page">
         <nav class="fh5co-nav" role="navigation">
             <div class="container">
@@ -125,8 +123,8 @@
                                 <li><a href="/board/boardLee/qnaList.jsp">Q&A 게시판</a></li>
                             </ul>
                         </li>
-                        <!--about=날씨-->
-                        <li><a href="/weather.jsp">날씨</a></li>
+                        <!--about=위치-->
+                        <li><a href="/location">위치</a></li>
                         <!--contact = 로그인/회원가입-->
                         <c:choose>
                             <c:when test="${sessionScope.id != null}">

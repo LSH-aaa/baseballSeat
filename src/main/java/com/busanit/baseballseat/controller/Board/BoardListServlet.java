@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/QnAList")
-public class QnAListServlet extends HttpServlet {
+@WebServlet("/board/list")
+public class BoardListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "/board/boardLee/qnaList.jsp";
+        String url = "/board/boardJung/boardList.jsp";
 
         // 검색 정보
         String searchType = request.getParameter("searchType");
@@ -26,34 +26,34 @@ public class QnAListServlet extends HttpServlet {
         searchVO.setSearchType(searchType);
         searchVO.setSearchText(searchText);
 
+        String type = request.getParameter("type");
+
         // 페이지 정보
-        int currentPage = 1;
+        int currPage = 1; // 현재 페이지 1로 초기화
         String req_page = request.getParameter("currPage");
-        if (req_page == null) {
-            currentPage = 1;
+        if (req_page == null || req_page.equals("")) {
+            currPage = 1;
         } else {
-            currentPage = Integer.parseInt(req_page);
+            currPage = Integer.parseInt(req_page);
         }
         BoardDAO dao = new BoardDAO();
-
         // 전체 게시글 수
-        int totalCnt = dao.selectAllBoardCount(searchType, searchText);
+        int totalCnt = dao.selectAllBoardCount(searchType, searchText, type);
 
-        // 페이징 관련값 계산(생성자 호출)
-        PageHandler pageHandler = new PageHandler(totalCnt, currentPage);
+        // 페이징 관련 값 계산(생성자 호출)
+        PageHandler pageHandler = new PageHandler(totalCnt, currPage);
 
-        // 페이지 시작값 계산
-        int offset = (currentPage - 1) * pageHandler.getPageSize();
+        // 페이지 시작 값 계산
+        int offset = (currPage - 1) * pageHandler.getPageSize();
 
-        // list<BoardVO> boardList = dao.selectAllBoard();
-        // List<BoardVO> boardList = dao.selectSearchBoard(searchType, searchText);
-        List<BoardVO> boardList =
-                dao.selectPagingBoard(offset, pageHandler.getPageSize(),
-                        searchType, searchText);
+        //List<BoardVO> boardList = dao.selectAllBoard(type);
+        //List<BoardVO> boardList = dao.selectSearchBoard(searchType, searchText);
+        List<BoardVO> boardList = dao.selectPagingBoard(offset, pageHandler.getPageSize(), searchType, searchText, type);
 
-        request.setAttribute("qna", boardList);
+        request.setAttribute("boardList", boardList);
         request.setAttribute("searchVO", searchVO);
         request.setAttribute("pageHandler", pageHandler);
+        request.setAttribute("type", type);
         request.getRequestDispatcher(url).forward(request, response);
     }
 
@@ -61,7 +61,5 @@ public class QnAListServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         doGet(request, response);
-
-
     }
 }

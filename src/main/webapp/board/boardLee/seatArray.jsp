@@ -28,7 +28,7 @@
                         <li><a href="/QnAList">QnA 게시판</a></li>
                     </ul>
                 </span>
-            <a href="#" style="letter-spacing: 3px; font-size: large;">날씨</a>
+            <a href="#" style="letter-spacing: 3px; font-size: large;">위치</a>
             <a href="#" style="letter-spacing: 3px; font-size: large;">로그인/회원가입</a>
             <a href="#" style="letter-spacing: 3px; font-size: large;">마이페이지</a>
         </nav>

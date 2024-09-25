@@ -1,4 +1,4 @@
-package com.busanit.baseballseat.controller;
+package com.busanit.baseballseat.controller.Seat;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;

@@ -1,4 +1,4 @@
-package com.busanit.baseballseat.controller;
+package com.busanit.baseballseat.controller.Board;
 
 import com.busanit.baseballseat.dao.BoardDAO;
 import com.busanit.baseballseat.dto.BoardVO;
@@ -15,18 +15,18 @@ public class BoardViewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String num = request.getParameter("num");
-        String url = "/board/boardView.jsp";
+
+        String url = "/board/boardJung/boardView.jsp";
 
         BoardDAO dao = new BoardDAO();
 
         // num에 대한 게시글 조회수 증가
         dao.updateReadCount(num);
+
         // num에 대한 게시글 정보 가져오기
         BoardVO board = dao.selectOneBoard(num);
 
         request.setAttribute("board", board);
         request.getRequestDispatcher(url).forward(request, response);
-
-
     }
 }
