@@ -32,9 +32,9 @@
 						<ul>
 							<!--좌석 -->
 							<li class="has-dropdown">
-								<a href="/seat.jsp">좌석</a>
+								<a href="/seat">좌석</a>
 								<ul class="dropdown">
-									<li><a href="/seat_detail_Lotte.jsp">롯데 자이언츠</a></li>
+									<li><a href="/lotte">롯데 자이언츠</a></li>
 									<li><a href="#">삼성 라이온즈</a></li>
 									<li><a href="#">기아 타이거즈</a></li>
 									<li><a href="#">한화 이글스</a></li>
@@ -88,14 +88,12 @@
 				<div class="container">
 					<div class="row top-line animate-box">
 						<div class="col-md-6 col-md-offset-3 col-md-push-2 text-left fh5co-heading">
-							<h2>Portfolio</h2>
-							<h3>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
+							<h2 class="addfont">구장별 좌석 확인<small>(시야사진 73,650장)</small></h2>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-4 text-center animate-box">
-							<a class="work" href="seat_detail_Lotte.jsp">
+							<a class="work" id="image-box" href="/lotte">
 								<div class="work-grid" style="background-image:url('image/Lotte.png');">
 									<div class="inner">
 										<div class="desc">

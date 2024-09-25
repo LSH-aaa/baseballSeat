@@ -23,23 +23,21 @@
     <![endif]-->
 </head>
 <body>
-
 <div class="fh5co-loader"></div>
-
 <div id="page">
     <!--내비게이션 -->
     <nav class="fh5co-nav" role="navigation">
         <div class="container">
             <div class="fh5co-top-logo">
-                <div id="fh5co-logo"><a href="/baseballGive">야구볼래?</a></div>
+                <div id="fh5co-logo"><a href="/baseballGive">⚾야구볼래?</a></div>
             </div>
             <div class="fh5co-top-menu menu-1 text-center">
                 <ul>
                     <!--좌석 -->
                     <li class="has-dropdown">
-                        <a href="/seat.jsp">좌석</a>
+                        <a href="/seat">좌석</a>
                         <ul class="dropdown">
-                            <li><a href="/seat_detail_Lotte.jsp">롯데 자이언츠</a></li>
+                            <li><a href="/lotte">롯데 자이언츠</a></li>
                             <li><a href="#">삼성 라이온즈</a></li>
                             <li><a href="#">기아 타이거즈</a></li>
                             <li><a href="#">한화 이글스</a></li>
@@ -93,11 +91,9 @@
         <div class="container">
             <div class="row top-line animate-box">
                 <div class="col-md-7 col-md-push-5 text-left intro">
-                    <p><h4> 스포츠도 명당에서</h4></p>
-                    <h2>야구장의 모든 것, 야구볼래?</h2>
-                </div>
-                <div>
-                    <h3> &#128071; 좌석 보러 가기</h3>
+                    <p><h4> <i font-style:italic>스포츠도 명당에서</i></h4> </p>
+                    <h2 class="title">야구장의 모든 것, 야구볼래?</h2>
+                    <h3 style="text-align: left;">&#128071; 좌석 보러 가기</h3>
                 </div>
             </div>
 

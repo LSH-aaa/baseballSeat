@@ -103,9 +103,9 @@
                     <ul>
                         <!--좌석 -->
                         <li class="has-dropdown">
-                            <a href="/seat.jsp">좌석</a>
+                            <a href="/seat">좌석</a>
                             <ul class="dropdown">
-                                <li><a href="/seat_detail_Lotte.jsp">롯데 자이언츠</a></li>
+                                <li><a href="/lotte">롯데 자이언츠</a></li>
                                 <li><a href="#">삼성 라이온즈</a></li>
                                 <li><a href="#">기아 타이거즈</a></li>
                                 <li><a href="#">한화 이글스</a></li>

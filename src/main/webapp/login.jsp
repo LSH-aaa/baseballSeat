@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: admin
@@ -7,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,7 +40,20 @@
                 <div class="fh5co-top-menu menu-1 text-center">
                     <ul>
                         <!--좌석 -->
-                        <li><a href="/seat.jsp">좌석</a></li>
+                        <li class="has-dropdown">
+                            <a href="/seat">좌석</a>
+                            <ul class="dropdown">
+                                <li><a href="/lotte">롯데 자이언츠</a></li>
+                                <li><a href="#">삼성 라이온즈</a></li>
+                                <li><a href="#">기아 타이거즈</a></li>
+                                <li><a href="#">한화 이글스</a></li>
+                                <li><a href="#">NC 다이노스</a></li>
+                                <li><a href="#">KT 위즈</a></li>
+                                <li><a href="#">SSG 랜더스</a></li>
+                                <li><a href="#">LG 트윈스/두산 베어스</a></li>
+                                <li><a href="#">키움 히어로즈</a></li>
+                            </ul>
+                        </li>
                         <!--게시판 드랍다운 -->
                         <li class="has-dropdown">
                             <a href="#">게시판</a>
@@ -147,9 +160,6 @@
                 </div>
             </div>
         </footer>
-    </div>
-    <div class="gototop js-top">
-        <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
     </div>
 <script type="text/javascript" src="/js/members.js"></script>
 <!-- jQuery -->

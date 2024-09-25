@@ -88,7 +88,4 @@ public class MembersDAO {
         }
         return return_rs;
     }
-
-    //로그아웃
-
 }

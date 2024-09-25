@@ -5,13 +5,29 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'TTTogether';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/TTTogetherA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Giants-Bold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 /* =======================================================
 *
 * 	Template Style 
 *
 * ======================================================= */
 body {
-  font-family: "Montserrat", Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif, "TTTogether";
   font-weight: 300;
   font-size: 16px;
   line-height: 1.7;
@@ -66,7 +82,7 @@ p {
 
 h1, h2, h3, h4, h5, h6, figure {
   color: #000;
-  font-family: "Montserrat", Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif, "TTTogether";
   font-weight: 400;
   margin: 0 0 20px 0;
 }
@@ -94,6 +110,8 @@ h1, h2, h3, h4, h5, h6, figure {
   padding: 25px 0;
   z-index: 1;
   background: #edebe8;
+  font-weight: bold;
+  font-size : 30px;
 }
 @media screen and (max-width: 768px) {
   .fh5co-nav {
@@ -115,12 +133,12 @@ h1, h2, h3, h4, h5, h6, figure {
   width: 20%;
 }
 .fh5co-nav #fh5co-logo {
-  font-size: 20px;
+  font-size: 33px;
   margin: 0;
   padding: 0;
   text-transform: uppercase;
-  font-weight: bold;
-  font-family: "Montserrat", Arial, sans-serif;
+  font-weight : lighter;
+  font-family: "TTTogether";
 }
 .fh5co-nav .fh5co-social {
   margin: 3px 0 0 0;
@@ -198,7 +216,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav ul li a {
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 12px;
+  font-size: 15px;
   padding: 30px 10px;
   color: rgba(0, 0, 0, 0.9);
   -webkit-transition: 0.5s;
@@ -456,6 +474,8 @@ h1, h2, h3, h4, h5, h6, figure {
 .work {
   margin-bottom: 40px;
 }
+
+
 .work .work-grid {
   background-size: cover;
   background-position: center center;
@@ -466,7 +486,10 @@ h1, h2, h3, h4, h5, h6, figure {
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
+  border-radius: 50px !important;
+  overflow: hidden;
 }
+
 .work .work-grid .inner {
   display: table;
   height: 300px;
@@ -476,6 +499,7 @@ h1, h2, h3, h4, h5, h6, figure {
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
+  border-radius: 50px;
 }
 @media screen and (max-width: 768px) {
   .work .work-grid .inner {
@@ -487,6 +511,20 @@ h1, h2, h3, h4, h5, h6, figure {
   display: table-cell;
   vertical-align: middle;
   padding: 40px;
+}
+
+.col-md-4 {
+  border-radius: 50px;
+}
+
+.addfont {
+  font-family: Giants-Bold;
+  font-weight: lighter;
+  font-size : 40px;
+}
+
+.title {
+  font-family: TTTogether;
 }
 .work .work-grid .inner .desc h3 {
   font-size: 14px;
