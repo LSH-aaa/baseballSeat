@@ -24,7 +24,7 @@ public class PageHandler {
 
         /*
             naviSize = 10;
-            currPage     beginPage
+            currentPage     beginPage
                 5       /       1
                 11      /       11
                 15      /       11
@@ -69,11 +69,11 @@ public class PageHandler {
         this.totalPage = totalPage;
     }
 
-    public int getCurrentPage() {
+    public int getCurrPage() {
         return currPage;
     }
 
-    public void setCurrentPage(int currPage) {
+    public void setCurrPage(int currPage) {
         this.currPage = currPage;
     }
 
