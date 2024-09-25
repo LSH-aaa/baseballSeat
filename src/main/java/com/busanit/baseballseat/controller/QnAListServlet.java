@@ -53,7 +53,7 @@ public class QnAListServlet extends HttpServlet {
                 dao.selectPagingBoard(offset, pageHandler.getPageSize(),
                         searchType, searchText);
 
-        request.setAttribute("id", boardList.get(0).getId());
+        request.getSession().setAttribute("id", boardList);
         request.setAttribute("qna", boardList);
         request.setAttribute("searchVO", searchVO);
         request.setAttribute("pageHandler", pageHandler);
