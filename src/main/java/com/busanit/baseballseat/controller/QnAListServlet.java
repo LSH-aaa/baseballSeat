@@ -29,23 +29,24 @@ public class QnAListServlet extends HttpServlet {
         searchVO.setSearchText(searchText);
 
         // 페이지 정보
-        int currentPage = 1;
+        int currPage = 1;
         String req_page = request.getParameter("currPage");
         if (req_page == null) {
-            currentPage = 1;
+            currPage = 1;
         } else {
-            currentPage = Integer.parseInt(req_page);
+            currPage = Integer.parseInt(req_page);
         }
+
         QnADAO dao = new QnADAO();
 
         // 전체 게시글 수
         int totalCnt = dao.selectAllBoardCount(searchType, searchText);
 
         // 페이징 관련값 계산(생성자 호출)
-        PageHandler pageHandler = new PageHandler(totalCnt, currentPage);
+        PageHandler pageHandler = new PageHandler(totalCnt, currPage);
 
         // 페이지 시작값 계산
-        int offset = (currentPage - 1) * pageHandler.getPageSize();
+        int offset = (currPage - 1) * pageHandler.getPageSize();
 
         // list<QnAVO> boardList = dao.selectAllBoard();
         // List<QnAVO> boardList = dao.selectSearchBoard(searchType, searchText);
@@ -53,7 +54,7 @@ public class QnAListServlet extends HttpServlet {
                 dao.selectPagingBoard(offset, pageHandler.getPageSize(),
                         searchType, searchText);
 
-        request.getSession().setAttribute("id", boardList);
+        request.getSession().getAttribute("id");
         request.setAttribute("qna", boardList);
         request.setAttribute("searchVO", searchVO);
         request.setAttribute("pageHandler", pageHandler);

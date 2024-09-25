@@ -147,6 +147,22 @@
                             <h3 class="title animate-box">QnA 게시판</h3>
                         </div>
                         <span><a href="/QnAWrite" class="no-hover">글 작성하기</a></span>
+                        <!-- 검색 폼 추가 -->
+                        <div class="search">
+                            <form action="/QnAList" method="post">
+                                <input type="hidden" name="currPage" value="${pageHandler.currPage}">
+                                <select name="searchType">
+                                    <option ${searchVO.searchType == "" ? "selected" : ""}>검색 유형 선택</option>
+                                    <option value="title" ${searchVO.searchType == "title" ? "selected" : ""}>제목</option>
+                                    <option value="content" ${searchVO.searchType == "content" ? "selected" : ""}>내용</option>
+                                    <option value="all" ${searchVO.searchType == "all" ? "selected" : ""}>제목 + 내용</option>
+                                    <option value="name" ${searchVO.searchType == "name" ? "selected" : ""}>작성자</option>
+                                </select>
+                                <input type="text" name="searchText" id="inputSearch"
+                                       placeholder="검색어" value="${searchVO.searchText}">
+                                <button type="submit">검색</button>
+                            </form>
+                        </div>
                         <br>
                         <hr/>
                         <table border="1">
@@ -185,6 +201,37 @@
         </div>
     </div>
 
+    <div class="pagination" style="display: flex; justify-content: center; padding: 20px 0;">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item ${pageHandler.currPage == pageHandler.beginPage ? "disabled" : ""}">
+                    <a class="page-link" href="/QnAList?currPage=1&searchType=${searchVO.searchType}
+                        &searchText=${searchVO.searchText}">처음</a>
+                </li>
+                <c:if test="${pageHandler.showPrev}">
+                    <li class="page-item">
+                        <a class="page-link" href="/QnAList?currPage=${pageHandler.beginPage - 1}&searchType=${searchVO.searchType}&searchText=${searchVO.searchText}">이전</a>
+                    </li>
+                </c:if>
+                <c:forEach var="i" begin="${pageHandler.beginPage}"
+                           end="${pageHandler.endPage}">
+                    <li class="page-item ${pageHandler.currPage == i ? "active" : ""}">
+                        <a class="page-link"
+                           href="/QnAList?currPage=${i}&searchType=${searchVO.searchType}&searchText=${searchVO.searchText}">${i}</a>
+                    </li>
+                </c:forEach>
+                <c:if test="${pageHandler.showNext}">
+                    <li class="page-item">
+                        <a class="page-link" href="/QnAList?currPage=${pageHandler.endPage + 1}&searchType=${searchVO.searchType}&searchText=${searchVO.searchText}">다음</a>
+                    </li>
+                </c:if>
+                <li class="page-item ${pageHandler.currPage == pageHandler.totalPage ? "disabled" : ""}">
+                    <a class="page-link" href="/QnAList?currPage=${pageHandler.totalPage}&searchType=${searchVO.searchType}&searchText=${searchVO.searchText}">마지막</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
     <footer id="fh5co-footer" role="contentinfo">
         <div class="container">
             <div class="row copyright">
@@ -200,10 +247,8 @@
                         <li><a href="#"><i class="icon-linkedin"></i></a></li>
                         <li><a href="#"><i class="icon-dribbble"></i></a></li>
                     </ul>
-
                 </div>
             </div>
-
         </div>
     </footer>
 </div>

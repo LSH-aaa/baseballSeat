@@ -109,10 +109,11 @@
             <h2>QnA 수정</h2>
             <form action="/QnAUpdate" method="post">
                 <input type="hidden" name="num" value="${board.num}">
+                <input type="hidden" name="id" value="${board.id}">
                 <table>
                     <tr>
                         <th>작성자</th>
-                        <td><input type="text" name="name" value="${board.name}"> * 필수</td>
+                        <td><input type="text" name="name" value="${board.nickname}" readonly></td>
                     </tr>
                     <tr>
                         <th>제목</th>
@@ -126,7 +127,7 @@
                     </tr>
                 </table>
                 <br><br>
-                <input type="submit" value="수정">
+                <input type="submit" value="수정" onclick="location.href='/QnAView'">
                 <input type="reset" value="다시 작성">
                 <input type="button" value="목록" onclick="location.href='/QnAList'">
             </form>

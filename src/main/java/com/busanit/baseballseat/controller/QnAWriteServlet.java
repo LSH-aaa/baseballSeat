@@ -1,9 +1,6 @@
 package com.busanit.baseballseat.controller;
 
-import com.busanit.baseballseat.dao.BoardDAO;
 import com.busanit.baseballseat.dao.QnADAO;
-import com.busanit.baseballseat.dto.BoardVO;
-import com.busanit.baseballseat.dto.MembersVO;
 import com.busanit.baseballseat.dto.QnAVO;
 
 import javax.servlet.ServletException;
@@ -11,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/QnAWrite")
@@ -26,9 +24,11 @@ public class QnAWriteServlet extends HttpServlet {
         // 한글 깨짐 방지
         request.setCharacterEncoding("utf-8");
 
-        QnAVO board = new QnAVO();
+        HttpSession session = request.getSession();
+        String id = (String)session.getAttribute("id");
 
-        board.setId(request.getParameter("id"));
+        QnAVO board = new QnAVO();
+        board.setId(id);
         board.setTitle(request.getParameter("title"));
         board.setContent(request.getParameter("content"));
         board.setName(request.getParameter("name"));

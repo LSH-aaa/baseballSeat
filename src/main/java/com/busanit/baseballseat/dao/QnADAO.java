@@ -134,7 +134,8 @@ public class QnADAO {
 
     // 게시글 입력
     public void insertBoard(QnAVO board) {
-        String sql = "INSERT INTO board(id, title, content, type) VALUES(?,?,?,'qna')";
+        String sql = "INSERT INTO board(id, title, content, type) " +
+                "VALUES(?,?,?,'qna')";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -180,7 +181,7 @@ public class QnADAO {
 
     // 게시글 업데이트
     public void updateBoard(QnAVO board) {
-        String sql = "UPDATE board SET id = ?, title = ? , content = ?, type = ? WHERE num = ?";
+        String sql = "UPDATE board SET id = ?, title = ? , content = ?, type = 'qna' WHERE num = ?";
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -191,8 +192,7 @@ public class QnADAO {
             pstmt.setString(1, board.getId());
             pstmt.setString(2, board.getTitle());
             pstmt.setString(3, board.getContent());
-            pstmt.setString(4, board.getType());
-            pstmt.setInt(5, board.getNum());
+            pstmt.setInt(4, board.getNum());
             pstmt.executeUpdate();
 
         } catch (Exception e) {

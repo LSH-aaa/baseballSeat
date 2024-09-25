@@ -33,6 +33,7 @@ public class QnAUpdateServlet extends HttpServlet {
 
         QnAVO board = new QnAVO();
         board.setNum(Integer.parseInt(request.getParameter("num")));
+        board.setId(request.getParameter("id"));
         board.setName(request.getParameter("name"));
         board.setTitle(request.getParameter("title"));
         board.setContent(request.getParameter("content"));

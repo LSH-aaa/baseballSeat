@@ -1,4 +1,5 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <head>
@@ -123,11 +124,12 @@
             </div>
         </div>
     </nav>
-    <h1>QnA 상세보기</h1>
-    <div id="qnaContent">
+    <br>
+    <h1 style="text-align: center">QnA 상세보기</h1>
+    <div id="qnaContent" style="text-align: center">
         <h4 id="title">${board.title}</h4>
         <br>
-        <p>작성자: <span id="name">${board.name}</span></p>
+        <p>작성자: <span id="name">${board.nickname}</span></p>
         <p>작성일: <span id="writedate"><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${board.writedate}" /></span></p>
         <p>조회수: <span id="readcount">${board.readcount}</span></p>
         <br>
@@ -135,9 +137,11 @@
         <p id="content"><textarea rows="10" cols="40" readonly>${board.content}</textarea></p>
     </div>
     <hr/>
-    <a href="/QnAList" class="no-hover">목록으로 돌아가기</a> |
-    <a href="/QnAUpdate?num=${board.num}" class="no-hover">수정하기</a> |
-    <a href="/QnADelete?num=${board.num}" class="no-hover">삭제하기</a>
+    <div style="text-align: center">
+        <a href="/QnAList" class="no-hover">목록으로 돌아가기</a> |
+        <a href="/QnAUpdate?num=${board.num}" class="no-hover">수정하기</a> |
+        <a href="/QnADelete?num=${board.num}" class="no-hover">삭제하기</a>
+    </div>
     <footer id="fh5co-footer" role="contentinfo">
         <div class="container">
             <div class="row copyright">

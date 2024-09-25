@@ -128,9 +128,6 @@
                             <label for="content">내용: </label><br>
                             <textarea id="content" name="content" rows="10" cols="50" required></textarea><br><br>
 
-                            <label for="name">작성자(이름): </label>
-                            <input type="text" id="name" name="name" required alt="${board.name}"><br><br>
-
                             <input type="submit" value="작성하기">
                             <input type="reset" value="초기화하기">
                             <br><br>

@@ -173,7 +173,7 @@
                             <div class="row form-group">
                                 <div class="col-md-12">
                                     <label for="id">아이디 <small>*필수</small></label>
-                                    <input type="text" id="id" placeholder="아이디" class="form-control">
+                                    <input type="text" id="id" name="id" placeholder="아이디" class="form-control">
                                     <input type="button" value="중복확인" id="check_id" class="form-control" onclick="idCheck()">
                                     <span id="check_result"></span>
                                 </div>
