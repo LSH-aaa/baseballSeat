@@ -257,7 +257,8 @@ public class BoardDAO {
     }
 
     // 전체 게시글 수
-    public int selectAllBoardCount(String searchType, String SearchText) {
+    public int selectAllBoardCount(String searchType, String SearchText, String type) {
+        String baseSql = "";
         String sql = "";
 
         int boardCnt = 0;
@@ -276,34 +277,79 @@ public class BoardDAO {
                 //       name = 작성자
                 switch (searchType) {
                     case "all" :
-                        sql = "select count(*) from board where title like concat('%', ?, '%') or content like concat('%', ?, '%') order by num desc";
-                        pstmt = conn.prepareStatement(sql);
-                        pstmt.setString(1, "%" + SearchText + "%");
-                        pstmt.setString(2, "%" + SearchText + "%");
+                        baseSql = "select count(*) from board where title like ? or content like ? ";
+                        // 조건에 따라 SQL을 동적으로 구성
+                        if (type == null || type.isEmpty()) {
+                            sql = baseSql;
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.setString(1, "%" + SearchText + "%");
+                            pstmt.setString(2, "%" + SearchText + "%");
+                        } else {
+                            sql = baseSql + "and type = ?";  // type 조건이 있을 때
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.setString(1, "%" + SearchText + "%");
+                            pstmt.setString(2, "%" + SearchText + "%");
+                            pstmt.setString(3, type);
+                        }
                         break;
 
                     case "title" :
-                        sql = "select count(*) from board where title like concat('%', ?, '%') order by num desc";
-                        pstmt = conn.prepareStatement(sql);
-                        pstmt.setString(1, "%" + SearchText + "%");
+                        baseSql = "select count(*) from board where title like ? ";
+                        // 조건에 따라 SQL을 동적으로 구성
+                        if (type == null || type.isEmpty()) {
+                            sql = baseSql;
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.setString(1, "%" + SearchText + "%");
+                        } else {
+                            sql = baseSql + "and type = ?";  // type 조건이 있을 때
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.setString(1, "%" + SearchText + "%");
+                            pstmt.setString(2, type);
+                        }
                         break;
 
                     case "content" :
-                        sql = "select count(*) from board where content like concat('%', ?, '%') order by num desc";
-                        pstmt = conn.prepareStatement(sql);
-                        pstmt.setString(1, "%" + SearchText + "%");
+                        baseSql = "select count(*) from board where content like ? ";
+                        // 조건에 따라 SQL을 동적으로 구성
+                        if (type == null || type.isEmpty()) {
+                            sql = baseSql;
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.setString(1, "%" + SearchText + "%");
+                        } else {
+                            sql = baseSql + "and type = ?";  // type 조건이 있을 때
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.setString(1, "%" + SearchText + "%");
+                            pstmt.setString(2, type);
+                        }
                         break;
 
                     case "nickname" :
-                        sql = "select count(*) from members m inner join board b on m.id=b.id where m.nickname like concat('%', ?, '%')";
-                        pstmt = conn.prepareStatement(sql);
-                        pstmt.setString(1, "%" + SearchText + "%");
+                        baseSql = "select count(*) from members m inner join board b on m.id=b.id where m.nickname like ? ";
+                        // 조건에 따라 SQL을 동적으로 구성
+                        if (type == null || type.isEmpty()) {
+                            sql = baseSql;
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.setString(1, "%" + SearchText + "%");
+                        } else {
+                            sql = baseSql + "and type = ? ";  // type 조건이 있을 때
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.setString(1, "%" + SearchText + "%");
+                            pstmt.setString(2, type);
+                        }
                         break;
                 } //switch
             } else {
                 // 전체 리스트 조회
-                sql = "select count(*) from board";
-                pstmt = conn.prepareStatement(sql);
+                baseSql = "select count(*) from board ";
+                // 조건에 따라 SQL을 동적으로 구성
+                if (type == null || type.isEmpty()) {
+                    sql = baseSql;
+                    pstmt = conn.prepareStatement(sql);
+                } else {
+                    sql = baseSql + "where type = ?";  // type 조건이 있을 때
+                    pstmt = conn.prepareStatement(sql);
+                    pstmt.setString(1, type);
+                }
             }
             rs = pstmt.executeQuery();
 

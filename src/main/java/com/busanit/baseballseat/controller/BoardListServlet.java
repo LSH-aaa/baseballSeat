@@ -38,7 +38,7 @@ public class BoardListServlet extends HttpServlet {
         }
         BoardDAO dao = new BoardDAO();
         // 전체 게시글 수
-        int totalCnt = dao.selectAllBoardCount(searchType, searchText);
+        int totalCnt = dao.selectAllBoardCount(searchType, searchText, type);
 
         // 페이징 관련 값 계산(생성자 호출)
         PageHandler pageHandler = new PageHandler(totalCnt, currPage);
@@ -53,6 +53,7 @@ public class BoardListServlet extends HttpServlet {
         request.setAttribute("boardList", boardList);
         request.setAttribute("searchVO", searchVO);
         request.setAttribute("pageHandler", pageHandler);
+        request.setAttribute("type", type);
         request.getRequestDispatcher(url).forward(request, response);
     }
 

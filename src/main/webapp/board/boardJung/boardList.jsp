@@ -148,25 +148,25 @@
 				<nav aria-label="Page navigation example">
 					<ul class="pagination justify-content-center">
 						<li class="page-item">
-							<a class="page-link ${pageHandler.currPage == 1 ? "disabled" : ""}" href="/board/list?currPage=1">처음으로</a>
+							<a class="page-link ${pageHandler.currPage == 1 ? "disabled" : ""}" href="/board/list?currPage=1&type=${type}">처음으로</a>
 						</li>
 						<c:if test="${pageHandler.showPrev}">
 							<li class="page-item">
-								<a class="page-link" href="/board/list?currPage=${pageHandler.beginPage - 1}">이전</a>
+								<a class="page-link" href="/board/list?currPage=${pageHandler.beginPage - 1}&type=${type}">이전</a>
 							</li>
 						</c:if>
 						<c:forEach var="i" begin="${pageHandler.beginPage}" end="${pageHandler.endPage}">
 							<li class="page-item ${pageHandler.currPage == i ? "active" : ""}">
-								<a class="page-link" href="/board/list?currPage=${i}">${i}</a>
+								<a class="page-link" href="/board/list?currPage=${i}&type=${type}">${i}</a>
 							</li>
 						</c:forEach>
 						<c:if test="${pageHandler.showNext}">
 							<li class="page-item">
-								<a class="page-link" href="/board/list?currPage=${pageHandler.endPage + 1}">다음</a>
+								<a class="page-link" href="/board/list?currPage=${pageHandler.endPage + 1}&type=${type}">다음</a>
 							</li>
 						</c:if>
 						<li class="page-item">
-							<a class="page-link" href="/board/list?currPage=${pageHandler.totalPage}">마지막으로</a>
+							<a class="page-link" href="/board/list?currPage=${pageHandler.totalPage}&type=${type}">마지막으로</a>
 						</li>
 					</ul>
 				</nav>

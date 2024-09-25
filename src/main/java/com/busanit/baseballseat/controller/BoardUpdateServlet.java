@@ -16,7 +16,7 @@ public class BoardUpdateServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String num = request.getParameter("num");
 
-        String url = "/board/boardJung/boardUpdate2.jsp";
+        String url = "/board/boardJung/boardUpdate.jsp";
 
         BoardDAO dao = new BoardDAO();
         BoardVO board = dao.selectOneBoard(num);
