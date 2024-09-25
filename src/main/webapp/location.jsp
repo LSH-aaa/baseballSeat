@@ -74,7 +74,20 @@
                         <!--about=위치-->
                         <li><a href="location.jsp">위치</a></li>
                         <!--contact = 로그인/회원가입-->
-                        <li><a href="lognregister.jsp">로그인/회원가입</a></li>
+                        <c:choose>
+                            <c:when test="${sessionScope.id != null}">
+                                <li><a href="/board/logout">로그아웃</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li class="has-dropdown">
+                                    <a href="#">로그인/회원가입</a>
+                                    <ul class="dropdown">
+                                        <li><a href="/board/login">로그인</a></li>
+                                        <li><a href="/board/register">회원가입</a></li>
+                                    </ul>
+                                </li>
+                            </c:otherwise>
+                        </c:choose>
                         <li><a href="#">마이페이지</a></li>
                     </ul>
                 </div>

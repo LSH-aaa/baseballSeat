@@ -23,8 +23,8 @@ function addQnA(title, content, author) {
     let qna = {
         id: newId,
         title: title,
-        content: content,
         author: maskName(author),
+        name: name,
         writedate: writedate,
         readcount: 0
     };

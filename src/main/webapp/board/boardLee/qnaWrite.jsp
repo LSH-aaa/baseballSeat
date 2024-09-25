@@ -80,13 +80,26 @@
                         <ul class="dropdown">
                             <li><a href="/board/list?type=Y">양도 게시판</a></li>
                             <li><a href="/board/list?type=B">분실물 게시판</a></li>
-                            <li><a href="/board/list?typeqna">Q&A 게시판</a></li>
+                            <li><a href="/QnAList">Q&A 게시판</a></li>
                         </ul>
                     </li>
                     <!--about=위치-->
                     <li><a href="location.jsp">위치</a></li>
                     <!--contact = 로그인/회원가입-->
-                    <li><a href="/board/login">로그인/회원가입</a></li>
+                    <c:choose>
+                        <c:when test="${sessionScope.id != null}">
+                            <li><a href="/board/logout">로그아웃</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="has-dropdown">
+                                <a href="#">로그인/회원가입</a>
+                                <ul class="dropdown">
+                                    <li><a href="/board/login">로그인</a></li>
+                                    <li><a href="/board/register">회원가입</a></li>
+                                </ul>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
                     <li><a href="#">마이페이지</a></li>
                 </ul>
             </div>
@@ -116,7 +129,7 @@
                             <textarea id="content" name="content" rows="10" cols="50" required></textarea><br><br>
 
                             <label for="name">작성자(이름): </label>
-                            <input type="text" id="name" name="name" required><br><br>
+                            <input type="text" id="name" name="name" required alt="${board.name}"><br><br>
 
                             <input type="submit" value="작성하기">
                             <input type="reset" value="초기화하기">

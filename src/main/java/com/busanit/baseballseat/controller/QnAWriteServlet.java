@@ -28,6 +28,7 @@ public class QnAWriteServlet extends HttpServlet {
 
         QnAVO board = new QnAVO();
 
+        board.setId(request.getParameter("id"));
         board.setTitle(request.getParameter("title"));
         board.setContent(request.getParameter("content"));
         board.setName(request.getParameter("name"));
