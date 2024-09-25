@@ -318,8 +318,9 @@ public class BoardDAO {
         return boardCnt;
     }
     // 페이지네이션
-    public List<BoardVO> selectPagingBoard(int offset, int pageSize, String searchType, String SearchText) {
-        String sql = "";
+    public List<BoardVO> selectPagingBoard(int offset, int pageSize, String searchType, String SearchText, String type) {
+        String baseSql = "";
+        String sql;
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -331,45 +332,153 @@ public class BoardDAO {
             if(searchType != null && SearchText.length() > 0) {
                 switch (searchType) {
                     case "all" :
-                        sql = "select b.*, m.nickname from members m inner join board b on m.id=b.id where b.title like ? or b.content like ? order by b.num desc limit ?,?";
-                        pstmt = conn.prepareStatement(sql);
-                        pstmt.setString(1, "%" + SearchText + "%");
-                        pstmt.setString(2, "%" + SearchText + "%");
-                        pstmt.setInt(3, offset);
-                        pstmt.setInt(4, pageSize);
+                        baseSql = "select b.num,\n" +
+                                "(CASE\n" +
+                                "WHEN b.type = 'Y' THEN '양도'\n" +
+                                "WHEN b.type = 'qna' THEN 'Q&A'\n" +
+                                "WHEN b.type = 'B' THEN '분실물'\n" +
+                                "ELSE b.type\n" +
+                                "END) AS type, \n" +
+                                "b.title,\n" +
+                                "b.content,\n" +
+                                "b.readcount,\n" +
+                                "b.writedate, m.nickname from members m inner join board b on m.id=b.id where b.title like ? or b.content like ?";
+                        // 조건에 따라 SQL을 동적으로 구성
+                        if (type == null || type.isEmpty()) {
+                            sql = baseSql + "order by num desc limit ?,?";  // type 조건이 없을 때
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.setString(1, "%" + SearchText + "%");
+                            pstmt.setString(2, "%" + SearchText + "%");
+                            pstmt.setInt(3, offset);
+                            pstmt.setInt(4, pageSize);
+                        } else {
+                            sql = baseSql + "and type = ? order by num desc limit ?,?";  // type 조건이 있을 때
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.setString(1, "%" + SearchText + "%");
+                            pstmt.setString(2, "%" + SearchText + "%");
+                            pstmt.setString(3, type);
+                            pstmt.setInt(4, offset);
+                            pstmt.setInt(5, pageSize);
+                        }
                         break;
 
                     case "title" :
-                        sql = "select b.*, m.nickname from members m inner join board b on m.id=b.id where b.title like ? order by b.num desc limit ?,?";
-                        pstmt = conn.prepareStatement(sql);
-                        pstmt.setString(1, "%" + SearchText + "%");
-                        pstmt.setInt(2, offset);
-                        pstmt.setInt(3, pageSize);
+                        baseSql = "select b.num,\n" +
+                                "(CASE\n" +
+                                "WHEN b.type = 'Y' THEN '양도'\n" +
+                                "WHEN b.type = 'qna' THEN 'Q&A'\n" +
+                                "WHEN b.type = 'B' THEN '분실물'\n" +
+                                "ELSE b.type\n" +
+                                "END) AS type, \n" +
+                                "b.title,\n" +
+                                "b.content,\n" +
+                                "b.readcount,\n" +
+                                "b.writedate, m.nickname from members m inner join board b on m.id=b.id where b.title like ? ";
+                        // 조건에 따라 SQL을 동적으로 구성
+                        if (type == null || type.isEmpty()) {
+                            sql = baseSql + "order by num desc limit ?,?";  // type 조건이 없을 때
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.setString(1, "%" + SearchText + "%");
+                            pstmt.setInt(2, offset);
+                            pstmt.setInt(3, pageSize);
+                        } else {
+                            sql = baseSql + "and type = ? order by num desc limit ?,?";  // type 조건이 있을 때
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.setString(1, "%" + SearchText + "%");
+                            pstmt.setString(2, type);
+                            pstmt.setInt(3, offset);
+                            pstmt.setInt(4, pageSize);
+                        }
                         break;
 
                     case "content" :
-                        sql = "select b.*, m.nickname from members m inner join board b on m.id=b.id where b.content like ? order by b.num desc limit ?,?";
-                        pstmt = conn.prepareStatement(sql);
-                        pstmt.setString(1, "%" + SearchText + "%");
-                        pstmt.setInt(2, offset);
-                        pstmt.setInt(3, pageSize);
+                        baseSql = "select b.num,\n" +
+                                "(CASE\n" +
+                                "WHEN b.type = 'Y' THEN '양도'\n" +
+                                "WHEN b.type = 'qna' THEN 'Q&A'\n" +
+                                "WHEN b.type = 'B' THEN '분실물'\n" +
+                                "ELSE b.type\n" +
+                                "END) AS type, \n" +
+                                "b.title,\n" +
+                                "b.content,\n" +
+                                "b.readcount,\n" +
+                                "b.writedate, m.nickname from members m inner join board b on m.id=b.id where b.content like ? ";
+                        // 조건에 따라 SQL을 동적으로 구성
+                        if (type == null || type.isEmpty()) {
+                            sql = baseSql + "order by num desc limit ?,?";  // type 조건이 없을 때
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.setString(1, "%" + SearchText + "%");
+                            pstmt.setInt(2, offset);
+                            pstmt.setInt(3, pageSize);
+                        } else {
+                            sql = baseSql + "and type = ? order by num desc limit ?,?";  // type 조건이 있을 때
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.setString(1, "%" + SearchText + "%");
+                            pstmt.setString(2, type);
+                            pstmt.setInt(3, offset);
+                            pstmt.setInt(4, pageSize);
+                        }
                         break;
 
                     case "nickname" :
-                        sql = "select b.*, m.nickname from members m inner join board b on m.id=b.id where m.nickname like ? order by b.num limit ?,?";
-                        pstmt = conn.prepareStatement(sql);
-                        pstmt.setString(1, "%" + SearchText + "%");
-                        pstmt.setInt(2, offset);
-                        pstmt.setInt(3, pageSize);
+                        baseSql = "select b.num,\n" +
+                                "(CASE\n" +
+                                "WHEN b.type = 'Y' THEN '양도'\n" +
+                                "WHEN b.type = 'qna' THEN 'Q&A'\n" +
+                                "WHEN b.type = 'B' THEN '분실물'\n" +
+                                "ELSE b.type\n" +
+                                "END) AS type, \n" +
+                                "b.title,\n" +
+                                "b.content,\n" +
+                                "b.readcount,\n" +
+                                "b.writedate, m.nickname from members m inner join board b on m.id=b.id where m.nickname like ? ";
+
+                        // 조건에 따라 SQL을 동적으로 구성
+                        if (type == null || type.isEmpty()) {
+                            sql = baseSql + "order by num desc limit ?,?";  // type 조건이 없을 때
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.setString(1, "%" + SearchText + "%");
+                            pstmt.setInt(2, offset);
+                            pstmt.setInt(3, pageSize);
+                        } else {
+                            sql = baseSql + "and type = ? order by num desc limit ?,?";  // type 조건이 있을 때
+                            pstmt = conn.prepareStatement(sql);
+                            pstmt.setString(1, "%" + SearchText + "%");
+                            pstmt.setString(2, type);
+                            pstmt.setInt(3, offset);
+                            pstmt.setInt(4, pageSize);
+                        }
                         break;
                 }//switch
             } else {
                 // 전체 리스트 조회
-                sql = "select b.*, m.nickname from members m inner join board b on m.id=b.id order by b.num desc limit ?,?";
-                pstmt = conn.prepareStatement(sql);
-                pstmt.setInt(1, offset);
-                pstmt.setInt(2, pageSize);
+                baseSql = "select b.num,\n" +
+                        "(CASE\n" +
+                        "WHEN b.type = 'Y' THEN '양도'\n" +
+                        "WHEN b.type = 'qna' THEN 'Q&A'\n" +
+                        "WHEN b.type = 'B' THEN '분실물'\n" +
+                        "ELSE b.type\n" +
+                        "END) AS type, \n" +
+                        "b.title,\n" +
+                        "b.content,\n" +
+                        "b.readcount,\n" +
+                        "b.writedate, m.nickname from members m inner join board b on m.id=b.id ";
+
+                // 조건에 따라 SQL을 동적으로 구성
+                if (type == null || type.isEmpty()) {
+                    sql = baseSql + "order by num desc limit ?,?";  // type 조건이 없을 때
+                    pstmt = conn.prepareStatement(sql);
+                    pstmt.setInt(1, offset);
+                    pstmt.setInt(2, pageSize);
+                } else {
+                    sql = baseSql + "and type = ? order by num desc limit ?,?";  // type 조건이 있을 때
+                    pstmt = conn.prepareStatement(sql);
+                    pstmt.setString(1, type);
+                    pstmt.setInt(2, offset);
+                    pstmt.setInt(3, pageSize);
+                }
             }
+
             rs = pstmt.executeQuery();
 
             while(rs.next()) {

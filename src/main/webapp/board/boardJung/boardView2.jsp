@@ -41,6 +41,8 @@
 	<!--[if lt IE 9]>
 	<script src="../../js/respond.min.js"></script>
 	<![endif]-->
+	<!-- 유효성 검사 -->
+	<script type="text/javascript" src="../../js/board.js"></script>
 
 	</head>
 	<body>

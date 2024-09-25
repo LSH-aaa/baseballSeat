@@ -48,7 +48,7 @@ public class BoardListServlet extends HttpServlet {
 
         //List<BoardVO> boardList = dao.selectAllBoard(type);
         //List<BoardVO> boardList = dao.selectSearchBoard(searchType, searchText);
-        List<BoardVO> boardList = dao.selectPagingBoard(offset, pageHandler.getPageSize(), searchType, searchText);
+        List<BoardVO> boardList = dao.selectPagingBoard(offset, pageHandler.getPageSize(), searchType, searchText, type);
 
         request.setAttribute("boardList", boardList);
         request.setAttribute("searchVO", searchVO);
