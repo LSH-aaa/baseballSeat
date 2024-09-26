@@ -100,8 +100,8 @@
 						<th>카테고리</th>
 						<td>
 							<select name="type">
-								<option  value="Y">양도하기</option>
-								<option value="B">분실물</option>
+								<option value="Y" ${board.type == 'Y' ? 'selected' : ""}>양도하기</option>
+								<option value="B" ${board.type == 'B' ? 'selected' : ""}>분실물</option>
 							</select>
 						</td>
 					</tr>
@@ -122,7 +122,7 @@
 				</table>
 				<br><br>
 				<input type="submit" value="수정" onclick="return boardCheck()">
-				<input type="button" value="목록" onclick="location.href='/board/list'">
+				<input type="button" value="목록" onclick="location.href='/board/list?type=${type}'">
 			</form>
 		</div>
 		<br><br>

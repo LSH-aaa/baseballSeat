@@ -164,7 +164,7 @@
 					<tr>
 						<td class="col">${board.num}</td>
 						<td class="col">${board.type}</td>
-						<td><a href="/board/view?num=${board.num}">${board.title}</a></td>
+						<td><a href="/board/view?num=${board.num}&type=${type}">${board.title}</a></td>
 						<td class="col">${board.nickname}</td>
 						<td><fmt:formatDate pattern="yyyy.MM.dd hh:mm:ss" value="${board.writedate}"/></td>
 						<td class="col">${board.readcount}</td>

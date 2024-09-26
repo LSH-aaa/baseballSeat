@@ -122,10 +122,10 @@
 			</table>
 			<br>
 			<c:if test="${sessionScope.id == board.id}">
-				<input type="button" value="게시글 수정" onclick="location.href='/board/update?num=${board.num}'">
-				<input type="button" value="게시글 삭제" onclick="return checkDelete('/board/delete?num=${board.num}')">
+				<input type="button" value="게시글 수정" onclick="location.href='/board/update?num=${board.num}&type=${type}'">
+				<input type="button" value="게시글 삭제" onclick="return checkDelete('/board/delete?num=${board.num}&type=${type}')">
 			</c:if>
-			<input type="button" value="목록" onclick="location.href='/board/list'">
+			<input type="button" value="목록" onclick="location.href='/board/list?type=${type}'">
 		</div>
 		<br><br>
 		<!-- 기업광고 부분 : 높이 조금 줄이기-->
