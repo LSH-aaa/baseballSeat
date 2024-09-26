@@ -1,4 +1,4 @@
-package com.busanit.baseballseat.controller;
+package com.busanit.baseballseat.controller.QnABoard;
 
 import com.busanit.baseballseat.dao.BoardDAO;
 import com.busanit.baseballseat.dao.QnADAO;
