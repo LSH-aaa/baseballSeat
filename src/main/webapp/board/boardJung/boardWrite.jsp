@@ -60,7 +60,7 @@
 						<ul class="dropdown">
 							<li><a href="/board/list?type=Y">양도 게시판</a></li>
 							<li><a href="/board/list?type=B">분실물 게시판</a></li>
-							<li><a href="/QnAList">Q&A 게시판</a></li>
+							<li><a href="/board/boardLee/qnaList.jsp">Q&A 게시판</a></li>
 						</ul>
 					</li>
 					<!--about=위치-->
@@ -95,9 +95,6 @@
 
 	<div id="fh5co-work">
 		<div class="container_board">
-			<div class="col-md-12">
-				<h3 class="title animate-box">글쓰기</h3>
-			</div>
 			<form action="/board/write" method="post">
 				<table>
 					<tr>

@@ -7,6 +7,23 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Shift &mdash; Free Website Template, Free HTML5 Template by FreeHTML5.co</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FreeHTML5.co" />
+
+	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"> -->
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="../../css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -60,7 +77,7 @@
 						<ul class="dropdown">
 							<li><a href="/board/list?type=Y">양도 게시판</a></li>
 							<li><a href="/board/list?type=B">분실물 게시판</a></li>
-							<li><a href="/QnAList">Q&A 게시판</a></li>
+							<li><a href="/board/boardLee/qnaList.jsp">Q&A 게시판</a></li>
 						</ul>
 					</li>
 					<!--about=위치-->
@@ -96,7 +113,17 @@
 	<div id="fh5co-work">
 		<div class="container_board">
 			<div class="col-md-12">
-				<h3 class="title animate-box">게시판</h3>
+				<c:choose>
+				<c:when test="${type == 'Y'}">
+				<h3 class="title animate-box">양도 게시판</h3>
+				</c:when>
+				<c:when test="${type == 'B'}">
+				<h3 class="title animate-box">분실물 게시판</h3>
+				</c:when>
+				<c:otherwise>
+				<h3 class="title animate-box">전체 게시판</h3> 	<!--혹시나 하고 넣는 전체 게시판..-->
+				</c:otherwise>
+				</c:choose>
 			</div>
 			<div class="header">
 				<div>
@@ -137,7 +164,7 @@
 					<tr>
 						<td class="col">${board.num}</td>
 						<td class="col">${board.type}</td>
-						<td><a href="/board/view?num=${board.num}">${board.title}</a></td>
+						<td><a href="/board/view?num=${board.num}&type=${type}">${board.title}</a></td>
 						<td class="col">${board.nickname}</td>
 						<td><fmt:formatDate pattern="yyyy.MM.dd hh:mm:ss" value="${board.writedate}"/></td>
 						<td class="col">${board.readcount}</td>

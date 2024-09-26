@@ -15,6 +15,7 @@ public class BoardDeleteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String num = request.getParameter("num");
+        String type = request.getParameter("type");
 
         BoardDAO dao = new BoardDAO();
         dao.deleteBoard(num);
@@ -24,7 +25,7 @@ public class BoardDeleteServlet extends HttpServlet {
 
         out.println("<script language='javascript'>");
         out.println("alert('삭제가 완료되었습니다');");
-        out.println("location.href='/board/list';"); // alert 창이 닫힌 후 리다이렉트
+        out.println("location.href='/board/list?type=" + type +"';"); // alert 창이 닫힌 후 리다이렉트
         out.println("</script>");
     }
 

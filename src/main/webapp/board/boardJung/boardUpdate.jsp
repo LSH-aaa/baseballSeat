@@ -58,7 +58,7 @@
 						<ul class="dropdown">
 							<li><a href="/board/list?type=Y">양도 게시판</a></li>
 							<li><a href="/board/list?type=B">분실물 게시판</a></li>
-							<li><a href="/QnAList">Q&A 게시판</a></li>
+							<li><a href="/board/boardLee/qnaList.jsp">Q&A 게시판</a></li>
 						</ul>
 					</li>
 					<!--about=위치-->
@@ -93,9 +93,6 @@
 
 	<div id="fh5co-work">
 		<div class="container_board">
-			<div class="col-md-12">
-				<h3 class="title animate-box">글쓰기</h3>
-			</div>
 			<form action="/board/update" method="post">
 				<input type="hidden" name="num" value="${board.num}">
 				<table>
@@ -103,8 +100,8 @@
 						<th>카테고리</th>
 						<td>
 							<select name="type">
-								<option  value="Y">양도하기</option>
-								<option value="B">분실물</option>
+								<option value="Y" ${board.type == 'Y' ? 'selected' : ""}>양도하기</option>
+								<option value="B" ${board.type == 'B' ? 'selected' : ""}>분실물</option>
 							</select>
 						</td>
 					</tr>
@@ -125,7 +122,7 @@
 				</table>
 				<br><br>
 				<input type="submit" value="수정" onclick="return boardCheck()">
-				<input type="button" value="목록" onclick="location.href='/board/list'">
+				<input type="button" value="목록" onclick="location.href='/board/list?type=${type}'">
 			</form>
 		</div>
 		<br><br>

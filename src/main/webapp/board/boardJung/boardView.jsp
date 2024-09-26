@@ -61,7 +61,7 @@
 						<ul class="dropdown">
 							<li><a href="/board/list?type=Y">양도 게시판</a></li>
 							<li><a href="/board/list?type=B">분실물 게시판</a></li>
-							<li><a href="/QnAList">Q&A 게시판</a></li>
+							<li><a href="/board/boardLee/qnaList.jsp">Q&A 게시판</a></li>
 						</ul>
 					</li>
 					<!--about = 위치-->
@@ -97,7 +97,17 @@
 	<div id="fh5co-work">
 		<div class="container_board">
 			<div class="col-md-12">
-				<h3 class="title animate-box">게시판</h3>
+				<c:choose>
+					<c:when test="${type == 'Y'}">
+						<h3 class="title animate-box">양도 게시판</h3>
+					</c:when>
+					<c:when test="${type == 'B'}">
+						<h3 class="title animate-box">분실물 게시판</h3>
+					</c:when>
+					<c:otherwise>
+						<h3 class="title animate-box">전체 게시판</h3> 	<!--혹시나 하고 넣는 전체 게시판..-->
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<table>
 				<tr>
@@ -125,10 +135,10 @@
 			</table>
 			<br>
 			<c:if test="${sessionScope.id == board.id}">
-				<input type="button" value="게시글 수정" onclick="location.href='/board/update?num=${board.num}'">
-				<input type="button" value="게시글 삭제" onclick="return checkDelete('/board/delete?num=${board.num}')">
+				<input type="button" value="게시글 수정" onclick="location.href='/board/update?num=${board.num}&type=${type}'">
+				<input type="button" value="게시글 삭제" onclick="return checkDelete('/board/delete?num=${board.num}&type=${type}')">
 			</c:if>
-			<input type="button" value="목록" onclick="location.href='/board/list'">
+			<input type="button" value="목록" onclick="location.href='/board/list?type=${type}'">
 		</div>
 		<br><br>
 		<!-- 기업광고 부분 : 높이 조금 줄이기-->
