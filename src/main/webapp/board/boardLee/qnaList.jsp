@@ -117,8 +117,8 @@
             <table>
                 <thead>
                 <tr>
+                    <th class="col">번호</th>
                     <th class="col">제목</th>
-                    <th class="col">내용</th>
                     <th>작성자</th>
                     <th>작성일</th>
                     <th class="col">조회수</th>
@@ -132,13 +132,13 @@
                 </c:if>
                 <c:forEach var="board" items="${qna}">
                     <tr>
+                        <td style="text-align: center">${board.num}</td>
                         <td class="col">
                             <a class="no-hover" href="/QnAView?num=${board.num}"
                                style="color: darkturquoise;"><b>${board.title}</b></a>
                         </td>
-                        <td class="col">${board.content}</td>
-                        <td class="col">${board.name}</td>
-                        <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${board.writedate}" /></td>
+                        <td class="col">${board.nickname}</td>
+                        <td style="text-align: center"><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${board.writedate}" /></td>
                         <td class="col">${board.readcount}</td>
                     </tr>
                 </c:forEach>
