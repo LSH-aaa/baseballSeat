@@ -139,7 +139,7 @@
             </table>
             <br>
             <input type="button" value="게시글 수정" onclick="location.href='/QnAUpdate?num=${board.num}'">
-            <input type="button" value="게시글 삭제" onclick="return checkDelete('/QnADelete?num=${board.num}')">
+            <input type="button" value="게시글 삭제" onclick="location.href='/QnADelete?num=${board.num}'">
             <input type="button" value="목록으로 돌아가기" onclick="location.href='/QnAList'">
         </div>
     </div>
