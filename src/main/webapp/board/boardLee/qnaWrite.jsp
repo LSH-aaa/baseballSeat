@@ -100,7 +100,7 @@
                             </li>
                         </c:otherwise>
                     </c:choose>
-                    <li><a href="#">마이페이지</a></li>
+                    <li><a href="#" onclick="alert('⚠️공사중⚠️')">마이페이지</a></li>
                 </ul>
             </div>
             <div class="fh5co-top-social menu-1 text-right">
