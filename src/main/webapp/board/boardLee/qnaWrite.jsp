@@ -115,7 +115,6 @@
                     </table>
                     <br><br>
                     <input type="submit" value="작성하기">
-                    <input type="reset" value="초기화하기">
                     <input type="button" value="목록" onclick="location.href='/QnAList'">
                 </form>
             </div>

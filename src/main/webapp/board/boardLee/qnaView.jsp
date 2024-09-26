@@ -112,7 +112,9 @@
         <!-- QnA게시판 상세보기 -->
         <div id="fh5co-work">
             <div class="container_board">
-                <h1 style="text-align: center">QnA 상세보기</h1>
+                <div class="col-md-12">
+                    <h3 class="title animate-box">QnA</h3>
+                </div>
                 <table>
                     <tr>
                         <th>작성자</th>
