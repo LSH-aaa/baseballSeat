@@ -5,7 +5,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Shift &mdash; Free Website Template, Free HTML5 Template by FreeHTML5.co</title>
+	<title>게시판 글쓰기</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="../../css/animate.css">
@@ -17,7 +17,6 @@
 	<link rel="stylesheet" href="../../css/style.css">
 	<!-- Board -->
 	<link rel="stylesheet" href="../../css/board.css">
-
 	<!-- Modernizr JS -->
 	<script src="../../js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
@@ -60,7 +59,7 @@
 							<ul class="dropdown">
 								<li><a href="/board/list?type=Y">양도 게시판</a></li>
 								<li><a href="/board/list?type=B">분실물 게시판</a></li>
-								<li><a href="/board/boardLee/qnaList.jsp">Q&A 게시판</a></li>
+								<li><a href="/QnAList">Q&A 게시판</a></li>
 							</ul>
 						</li>
 						<!--about=위치-->
@@ -92,9 +91,12 @@
 				</div>
 			</div>
 		</nav>
-
+	<!-- 게시판 글쓰기 -->
 	<div id="fh5co-work">
 		<div class="container_board">
+			<div class="col-md-12">
+				<h3 class="title animate-box">글쓰기</h3>
+			</div>
 			<form action="/board/write" method="post">
 				<table>
 					<tr>
@@ -127,6 +129,7 @@
 				<input type="button" value="목록" onclick="location.href='/board/list'">
 			</form>
 		</div>
+	</div>
 	<br><br>
 	<!-- 기업광고 부분 -->
 	<div id="fh5co-author" class="fh5co-bg-section">

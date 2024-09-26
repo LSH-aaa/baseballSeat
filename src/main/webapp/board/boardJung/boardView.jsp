@@ -61,7 +61,7 @@
 							<ul class="dropdown">
 								<li><a href="/board/list?type=Y">양도 게시판</a></li>
 								<li><a href="/board/list?type=B">분실물 게시판</a></li>
-								<li><a href="/board/boardLee/qnaList.jsp">Q&A 게시판</a></li>
+								<li><a href="/QnAList">Q&A 게시판</a></li>
 							</ul>
 						</li>
 						<!--about = 위치-->
@@ -93,9 +93,12 @@
 				</div>
 			</div>
 		</nav>
-
+	<!-- 게시판 상세보기-->
 	<div id="fh5co-work">
 		<div class="container_board">
+			<div class="col-md-12">
+				<h3 class="title animate-box">게시판</h3>
+			</div>
 			<table>
 				<tr>
 					<th>작성자</th>
@@ -126,7 +129,7 @@
 			<input type="button" value="목록" onclick="location.href='/board/list'">
 		</div>
 	<br><br>
-	<!-- 기업광고 부분 : 높이 조금 줄이기-->
+	<!-- 기업광고 부분 -->
 	<div id="fh5co-author" class="fh5co-bg-section">
 		<div class="container">
 			<div class="row animate-box">

@@ -24,7 +24,7 @@ public class QnADAO {
                 "       content,\n" +
                 "       readcount,\n" +
                 "       writedate,\n" +
-                "       (select nickname from members mm where mm.id = b.id) AS nickname\n" +
+                "       (select nickname from members mm where mm.id = b.id) AS nickname\n " +
                 "from board b\n";
 
 
@@ -34,7 +34,7 @@ public class QnADAO {
         if (type == null || type.isEmpty()) {
             sql = baseSql + "order by num desc";  // type 조건이 없을 때
         } else {
-            sql = baseSql + "where type = ? order by num desc";  // type 조건이 있을 때
+            sql = baseSql + "where type = 'qna' order by num desc";  // type 조건이 있을 때
         }
 
         List<QnAVO> boardList = new ArrayList<>();
@@ -347,6 +347,7 @@ public class QnADAO {
                 board.setContent(rs.getString("content"));
                 board.setReadcount(rs.getInt("readcount"));
                 board.setWritedate(rs.getTimestamp("writedate"));
+                board.setNickname(rs.getString("nickname"));
                 board.setId(rs.getString("id"));
 
                 boardList.add(board);

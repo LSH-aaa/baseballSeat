@@ -2,28 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
-	<head>
-	<meta charset="utf-8">
+<head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Shift &mdash; Free Website Template, Free HTML5 Template by FreeHTML5.co</title>
+	<title>게시판 리스트</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
-	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-	<meta name="author" content="FreeHTML5.co" />
-
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
-
-	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"> -->
-	
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="../../css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -34,19 +16,14 @@
 	<link rel="stylesheet" href="../../css/style.css">
 	<!-- Board -->
 	<link rel="stylesheet" href="../../css/board.css">
-
 	<!-- Modernizr JS -->
 	<script src="../../js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="../../js/respond.min.js"></script>
 	<![endif]-->
-
-	</head>
-	<body>
-		
-	<div class="fh5co-loader"></div>
-	
+</head>
+<body>
 	<div id="page">
 	<!--내비게이션 -->
 		<nav class="fh5co-nav" role="navigation">
@@ -58,7 +35,7 @@
 					<ul>
 						<!--좌석 -->
 						<li class="has-dropdown">
-							<a href="/seat">좌석</a>
+							<a href="/seat">구단</a>
 							<ul class="dropdown">
 								<li><a href="/seatDetail?team=Lotte">롯데 자이언츠</a></li>
 								<li><a href="/seatDetail?team=Samsung">삼성 라이온즈</a></li>
@@ -77,7 +54,7 @@
 							<ul class="dropdown">
 								<li><a href="/board/list?type=Y">양도 게시판</a></li>
 								<li><a href="/board/list?type=B">분실물 게시판</a></li>
-								<li><a href="/board/boardLee/qnaList.jsp">Q&A 게시판</a></li>
+								<li><a href="/QnAList">Q&A 게시판</a></li>
 							</ul>
 						</li>
 						<!--about=위치-->
@@ -109,13 +86,17 @@
 				</div>
 			</div>
 		</nav>
-
+		<!-- 게시판 리스트 -->
 		<div id="fh5co-work">
 			<div class="container_board">
+				<div class="col-md-12">
+					<h3 class="title animate-box">게시판</h3>
+				</div>
 				<div class="header">
 					<div>
 						<input type="button" value="게시글 작성" onclick="location.href='/board/write'">
 					</div>
+					<!-- 검색폼 -->
 					<div class="search">
 						<form action="/board/list" method="post">
 							<input type="hidden" name="currPage" value="${pageHandler.currPage}">
@@ -131,32 +112,33 @@
 						</form>
 					</div>
 				</div>
-			<table>
-				<tr>
-					<th class="col">번호</th>
-					<th class="col">카테고리</th>
-					<th>제목</th>
-					<th class="col">작성자</th>
-					<th>작성일</th>
-					<th class="col">조회수</th>
-				</tr>
-				<c:if test="${boardList.size() <= 0}">
+				<table>
 					<tr>
-						<td colspan="5" style="text-align: center">표시할 내용이 없습니다.</td>
+						<th class="col">번호</th>
+						<th class="col">카테고리</th>
+						<th>제목</th>
+						<th class="col">작성자</th>
+						<th>작성일</th>
+						<th class="col">조회수</th>
 					</tr>
-				</c:if>
-				<c:forEach var="board" items="${boardList}">
-					<tr>
-						<td class="col">${board.num}</td>
-						<td class="col">${board.type}</td>
-						<td><a href="/board/view?num=${board.num}">${board.title}</a></td>
-						<td class="col">${board.nickname}</td>
-						<td><fmt:formatDate pattern="yyyy.MM.dd hh:mm:ss" value="${board.writedate}"/></td>
-						<td class="col">${board.readcount}</td>
-					</tr>
-				</c:forEach>
-			</table>
+					<c:if test="${boardList.size() <= 0}">
+						<tr>
+							<td colspan="5" style="text-align: center">표시할 내용이 없습니다.</td>
+						</tr>
+					</c:if>
+					<c:forEach var="board" items="${boardList}">
+						<tr>
+							<td class="col">${board.num}</td>
+							<td class="col">${board.type}</td>
+							<td><a href="/board/view?num=${board.num}">${board.title}</a></td>
+							<td class="col">${board.nickname}</td>
+							<td><fmt:formatDate pattern="yyyy.MM.dd hh:mm:ss" value="${board.writedate}"/></td>
+							<td class="col">${board.readcount}</td>
+						</tr>
+					</c:forEach>
+				</table>
 			<br>
+				<!-- 페이지네이션 -->
 				<div class="paging">
 					<nav aria-label="Page navigation example">
 						<ul class="pagination justify-content-center">
@@ -186,7 +168,7 @@
 				</div>
 			</div>
 		<br><br>
-	<!-- 기업광고 부분 : 높이 조금 줄이기-->
+	<!-- 기업광고 부분 -->
 	<div id="fh5co-author" class="fh5co-bg-section">
 		<div class="container">
 			<div class="row animate-box">
