@@ -109,7 +109,7 @@
                         </ul>
                     </li>
                     <!--about=위치-->
-                    <li><a href="/location.jsp">위치</a></li>
+                    <li><a href="/location">위치</a></li>
                     <!--contact = 로그인/회원가입-->
                     <c:choose>
                         <c:when test="${sessionScope.id != null}">
