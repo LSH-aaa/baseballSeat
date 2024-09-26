@@ -96,6 +96,19 @@
 
 	<div id="fh5co-work">
 		<div class="container_board">
+			<div class="col-md-12">
+				<c:choose>
+					<c:when test="${type == 'Y'}">
+						<h3 class="title animate-box">양도 게시판</h3>
+					</c:when>
+					<c:when test="${type == 'B'}">
+						<h3 class="title animate-box">분실물 게시판</h3>
+					</c:when>
+					<c:otherwise>
+						<h3 class="title animate-box">전체 게시판</h3> 	<!--혹시나 하고 넣는 전체 게시판..-->
+					</c:otherwise>
+				</c:choose>
+			</div>
 			<table>
 				<tr>
 					<th>작성자</th>
