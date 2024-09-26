@@ -87,7 +87,7 @@
 			<div id="fh5co-work">
 				<div class="container">
 					<div class="row top-line animate-box">
-						<div class="col-md-6 col-md-offset-3 col-md-push-2 text-left fh5co-heading">
+						<div class="col-md-6 col-md-offset-3 col-md-push-2 text-left fh5co-heading" id="seatHead">
 							<h2 class="addfont">⚾구장별 좌석 확인⚾<small>(시야사진 73,650장)</small></h2>
 						</div>
 					</div>

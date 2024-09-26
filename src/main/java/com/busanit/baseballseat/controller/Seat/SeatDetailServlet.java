@@ -10,27 +10,37 @@ public class SeatDetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String team = request.getParameter("team");
+        String url= "";
 
         if(team != null){
             switch (team) {
-                case "Lotte" : response.sendRedirect("/Seat/seat_detail_Lotte.jsp");
-                break;
-                case "Samsung" : response.sendRedirect("/Seat/seat_detail_Samsung.jsp");
-                break;
-                case "KIA" : response.sendRedirect("/Seat/seat_detail_Kia.jsp");
-                break;
-                case "Hanhwa" : response.sendRedirect("/Seat/seat_detail_Hanhwa.jsp");
-                break;
-                case "NC" : response.sendRedirect("/Seat/seat_detail_NC.jsp");
-                break;
-                case "Kium" : response.sendRedirect("/Seat/seat_detail_Kium.jsp");
-                break;
-                case "SSG" : response.sendRedirect("/Seat/seat_detail_SSG.jsp");
-                break;
-                case "KT" : response.sendRedirect("/Seat/seat_detail_KT.jsp");
-                break;
-                case "LD" : response.sendRedirect("/Seat/seat_detail_LD.jsp");
-                break;
+                case "Lotte" : url = "/Seat/seat_detail_Lotte.jsp";
+                    request.getRequestDispatcher(url).forward(request, response);
+                    break;
+                case "Samsung" : url = "/Seat/seat_detail_Samsung.jsp";
+                    request.getRequestDispatcher(url).forward(request, response);
+                    break;
+                case "KIA" : url = "/Seat/seat_detail_Kia.jsp";
+                    request.getRequestDispatcher(url).forward(request, response);
+                    break;
+                case "Hanhwa" : url = "/Seat/seat_detail_Hanhwa.jsp";
+                    request.getRequestDispatcher(url).forward(request, response);
+                    break;
+                case "NC" : url = "/Seat/seat_detail_NC.jsp";
+                    request.getRequestDispatcher(url).forward(request, response);
+                    break;
+                case "Kium" : url = "/Seat/seat_detail_Kium.jsp";
+                    request.getRequestDispatcher(url).forward(request, response);
+                    break;
+                case "SSG" : url = "/Seat/seat_detail_SSG.jsp";
+                    request.getRequestDispatcher(url).forward(request, response);
+                    break;
+                case "KT" : url = "/Seat/seat_detail_KT.jsp";
+                    request.getRequestDispatcher(url).forward(request, response);
+                    break;
+                case "LD" : url = "/Seat/seat_detail_LD.jsp";
+                    request.getRequestDispatcher(url).forward(request, response);
+                    break;
             }
         }
 

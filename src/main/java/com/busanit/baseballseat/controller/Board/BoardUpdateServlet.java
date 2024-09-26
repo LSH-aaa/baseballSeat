@@ -1,4 +1,4 @@
-package com.busanit.baseballseat.controller;
+package com.busanit.baseballseat.controller.Board;
 
 import com.busanit.baseballseat.dao.BoardDAO;
 import com.busanit.baseballseat.dto.BoardVO;
@@ -15,6 +15,7 @@ public class BoardUpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String num = request.getParameter("num");
+        String type = request.getParameter("type");
 
         String url = "/board/boardJung/boardUpdate.jsp";
 
@@ -22,6 +23,7 @@ public class BoardUpdateServlet extends HttpServlet {
         BoardVO board = dao.selectOneBoard(num);
 
         request.setAttribute("board", board);
+        request.setAttribute("type", type);
         request.getRequestDispatcher(url).forward(request, response);
     }
 
@@ -40,7 +42,7 @@ public class BoardUpdateServlet extends HttpServlet {
         BoardDAO dao = new BoardDAO();
         dao.updateBoard(board);
 
-        response.sendRedirect("/board/view?num=" + board.getNum());
+        response.sendRedirect("/board/view?num=" + board.getNum() + "&type=" + board.getType());
 
     }
 }

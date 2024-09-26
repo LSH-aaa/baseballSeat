@@ -48,9 +48,6 @@
     <!--내비게이션 -->
     <nav class="fh5co-nav" role="navigation">
         <div class="container">
-            <div class="col-md-12">
-                <h3 class="title animate-box">QnA 게시판</h3>
-            </div>
             <div class="fh5co-top-logo">
                 <div id="fh5co-logo"><a href="/baseballGive">⚾야구볼래?</a></div>
             </div>
@@ -112,7 +109,9 @@
     <!-- QnA게시판 상세보기 -->
     <div id="fh5co-work">
         <div class="container_board">
-            <h1 style="text-align: center">QnA 상세보기</h1>
+            <div class="col-md-12">
+                <h3 class="title animate-box">QnA 게시판</h3>
+            </div>
             <table>
                 <tr>
                     <th>작성자</th>

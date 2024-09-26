@@ -1,4 +1,4 @@
-package com.busanit.baseballseat.controller;
+package com.busanit.baseballseat.controller.Board;
 
 import com.busanit.baseballseat.dao.BoardDAO;
 import com.busanit.baseballseat.dto.BoardVO;
@@ -30,7 +30,7 @@ public class BoardWriteServlet extends HttpServlet {
         BoardDAO dao = new BoardDAO();
         dao.insertBoard(board);
 
-        response.sendRedirect("/board/list");
+        response.sendRedirect("/board/list?type=" + request.getParameter("type"));
     }
 
 }
