@@ -7,15 +7,15 @@
     <title>위치</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Animate.css -->
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="../css/animate.css">
     <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="../css/icomoon.css">
     <!-- Bootstrap  -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <!-- Theme style  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <!-- Modernizr JS -->
-    <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="../js/modernizr-2.6.2.min.js"></script>
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
     <script src="js/respond.min.js"></script>
@@ -110,9 +110,9 @@
                             <!-- 스크립트 추가 -->
                             <script>
                                 function initMap() {
-                                    var location = { lat: 35.1940, lng: 129.0615 }; // 원하는 위치 좌표
+                                    var location = { lat: 35.9078, lng: 127.7669 }; // lat = 경도, lng = 위도
                                     const map = new google.maps.Map(document.getElementById("map"), {
-                                        zoom: 15,
+                                        zoom: 10,
                                         center: location
                                     });
                                 }

@@ -9,7 +9,7 @@ import java.io.IOException;
 public class LocationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "/location.jsp";
+        String url = "./location/location.jsp";
 
         request.getRequestDispatcher(url).forward(request, response);
     }
