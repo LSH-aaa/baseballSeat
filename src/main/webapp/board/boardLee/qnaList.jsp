@@ -94,7 +94,9 @@
             </div>
             <div class="header">
                 <div>
-                    <input type="button" value="게시글 작성" onclick="location.href='/QnAWrite'">
+                    <c:if test="${sessionScope.id != null}">
+                        <input type="button" value="게시글 작성" onclick="location.href='/QnAWrite'">
+                    </c:if>
                 </div>
                 <!-- 검색 폼 -->
                 <div class="search">
