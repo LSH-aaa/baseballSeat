@@ -1,13 +1,14 @@
-package com.busanit.baseballseat.controller.QnABoard;
+package com.busanit.baseballseat.controller;
 
-import com.busanit.baseballseat.dao.BoardDAO;
-import com.busanit.baseballseat.dto.BoardVO;
+import com.busanit.baseballseat.dao.QnADAO;
+import com.busanit.baseballseat.dto.QnAVO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/QnAWrite")
@@ -23,13 +24,16 @@ public class QnAWriteServlet extends HttpServlet {
         // 한글 깨짐 방지
         request.setCharacterEncoding("utf-8");
 
-        BoardVO board = new BoardVO();
+        HttpSession session = request.getSession();
+        String id = (String)session.getAttribute("id");
 
+        QnAVO board = new QnAVO();
+        board.setId(id);
         board.setTitle(request.getParameter("title"));
         board.setContent(request.getParameter("content"));
-        //board.setName(request.getParameter("name"));
+        board.setName(request.getParameter("name"));
 
-        BoardDAO dao = new BoardDAO();
+        QnADAO dao = new QnADAO();
         dao.insertBoard(board);
 
         // 게시글 작성완료 후 목록 화면으로 이동

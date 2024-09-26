@@ -1,12 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: admin
-  Date: 2024-09-19
-  Time: 오후 2:15
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -46,6 +39,38 @@
     <!--[if lt IE 9]>
     <script src="/js/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+        /* 기본 테이블 스타일 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        /* 테이블 헤더 스타일 */
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        /* 짝수 행 스타일 */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* 홀수 행 스타일 */
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        /* 마우스 오버 시 행 스타일 */
+        tr:hover {
+            background-color: #d1e7fd;
+        }
+
+    </style>
+
 </head>
 <body>
 <div class="fh5co-loader"></div>
@@ -80,13 +105,26 @@
                         <ul class="dropdown">
                             <li><a href="/board/list?type=Y">양도 게시판</a></li>
                             <li><a href="/board/list?type=B">분실물 게시판</a></li>
-                            <li><a href="/board/list?type=qna">Q&A 게시판</a></li>
+                            <li><a href="/QnAList">Q&A 게시판</a></li>
                         </ul>
                     </li>
                     <!--about=위치-->
                     <li><a href="/location.jsp">위치</a></li>
                     <!--contact = 로그인/회원가입-->
-                    <li><a href="/board/login">로그인/회원가입</a></li>
+                    <c:choose>
+                        <c:when test="${sessionScope.id != null}">
+                            <li><a href="/board/logout">로그아웃</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="has-dropdown">
+                                <a href="#">로그인/회원가입</a>
+                                <ul class="dropdown">
+                                    <li><a href="/board/login">로그인</a></li>
+                                    <li><a href="/board/register">회원가입</a></li>
+                                </ul>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
                     <li><a href="#">마이페이지</a></li>
                 </ul>
             </div>
@@ -109,6 +147,22 @@
                             <h3 class="title animate-box">QnA 게시판</h3>
                         </div>
                         <span><a href="/QnAWrite" class="no-hover">글 작성하기</a></span>
+                        <!-- 검색 폼 추가 -->
+                        <div class="search">
+                            <form action="/QnAList" method="post">
+                                <input type="hidden" name="currPage" value="${pageHandler.currPage}">
+                                <select name="searchType">
+                                    <option ${searchVO.searchType == "" ? "selected" : ""}>검색 유형 선택</option>
+                                    <option value="title" ${searchVO.searchType == "title" ? "selected" : ""}>제목</option>
+                                    <option value="content" ${searchVO.searchType == "content" ? "selected" : ""}>내용</option>
+                                    <option value="all" ${searchVO.searchType == "all" ? "selected" : ""}>제목 + 내용</option>
+                                    <option value="name" ${searchVO.searchType == "name" ? "selected" : ""}>작성자</option>
+                                </select>
+                                <input type="text" name="searchText" id="inputSearch"
+                                       placeholder="검색어" value="${searchVO.searchText}">
+                                <button type="submit">검색</button>
+                            </form>
+                        </div>
                         <br>
                         <hr/>
                         <table border="1">
@@ -147,6 +201,37 @@
         </div>
     </div>
 
+    <div class="pagination" style="display: flex; justify-content: center; padding: 20px 0;">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item ${pageHandler.currPage == pageHandler.beginPage ? "disabled" : ""}">
+                    <a class="page-link" href="/QnAList?currPage=1&searchType=${searchVO.searchType}
+                        &searchText=${searchVO.searchText}">처음</a>
+                </li>
+                <c:if test="${pageHandler.showPrev}">
+                    <li class="page-item">
+                        <a class="page-link" href="/QnAList?currPage=${pageHandler.beginPage - 1}&searchType=${searchVO.searchType}&searchText=${searchVO.searchText}">이전</a>
+                    </li>
+                </c:if>
+                <c:forEach var="i" begin="${pageHandler.beginPage}"
+                           end="${pageHandler.endPage}">
+                    <li class="page-item ${pageHandler.currPage == i ? "active" : ""}">
+                        <a class="page-link"
+                           href="/QnAList?currPage=${i}&searchType=${searchVO.searchType}&searchText=${searchVO.searchText}">${i}</a>
+                    </li>
+                </c:forEach>
+                <c:if test="${pageHandler.showNext}">
+                    <li class="page-item">
+                        <a class="page-link" href="/QnAList?currPage=${pageHandler.endPage + 1}&searchType=${searchVO.searchType}&searchText=${searchVO.searchText}">다음</a>
+                    </li>
+                </c:if>
+                <li class="page-item ${pageHandler.currPage == pageHandler.totalPage ? "disabled" : ""}">
+                    <a class="page-link" href="/QnAList?currPage=${pageHandler.totalPage}&searchType=${searchVO.searchType}&searchText=${searchVO.searchText}">마지막</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
     <footer id="fh5co-footer" role="contentinfo">
         <div class="container">
             <div class="row copyright">
@@ -162,10 +247,8 @@
                         <li><a href="#"><i class="icon-linkedin"></i></a></li>
                         <li><a href="#"><i class="icon-dribbble"></i></a></li>
                     </ul>
-
                 </div>
             </div>
-
         </div>
     </footer>
 </div>

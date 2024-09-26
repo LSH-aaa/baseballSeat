@@ -1,7 +1,9 @@
-package com.busanit.baseballseat.controller.QnABoard;
+package com.busanit.baseballseat.controller;
 
 import com.busanit.baseballseat.dao.BoardDAO;
+import com.busanit.baseballseat.dao.QnADAO;
 import com.busanit.baseballseat.dto.BoardVO;
+import com.busanit.baseballseat.dto.QnAVO;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -15,12 +17,12 @@ public class QnAViewServlet extends HttpServlet {
         String num = request.getParameter("num");
         String url = "/board/boardLee/qnaView.jsp";
 
-        BoardDAO dao = new BoardDAO();
+        QnADAO dao = new QnADAO();
 
         // 조회수 증가시키기
         dao.updateReadCount(num);
         // 상세 페이지 불러오기
-        BoardVO board = dao.selectOneBoard(num);
+        QnAVO board = dao.selectOneBoard(num);
 
 
         request.setAttribute("board", board);
@@ -29,19 +31,6 @@ public class QnAViewServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 한글 깨짐 방지
-        request.setCharacterEncoding("utf-8");
 
-        BoardVO board = new BoardVO();
-        board.setNum(Integer.parseInt(request.getParameter("num")));
-        //board.setName(request.getParameter("name"));
-        board.setTitle(request.getParameter("title"));
-        board.setContent(request.getParameter("content"));
-
-        BoardDAO dao = new BoardDAO();
-        dao.updateBoard(board);
-
-        // 게시글 수정완료 후 게시글 상세보기(view) 화면으로 이동
-        response.sendRedirect("/QnAView?num=" + board.getNum());
     }
 }
