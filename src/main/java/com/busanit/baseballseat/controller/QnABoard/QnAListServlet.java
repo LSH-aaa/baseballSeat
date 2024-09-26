@@ -1,8 +1,6 @@
 package com.busanit.baseballseat.controller.QnABoard;
 
-import com.busanit.baseballseat.dao.BoardDAO;
 import com.busanit.baseballseat.dao.QnADAO;
-import com.busanit.baseballseat.dto.BoardVO;
 import com.busanit.baseballseat.dto.QnAVO;
 import com.busanit.baseballseat.dto.SearchVO;
 import util.PageHandler;
@@ -52,7 +50,7 @@ public class QnAListServlet extends HttpServlet {
         // List<QnAVO> boardList = dao.selectSearchBoard(searchType, searchText);
         List<QnAVO> boardList =
                 dao.selectPagingBoard(offset, pageHandler.getPageSize(),
-                        searchType, searchText);
+                        searchType, searchText, "qna");
 
         request.getSession().getAttribute("id");
         request.setAttribute("qna", boardList);
