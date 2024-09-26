@@ -1,4 +1,4 @@
-package com.busanit.baseballseat.controller;
+package com.busanit.baseballseat.controller.Board;
 
 import com.busanit.baseballseat.dao.BoardDAO;
 
@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
-@WebServlet("/QnADelete")
-public class QnADeleteServlet extends HttpServlet {
+@WebServlet("/board/delete")
+public class BoardDeleteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String num = request.getParameter("num");
@@ -18,8 +19,13 @@ public class QnADeleteServlet extends HttpServlet {
         BoardDAO dao = new BoardDAO();
         dao.deleteBoard(num);
 
-        // 게시글 삭제완료 후 게시글 목록으로 이동
-        response.sendRedirect("/QnAList");
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+        out.println("<script language='javascript'>");
+        out.println("alert('삭제가 완료되었습니다');");
+        out.println("location.href='/board/list';"); // alert 창이 닫힌 후 리다이렉트
+        out.println("</script>");
     }
 
     @Override

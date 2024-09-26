@@ -34,7 +34,7 @@ public class QnADAO {
         if (type == null || type.isEmpty()) {
             sql = baseSql + "order by num desc";  // type 조건이 없을 때
         } else {
-            sql = baseSql + "where type = ? order by num desc";  // type 조건이 있을 때
+            sql = baseSql + "where type = 'qna' order by num desc";  // type 조건이 있을 때
         }
 
         List<QnAVO> boardList = new ArrayList<>();

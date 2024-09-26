@@ -168,9 +168,9 @@
                         <table border="1">
                             <thead>
                             <tr>
+                                <th>번호</th>
                                 <th>제목</th>
-                                <th>내용</th>
-                                <th>작성자</th>
+                                <th>작성자(닉네임)</th>
                                 <th>작성일</th>
                                 <th>조회수</th>
                             </tr>
@@ -183,12 +183,12 @@
                             </c:if>
                             <c:forEach var="board" items="${qna}">
                                 <tr>
+                                    <td>${board.num}</td>
                                     <td>
                                         <a class="no-hover" href="/QnAView?num=${board.num}"
                                            style="color: darkturquoise;"><b>${board.title}</b></a>
                                     </td>
-                                    <td>${board.content}</td>
-                                    <td>${board.name}</td>
+                                    <td>${board.nickname}</td>
                                     <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${board.writedate}" /></td>
                                     <td>${board.readcount}</td>
                                 </tr>

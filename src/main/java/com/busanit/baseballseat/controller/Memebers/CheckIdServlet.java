@@ -1,4 +1,4 @@
-package com.busanit.baseballseat.controller;
+package com.busanit.baseballseat.controller.Memebers;
 
 import com.busanit.baseballseat.dao.MembersDAO;
 

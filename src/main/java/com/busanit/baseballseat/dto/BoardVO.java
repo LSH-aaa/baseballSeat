@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 
 public class BoardVO {
     public int num;
+    public String type;
     public String title;
     public String content;
     public int readcount;
@@ -17,6 +18,14 @@ public class BoardVO {
 
     public void setNum(int num) {
         this.num = num;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getTitle() {

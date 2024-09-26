@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>인덱스</title>
@@ -23,266 +25,260 @@
     <![endif]-->
 </head>
 <body>
-
-<div class="fh5co-loader"></div>
-
-<div id="page">
-    <!--내비게이션 -->
-    <nav class="fh5co-nav" role="navigation">
-        <div class="container">
-            <div class="fh5co-top-logo">
-                <div id="fh5co-logo"><a href="/baseballGive">야구볼래?</a></div>
-            </div>
-            <div class="fh5co-top-menu menu-1 text-center">
-                <ul>
-                    <!--좌석 -->
-                    <li class="has-dropdown">
-                        <a href="/seat.jsp">좌석</a>
-                        <ul class="dropdown">
-                            <li><a href="/seat_detail_Lotte.jsp">롯데 자이언츠</a></li>
-                            <li><a href="#">삼성 라이온즈</a></li>
-                            <li><a href="#">기아 타이거즈</a></li>
-                            <li><a href="#">한화 이글스</a></li>
-                            <li><a href="#">NC 다이노스</a></li>
-                            <li><a href="#">KT 위즈</a></li>
-                            <li><a href="#">SSG 랜더스</a></li>
-                            <li><a href="#">LG 트윈스/두산 베어스</a></li>
-                            <li><a href="#">키움 히어로즈</a></li>
-                        </ul>
-                    </li>
-                    <!--게시판 드랍다운 -->
-                    <li class="has-dropdown">
-                        <a href="#">게시판</a>
-                        <ul class="dropdown">
-                            <li><a href="/board/list?type=Y">양도 게시판</a></li>
-                            <li><a href="/board/list?type=B">분실물 게시판</a></li>
-                            <li><a href="/QnAList">Q&A 게시판</a></li>
-                        </ul>
-                    </li>
-                    <!--about=위치-->
-                    <li><a href="/location.jsp">위치</a></li>
-                    <!--contact = 로그인/회원가입-->
-                    <c:choose>
-                        <c:when test="${sessionScope.id != null}">
-                            <li><a href="/board/logout">로그아웃</a></li>
-                        </c:when>
-                        <c:otherwise>
-                            <li class="has-dropdown">
-                                <a href="#">로그인/회원가입</a>
-                                <ul class="dropdown">
-                                    <li><a href="/board/login">로그인</a></li>
-                                    <li><a href="/board/register">회원가입</a></li>
-                                </ul>
-                            </li>
-                        </c:otherwise>
-                    </c:choose>
-                    <li><a href="#" onclick="alert('⚠️공사중⚠️')">마이페이지</a></li>
-                </ul>
-            </div>
-            <div class="fh5co-top-social menu-1 text-right">
-                <ul class="fh5co-social">
-                    <li><a href="#"><i class="icon-twitter"></i></a></li>
-                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                    <li><a href="#"><i class="icon-github"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div id="fh5co-work">
-        <div class="container">
-            <div class="row top-line animate-box">
-                <div class="col-md-7 col-md-push-5 text-left intro">
-                    <p><h4> 스포츠도 명당에서</h4></p>
-                    <h2>야구장의 모든 것, 야구볼래?</h2>
+    <div class="fh5co-loader"></div>
+    <div id="page">
+        <!--내비게이션 -->
+        <nav class="fh5co-nav" role="navigation">
+            <div class="container">
+                <div class="fh5co-top-logo">
+                    <div id="fh5co-logo"><a href="/baseballGive">⚾야구볼래?</a></div>
                 </div>
-                <div>
-                    <h3> &#128071; 좌석 보러 가기</h3>
-                </div>
-            </div>
-
-            <!--구단별 좌석 선택 -->
-            <div class="row">
-                <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="seat_detail_Lotte.jsp">
-                        <div class="work-grid" style="background-image:url('image/Lotte.png');">
-                            <div class="inner">
-                                <div class="desc">
-                                    <h3>롯데 자이언츠</h3>
-                                    <span class="cat">사직야구장</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="#">
-                        <div class="work-grid" style="background-image:url('image/Samsung.png');">
-                            <div class="inner">
-                                <div class="desc">
-                                    <h3>삼성 라이온즈</h3>
-                                    <span class="cat">대구삼성 라이온즈파크</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="#">
-                        <div class="work-grid" style="background-image:url('image/Kia.png');">
-                            <div class="inner">
-                                <div class="desc">
-                                    <h3>KIA 타이거즈</h3>
-                                    <span class="cat">광주기아 챔피언스필드</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="#">
-                        <div class="work-grid" style="background-image:url('image/Hanhwa.png');">
-                            <div class="inner">
-                                <div class="desc">
-                                    <h3>한화 이글스</h3>
-                                    <span class="cat">대전한화생명 이글스파크</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="#">
-                        <div class="work-grid" style="background-image:url('image/NC.png');">
-                            <div class="inner">
-                                <div class="desc">
-                                    <h3>NC 다이노스</h3>
-                                    <span class="cat">창원 NC파크</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="#">
-                        <div class="work-grid" style="background-image:url('image/Kium.png');">
-                            <div class="inner">
-                                <div class="desc">
-                                    <h3>키움 히어로즈</h3>
-                                    <span class="cat">고척 스카이돔</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="#">
-                        <div class="work-grid" style="background-image:url('image/SSG.png');">
-                            <div class="inner">
-                                <div class="desc">
-                                    <h3>SSG 랜더스</h3>
-                                    <span class="cat">인천SSG 랜더스필드</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="#">
-                        <div class="work-grid" style="background-image:url('image/KT.png');">
-                            <div class="inner">
-                                <div class="desc">
-                                    <h3>KT 위즈</h3>
-                                    <span class="cat">수원 케이티위즈파크</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 text-center animate-box">
-                    <a class="work" href="#">
-                        <div class="work-grid" style="background-image:url('image/Dusan.png');">
-                            <div class="inner">
-                                <div class="desc">
-                                    <h3>두산 베어스 / LG 트윈스</h3>
-                                    <span class="cat">서울종합운동장 야구장</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- 기업광고 부분 -->
-    <div id="fh5co-author" class="fh5co-bg-section">
-        <div class="container">
-            <div class="row animate-box">
-                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-                    <h2>야구볼래와 함께 하는 기업들</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="author">
-                        <div class="author-inner animate-box" style="background-image: url('image/불닭볶음면.png');">
-                        </div>
-                        <div class="desc animate-box">
-                            <span>Developers</span>
-                            <h3>TEAM 모여봐요 과제의 숲</h3>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                            <p><a href="weather.jsp" class="btn btn-primary btn-outline">Learn More</a></p>
-                            <ul class="fh5co-social-icons">
-                                <li><a href="#"><i class="icon-facebook"></i></a></li>
-                                <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                                <li><a href="#"><i class="icon-github"></i></a></li>
+                <div class="fh5co-top-menu menu-1 text-center">
+                    <ul>
+                        <!--좌석 -->
+                        <li class="has-dropdown">
+                            <a href="/seat">좌석</a>
+                            <ul class="dropdown">
+                                <li><a href="/seatDetail?team=Lotte">롯데 자이언츠</a></li>
+                                <li><a href="/seatDetail?team=Samsung">삼성 라이온즈</a></li>
+                                <li><a href="/seatDetail?team=KIA">기아 타이거즈</a></li>
+                                <li><a href="/seatDetail?team=Hanhwa">한화 이글스</a></li>
+                                <li><a href="/seatDetail?team=NC">NC 다이노스</a></li>
+                                <li><a href="/seatDetail?team=KT">KT 위즈</a></li>
+                                <li><a href="/seatDetail?team=SSG">SSG 랜더스</a></li>
+                                <li><a href="/seatDetail?team=LD">LG 트윈스/두산 베어스</a></li>
+                                <li><a href="/seatDetail?team=Kium">키움 히어로즈</a></li>
                             </ul>
+                        </li>
+                        <!--게시판 드랍다운 -->
+                        <li class="has-dropdown">
+                            <a href="#">게시판</a>
+                            <ul class="dropdown">
+                                <li><a href="/board/list?type=Y">양도 게시판</a></li>
+                                <li><a href="/board/list?type=B">분실물 게시판</a></li>
+                                <li><a href="/board/boardLee/qnaList.jsp">Q&A 게시판</a></li>
+                            </ul>
+                        </li>
+                        <!--about=위치-->
+                        <li><a href="/location">위치</a></li>
+                        <!--contact = 로그인/회원가입-->
+                        <c:choose>
+                            <c:when test="${sessionScope.id != null}">
+                                <li><a href="/board/logout">로그아웃</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li class="has-dropdown">
+                                    <a href="#">로그인/회원가입</a>
+                                    <ul class="dropdown">
+                                        <li><a href="/board/login">로그인</a></li>
+                                        <li><a href="/board/register">회원가입</a></li>
+                                    </ul>
+                                </li>
+                            </c:otherwise>
+                        </c:choose>
+                        <li><a href="#" onclick="alert('⚠️공사중⚠️')">마이페이지</a></li>
+                    </ul>
+                </div>
+                <div class="fh5co-top-social menu-1 text-right">
+                    <ul class="fh5co-social">
+                        <li><a href="#"><i class="icon-twitter"></i></a></li>
+                        <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                        <li><a href="#"><i class="icon-github"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="fh5co-work">
+            <div class="container">
+                <div class="row top-line animate-box">
+                    <div class="col-md-7 col-md-push-5 text-left intro">
+                        <p><h4> <i font-style:italic>스포츠도 명당에서</i></h4> </p>
+                        <h2 class="title">야구장의 모든 것, 야구볼래?</h2>
+                        <h3 style="text-align: left;">&#128071; 좌석 보러 가기</h3>
+                    </div>
+                </div>
+                <!--구단별 좌석 선택 -->
+                <div class="row">
+                    <div class="col-md-4 text-center animate-box">
+                        <a class="work" href="/seatDetail?team=Lotte">
+                            <div class="work-grid" style="background-image:url('image/Lotte.png');">
+                                <div class="inner">
+                                    <div class="desc">
+                                        <h3>롯데 자이언츠</h3>
+                                        <span class="cat">사직야구장</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center animate-box">
+                        <a class="work" href="/seatDetail?team=Samsung">
+                            <div class="work-grid" style="background-image:url('image/Samsung.png');">
+                                <div class="inner">
+                                    <div class="desc">
+                                        <h3>삼성 라이온즈</h3>
+                                        <span class="cat">대구삼성 라이온즈파크</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center animate-box">
+                        <a class="work" href="/seatDetail?team=KIA">
+                            <div class="work-grid" style="background-image:url('image/Kia.png');">
+                                <div class="inner">
+                                    <div class="desc">
+                                        <h3>KIA 타이거즈</h3>
+                                        <span class="cat">광주기아 챔피언스필드</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center animate-box">
+                        <a class="work" href="/seatDetail?team=Hanhwa">
+                            <div class="work-grid" style="background-image:url('image/Hanhwa.png');">
+                                <div class="inner">
+                                    <div class="desc">
+                                        <h3>한화 이글스</h3>
+                                        <span class="cat">대전한화생명 이글스파크</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center animate-box">
+                        <a class="work" href="/seatDetail?team=NC">
+                            <div class="work-grid" style="background-image:url('image/NC.png');">
+                                <div class="inner">
+                                    <div class="desc">
+                                        <h3>NC 다이노스</h3>
+                                        <span class="cat">창원 NC파크</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center animate-box">
+                        <a class="work" href="/seatDetail?team=Kium">
+                            <div class="work-grid" style="background-image:url('image/Kium.png');">
+                                <div class="inner">
+                                    <div class="desc">
+                                        <h3>키움 히어로즈</h3>
+                                        <span class="cat">고척 스카이돔</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center animate-box">
+                        <a class="work" href="/seatDetail?team=SSG">
+                            <div class="work-grid" style="background-image:url('image/SSG.png');">
+                                <div class="inner">
+                                    <div class="desc">
+                                        <h3>SSG 랜더스</h3>
+                                        <span class="cat">인천SSG 랜더스필드</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center animate-box">
+                        <a class="work" href="/seatDetail?team=KT">
+                            <div class="work-grid" style="background-image:url('image/KT.png');">
+                                <div class="inner">
+                                    <div class="desc">
+                                        <h3>KT 위즈</h3>
+                                        <span class="cat">수원 케이티위즈파크</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4 text-center animate-box">
+                        <a class="work" href="/seatDetail?team=LD">
+                            <div class="work-grid" style="background-image:url('image/Dusan.png');">
+                                <div class="inner">
+                                    <div class="desc">
+                                        <h3>두산 베어스 / LG 트윈스</h3>
+                                        <span class="cat">서울종합운동장 야구장</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 기업광고 부분 -->
+        <div id="fh5co-author" class="fh5co-bg-section">
+            <div class="container">
+                <div class="row animate-box">
+                    <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                        <h2>야구볼래와 함께 하는 기업들</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="author">
+                            <div class="author-inner animate-box" style="background-image: url('image/불닭볶음면.png');">
+                            </div>
+                            <div class="desc animate-box">
+                                <span>Developers</span>
+                                <h3>TEAM 모여봐요 과제의 숲</h3>
+                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                                <p><a href="/location" class="btn btn-primary btn-outline">Learn More</a></p>
+                                <ul class="fh5co-social-icons">
+                                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                                    <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                                    <li><a href="#"><i class="icon-github"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div id="fh5co-started">
-        <div class="container">
-            <div class="row animate-box">
-                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-                    <h2>Join our crew!</h2>
-                    <p>We are waiting for our new crew members! DON'T HESITATE just GO!</p>
-                    <p><a href="#" class="btn btn-primary">Let's work together</a></p>
+        <div id="fh5co-started">
+            <div class="container">
+                <div class="row animate-box">
+                    <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                        <h2>Join our crew!</h2>
+                        <p>We are waiting for our new crew members! DON'T HESITATE just GO!</p>
+                        <p><a href="#" class="btn btn-primary">Let's work together</a></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <footer id="fh5co-footer" role="contentinfo">
-        <div class="container">
-            <div class="row copyright">
-                <div class="col-md-12 text-center">
-                    <p>
-                        <small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
-                        <small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a> &amp; <a href="http://blog.gessato.com/" target="_blank">Gessato</a></small>
-                    </p>
+        <footer id="fh5co-footer" role="contentinfo">
+            <div class="container">
+                <div class="row copyright">
+                    <div class="col-md-12 text-center">
+                        <p>
+                            <small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
+                            <small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a> &amp; <a href="http://blog.gessato.com/" target="_blank">Gessato</a></small>
+                        </p>
 
-                    <ul class="fh5co-social-icons">
-                        <li><a href="#"><i class="icon-twitter"></i></a></li>
-                        <li><a href="#"><i class="icon-facebook"></i></a></li>
-                        <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                        <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                    </ul>
-
+                        <ul class="fh5co-social-icons">
+                            <li><a href="#"><i class="icon-twitter"></i></a></li>
+                            <li><a href="#"><i class="icon-facebook"></i></a></li>
+                            <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                            <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </footer>
+    </div>
 
-        </div>
-    </footer>
-</div>
-
-<div class="gototop js-top">
-    <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-</div>
+    <div class="gototop js-top">
+        <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+    </div>
 
 <!-- jQuery -->
 <script src="/js/jquery.min.js"></script>

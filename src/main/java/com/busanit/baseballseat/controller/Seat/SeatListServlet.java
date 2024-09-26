@@ -1,15 +1,15 @@
-package com.busanit.baseballseat.controller;
+package com.busanit.baseballseat.controller.Seat;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet("/baseballGive")
-public class MainServlet extends HttpServlet {
+@WebServlet("/seat")
+public class SeatListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String url = "./index.jsp";
+        String url = "/Seat/seat.jsp";
 
         request.getRequestDispatcher(url).forward(request, response);
     }

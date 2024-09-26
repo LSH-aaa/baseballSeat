@@ -1,4 +1,4 @@
-package com.busanit.baseballseat.controller;
+package com.busanit.baseballseat.controller.Memebers;
 
 import com.busanit.baseballseat.dao.MembersDAO;
 import com.busanit.baseballseat.dto.MembersVO;
@@ -29,5 +29,7 @@ public class RegisterServlet extends HttpServlet {
 
         MembersDAO mdao = new MembersDAO();
         mdao.joinMembers(members);
+
+        response.sendRedirect("/baseballGive");
     }
 }
