@@ -106,6 +106,7 @@
         </div>
     </nav>
         <div id="wrap" align="center">
+            <br><br>
             <h2>QnA 수정</h2>
             <form action="/QnAUpdate" method="post">
                 <input type="hidden" name="num" value="${board.num}">
