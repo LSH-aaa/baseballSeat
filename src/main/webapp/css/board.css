@@ -19,7 +19,7 @@ table th, td {
     padding: 5px;
 }
 
-th {
+table th {
     background: #cabcab;
     width: 120px;
     text-align: center;
@@ -42,7 +42,7 @@ a:hover {
     cursor: pointer;
 }
 
-.col {
+.colLee {
     text-align: center;
     width: 70px;
 }
