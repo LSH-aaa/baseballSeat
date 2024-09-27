@@ -12,7 +12,8 @@ import java.io.PrintWriter;
 public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String url = "/login.jsp";
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
     @Override
