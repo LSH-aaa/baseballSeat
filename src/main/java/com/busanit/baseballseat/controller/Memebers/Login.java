@@ -12,20 +12,6 @@ import java.io.PrintWriter;
 public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 세션 체크
-        HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("id") != null) {
-            // 이미 로그인된 경우 alert 메시지를 띄우고 이전 페이지로 리다이렉트
-            response.setContentType("text/html;charset=UTF-8");
-            PrintWriter out = response.getWriter();
-            out.println("<script>");
-            out.println("alert('이미 로그인 되어있습니다.');");
-            out.println("window.history.back();"); // 이전 페이지로 돌아가기
-            out.println("</script>");
-            out.close();
-        }
-
-        // 로그인 페이지로 포워드
         String url = "/login.jsp";
         request.getRequestDispatcher(url).forward(request, response);
     }

@@ -77,12 +77,12 @@
 					</c:if>
 					<c:forEach var="board" items="${boardList}">
 						<tr>
-							<td class="col">${board.num}</td>
-							<td class="col">${board.type}</td>
-							<td><a href="/board/view?num=${board.num}&type=${type}">${board.title}</a></td>
-							<td class="col">${board.nickname}</td>
+							<td class="colLee">${board.num}</td>
+							<td class="colLee">${board.type}</td>
+							<td><a href="/board/view?num=${board.num}&type=${type}"> ${board.title}</a></td>
+							<td class="colLee">${board.nickname}</td>
 							<td><fmt:formatDate pattern="yyyy.MM.dd hh:mm:ss" value="${board.writedate}"/></td>
-							<td class="col">${board.readcount}</td>
+							<td class="colLee">${board.readcount}</td>
 						</tr>
 					</c:forEach>
 				</table>

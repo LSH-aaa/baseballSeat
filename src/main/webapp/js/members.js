@@ -2,7 +2,8 @@
 function registerCheck() {
     const nameTag = document.querySelector("input[name = name]");
     const idTag = document.querySelector("input[name = id]");
-    const passTag = document.querySelector("input[class = pw]");
+    const passTag = document.querySelector("input[name = pwd]");
+    const passcheckTag = document.querySelector("input[name = pwd_check]");
 
     if(nameTag.value.length <= 0) {
         alert("이름을 입력해주세요.");
@@ -12,15 +13,22 @@ function registerCheck() {
 
     if(idTag.value.length <= 0) {
         alert("아이디를 입력해주세요.");
-        nameTag.focus();
+        idTag.focus();
         return false;
     }
 
     if(passTag.value.length <= 0) {
         alert("비밀번호를 입력해주세요.");
-        nameTag.focus();
+        passTag.focus();
         return false;
     }
+
+    if(passcheckTag.value.length <= 0) {
+        alert("비밀번호 확인해주세요.");
+        passcheckTag.focus();
+        return false;
+    }
+
     return true;
 }
 
