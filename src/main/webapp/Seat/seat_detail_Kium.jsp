@@ -19,7 +19,7 @@
 <body>
 	<div class="fh5co-loader"></div>
 	<div id="page">
-		<%@include file="/hedaer.jsp"%>
+		<%@include file="/header.jsp"%>
 		<!-- 좌석 디테일 -->
 		<div id="fh5co-author">
 			<div class="container">
