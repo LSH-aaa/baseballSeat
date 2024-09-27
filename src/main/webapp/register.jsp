@@ -37,7 +37,7 @@
                             <form action="/board/register" method="post">
                                 <div class="row form-group">
                                     <div class="col-md-12">
-                                        <label for="name">이름</label>
+                                        <label for="name">이름 <small>*필수</small></label>
                                         <input type="text" id="name" name="name" class="form-control">
                                     </div>
                                 </div>
@@ -53,11 +53,11 @@
 
                                 <div class="row form-group">
                                     <div class="col-md-12">
-                                        <label for="pwd_1">비밀번호</label>
+                                        <label for="pwd_1">비밀번호 <small>*필수</small></label>
                                         <input type="password" id="pwd_1" name="pwd" class="form-control">
                                     </div>
                                     <div class="col-md-12">
-                                        <label for="pwd_2">비밀번호 확인</label>
+                                        <label for="pwd_2">비밀번호 확인 <small>*필수</small></label>
                                         <input type="password" id="pwd_2" name="pwd_check" class="form-control" >
                                         <span id="check_MSG"></span>
                                     </div>
@@ -77,7 +77,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                <button value="submit" id="join" class="form-control" onclick="return registerCheck()">회원가입</button>
+                                <button type="submit" id="join" class="form-control" onclick="return registerCheck()">회원가입</button>
                             </form>
                         </div>
                     </div>
