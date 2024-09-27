@@ -31,7 +31,7 @@
 <body>
     <div class="fh5co-loader"></div>
     <div id="page">
-        <%@include file="header.jsp"%>
+        <%@include file="/header.jsp"%>
         <!-- 위치 내용 -->
         <div id="fh5co-author">
             <div class="row">
@@ -64,7 +64,7 @@
                 </div>
             </div>
         </div>
-        <%@include file="footer.jsp"%>
+        <%@include file="/footer.jsp"%>
     <!-- 스크립트 추가 -->
     <script>
         let map;
