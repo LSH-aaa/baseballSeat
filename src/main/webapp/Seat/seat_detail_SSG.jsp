@@ -39,7 +39,7 @@
 								<a href="/seat" class="btn btn-primary btn-outline"><i class="icon-grid2"></i> View All</a>
 							</div>
 							<div class="col-xs-4 text-right">
-								<a href="/seatDetail?team=SSG" class="btn btn-primary btn-outline">Next <i class="icon-chevron-right"></i></a>
+								<a href="/seatDetail?team=LD" class="btn btn-primary btn-outline">Next <i class="icon-chevron-right"></i></a>
 							</div>
 						</div>
 					</div>
